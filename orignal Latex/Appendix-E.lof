@@ -1,0 +1,16 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Use cases of U-LTE.}}{3}
+\contentsline {figure}{\numberline {2}{\ignorespaces Simplified flowchart of FBE.}}{6}
+\contentsline {figure}{\numberline {3}{\ignorespaces An illustrative example of FBE.}}{7}
+\contentsline {figure}{\numberline {4}{\ignorespaces Simplified flowchart of LBE.}}{8}
+\contentsline {figure}{\numberline {5}{\ignorespaces An illustrative example of LBE.}}{8}
+\contentsline {figure}{\numberline {6}{\ignorespaces PCF and DCF in IEEE 802.11.}}{9}
+\contentsline {figure}{\numberline {7}{\ignorespaces HCCA in IEEE 802.11e.}}{12}
+\contentsline {figure}{\numberline {8}{\ignorespaces Simplified flowchart of CSMA-CA.}}{13}
+\contentsline {figure}{\numberline {9}{\ignorespaces CSMA-CA: An example of back-off procedure when there is no collision.}}{14}
+\contentsline {figure}{\numberline {10}{\ignorespaces CSMA-CA: An example of back-off procedure when there is a collision (the contention window is exponentially increased).}}{15}
+\contentsline {figure}{\numberline {11}{\ignorespaces CSMA-CA enhanced with RTS/CTS handshake and NAV.}}{16}
+\contentsline {figure}{\numberline {12}{\ignorespaces Duty-cycling mechanism employed by LTE-U.}}{19}
+\contentsline {figure}{\numberline {13}{\ignorespaces CCA and ECCA mechanisms employed by LAA-LTE.}}{20}
+\contentsline {figure}{\numberline {14}{\ignorespaces Negative interactions between LTE-U and Wi-Fi systems.}}{27}
+\contentsline {figure}{\numberline {15}{\ignorespaces Wi-Fi exponential back-off competes for the channel more conservatively, compared to LAA-LTE.}}{28}
+\contentsline {figure}{\numberline {16}{\ignorespaces U-LTE may cause channel collisions with Wi-Fi at any time.}}{29}

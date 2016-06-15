@@ -1,0 +1,44 @@
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {subsection}{\numberline {1.1}Motivation and Concept of U-LTE}{4}
+\contentsline {subsection}{\numberline {1.2}Benefits of U-LTE}{5}
+\contentsline {subsection}{\numberline {1.3}Obstacles of U-LTE}{5}
+\contentsline {subsection}{\numberline {1.4}Three Types of U-LTE}{6}
+\contentsline {subsection}{\numberline {1.5}Coexistence of U-LTE and Wi-Fi}{6}
+\contentsline {subsection}{\numberline {1.6}Requirements of U-LTE Coexistence Mechanisms}{8}
+\contentsline {section}{\numberline {2}An Overview on ETSI's and Wi-Fi's LBT Mechanisms}{8}
+\contentsline {subsection}{\numberline {2.1}ETSI's LBT Mechanisms}{8}
+\contentsline {subsubsection}{\numberline {2.1.1}FBE-based Mechanism}{9}
+\contentsline {subsubsection}{\numberline {2.1.2}LBE-based Mechanism}{10}
+\contentsline {subsection}{\numberline {2.2}Wi-Fi's LBT Mechanism}{13}
+\contentsline {section}{\numberline {3}An Overview of LTE Advanced}{13}
+\contentsline {subsection}{\numberline {3.1}System Overview}{13}
+\contentsline {subsubsection}{\numberline {3.1.1}Network Architecture}{13}
+\contentsline {subsubsection}{\numberline {3.1.2}Capabilities and Features}{13}
+\contentsline {subsection}{\numberline {3.2}Channel Access Mechanisms}{13}
+\contentsline {subsubsection}{\numberline {3.2.1}LTE-A Physical Layer Protocol}{13}
+\contentsline {subsubsection}{\numberline {3.2.2}LTE-A Medium Access Protocol}{13}
+\contentsline {subsection}{\numberline {3.3}Changes Expected for Future Releases}{13}
+\contentsline {subsubsection}{\numberline {3.3.1}An Overview on IEEE 802.11 and 802.11e}{13}
+\contentsline {subsubsection}{\numberline {3.3.2}IEEE 802.11 CSMA-CA}{16}
+\contentsline {subsubsection}{\numberline {3.3.3}Important Observations on IEEE 802.11 CSMA-CA}{21}
+\contentsline {section}{\numberline {4}An Overview on LTE-U and LAA-LTE}{21}
+\contentsline {subsection}{\numberline {4.1}LTE-U}{21}
+\contentsline {subsection}{\numberline {4.2}LAA-LTE}{22}
+\contentsline {section}{\numberline {5}A Survey on Related Work}{24}
+\contentsline {section}{\numberline {6}Network-aware Adaptive Listen Before Talk Co-existence Mechanism}{30}
+\contentsline {subsection}{\numberline {6.1}Background and Theoretical Basis}{30}
+\contentsline {subsection}{\numberline {6.2}The Proposed Mechanism}{30}
+\contentsline {subsection}{\numberline {6.3}Performance Evaluation}{30}
+\contentsline {subsubsection}{\numberline {6.3.1}System Model}{30}
+\contentsline {subsubsection}{\numberline {6.3.2}Simulation Results}{30}
+\contentsline {subsection}{\numberline {6.4}Discussion and Future Work}{30}
+\contentsline {section}{\numberline {7}Open Questions and Potential Research Directions}{30}
+\contentsline {subsection}{\numberline {7.1}LTE-U-aware CSMA-CA and LTE-U with LBT}{30}
+\contentsline {subsection}{\numberline {7.2}LAA-LTE with Exponential Back-off}{31}
+\contentsline {subsection}{\numberline {7.3}Wi-Fi-aware LTE-U and LAA-LTE}{33}
+\contentsline {subsection}{\numberline {7.4}Collaborative U-LTE and Wi-FiCollaborative U-LTE and Wi-Fi}{34}
+\contentsline {subsection}{\numberline {7.5}Inter-operator U-LTE Coexistence}{35}
+\contentsline {subsection}{\numberline {7.6}Other Considerations on Coexistence}{35}
+\contentsline {subsection}{\numberline {7.7}Emerging Wi-Fi Technologies and U-LTE}{36}
+\contentsline {subsection}{\numberline {7.8}Further Investigation on MuLTEfire}{36}
+\contentsline {section}{\numberline {8}Conclusions}{37}

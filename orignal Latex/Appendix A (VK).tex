@@ -1,0 +1,438 @@
+\documentclass[journal,draftclsnofoot,12pt,onecolumn]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{amssymb}
+%\usepackage[center]{caption2}
+\usepackage{stfloats}
+\usepackage{cases}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{amscd}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{color}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsthm,amssymb}
+%\usepackage{algpseudocode}
+\graphicspath{ {../figures/} }
+\usepackage{slashbox}
+\allowdisplaybreaks
+%\newcounter{mytempeqncnt}
+%\renewcommand{\captionfont}{\small}
+%\renewcommand{\captionlabelfont}{}
+\usepackage{subfigure}
+\newtheorem{lemma}{Lemma}
+\newtheorem{AS}{Assumption}
+\newtheorem{Remark}{Remark}
+\newtheorem{Prep}{Proposition}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Claim}{Claim}
+\newcommand{\Nc}{N_\mathrm{c}}
+\newcommand{\Rc}{R_\mathrm{c}}
+\newcommand{\Ns}{N_\mathrm{s}}
+\newcommand{\Na}{N_\mathrm{a}}
+\newcommand{\cki}{C_k^i}
+\newcommand{\ai}{\alpha_i}
+\newcommand{\bki}{\beta_k^i}
+\newcommand{\si}{\sum_{i=1}^{\Na}}
+\newcommand{\sk}{\sum_{k=1}^{\Ns}}
+\newcommand{\obj}{\bki\cki\left(1-\bki\ai\right)}
+\newcommand{\gmin}{g\left(\mu_i^n\right)}
+\newcommand{\mdifq}{\left|\mu_i^{n+1}-\mu_i^*\right|^2}
+\newcommand{\mdifqn}{\left|\mu_i^{n}-\mu_i^*\right|^2}
+\newcommand{\mdifn}{\left(\mu_i^{n}-\mu_i^*\right)}
+\newcommand{\sm}{\sum_{m=N_0+1}^n A_{mn}}
+\newcommand{\bb}{\pmb{\beta}}
+\newcommand{\sj}{\sum_{j=1}^{\Ns}}
+\usepackage{array,etoolbox}
+\newcommand{\titleSize}{\fontsize{16pt}{20pt}\selectfont}
+\newcommand{\authSize}{\fontsize{12pt}{20pt}\selectfont}
+\newcommand{\footSize}{\fontsize{9pt}{20pt}\selectfont}
+\pagestyle{fancy} % Turn on the style
+\fancyhf{} 
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\footSize{Appendix A-\thepage}}
+
+\fancypagestyle{firststyle}
+{
+	\fancyhf{}
+	\fancyfoot[R]{\footSize{Appendix A-\thepage}}
+}
+
+\preto\tabular{\setcounter{magicrownumbers}{0}}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+\IEEEoverridecommandlockouts
+
+\begin{document}
+
+\thispagestyle{fancy}
+\title{\begin{flushleft}\titleSize{Appendix A:\\Delay-aware and Power-Efficient Resource Allocation in Virtualized Wireless Networks}\end{flushleft}}
+\author{
+	\IEEEauthorblockN{\vspace{-2em}\begin{flushleft}\authSize{ \textit{Saeedeh Parsaeefard, Vikas Jumba, Mahsa Derakhshani, Tho Le-Ngoc}}\end{flushleft}}
+}
+\maketitle
+\vspace{-5em}
+\thispagestyle{firststyle}
+\begin{abstract}
+This paper proposes a delay-aware resource provisioning policy for virtualized wireless networks (VWNs) to minimize the total average transmit power while holding the minimum required average rate of each slice and maximum average packet transmission delay for each user. The proposed cross-layer optimization problem is inherently non-convex and has high computational complexity. To develop an efficient solution, we first transform cross-layer dependent constraints into physical layer dependent ones. Afterwards, we apply different convexification techniques based on variable transformations and relaxations, and propose an iterative algorithm to reach the optimal solution. Simulation results illustrate the effects of the required average packet transmission delay and minimum average slice rate on the total transmission power in VWN.
+\end{abstract}
+\begin{IEEEkeywords}
+Delay-aware resource provisioning, virtualized wireless networks. %
+\end{IEEEkeywords}
+\section{Introduction}
+Wireless network virtualization has been recently considered as a promising approach to enhance spectrum efficiency via sharing infrastructures among different service providers (also called slices) serving their own specific sets of users \cite{7113228}. Successful sharing requires proper isolation between slices to prevent harmful effects of user activity in one slice on the other slices \cite{6887287}. %Therefore, similar to other types of wireless networks,  or guarantee the minimum required throughput or resources \textcolor{red}{\cite{}}.
+
+Various resource provisioning policies in VWNs are being proposed to provide this isolation either by static resource allocation to each slice or dynamic throughput reservation \cite{6117098}. In \cite{6398722}, authors propose a Karnaugh-map-like online embedding algorithm for VWN to handle network requests. In \cite{6177700}, the concept of game theory is used to provide dynamic interactions between slices and network operators. An opportunistic spectrum sharing method in VWNs with multiple physical networks is proposed in \cite{6952523}. The resource allocation schemes in VWNs to maximize the total rate under various quality-of-service (QoS) requirements of slices are investigated in \cite{7127778,7038181} for OFDMA and massive MIMO based VWNs, respectively.
+
+%\textit{For instance, in \cite{6603649}, with the objective to maximize the VWN's revenue, the resource allocation problem is formulated while considering the VWN's limited resources. With the objective to maximize the VWN's throughput, in \cite{6177700}, a stochastic auction game between slices and network operators is proposed. In \cite{saeideh_WVN}, an admission control policy based on priority and channel state information (CSI) in VWN to satisfy the minimum rate and resource requirements of slices is proposed. To hold diverse QoS requirements of slices and expanding the feasibility region og VWN, \cite{7038181} studies the advantages of massive MIMO in VWN. }
+
+While the above works focus on the physical-layer parameters to provide the isolation among slices, it is essential to consider the traffic characteristics of end-users, e.g., arrival rate and tolerable delay, to ensure high-quality end-user experience in VWN. This issue calls for a new constraint related to maximum delay of each user in resource allocation problem. In addition, energy efficiency should be considered as an important objective of VWNs for the next generation of wireless networks \cite{6887287}. In this paper, we propose cross-layer resource provisioning policies suitable for VWNs to minimize the power consumption in consideration of traffic arrival rate and tolerable delay while satisfying the dynamic slice isolation.
+
+We consider an up-link transmission of an orthogonal frequency division multiple access (OFDMA) based VWN. In this setup, we propose a delay-aware resource allocation that minimizes the total average power of VWN while holding the minimum average rate of each slice for isolation and limiting the packet transmission to a maximum delay. Due to these two constraints, the formulated resource allocation problem has an inherent cross-layer as well as non-convex nature and suffers from high computational complexity. To reach a tractable formulation and capture the meaning of tolerable delay from end-users perspectives, we resort to the concept of effective capacity \cite{4290029,4205048,4024729}. By replacing the delay-aware constraints with more tractable formulations and applying relaxation and transformation techniques, we convexify the formulated problem and develop an efficient iterative algorithm for solution. Through simulations, we investigate the effects of different parameters on the transmit power of VWN for two user-location scenarios: cell-center and cell-boundary. We show how packet size, arrival rate of users and maximum tolerable delay can affect the total transmit power of VWN.
+
+%This concept involves both queuing delay and physical layer performance, therefore, resulting resource allocation problem is usually non-convex and encounters higher computational complexity as compared to the resource allocation problem with physical layer parameters \cite{6157070} and even the closed form formulation is not available for some scenarios. Previously, to tackle the mentioned problems, the effective capacity formulation is studied for several system models, e.g., and more simplified formulation has been proposed.
+
+
+%All the previous resource provisioning policies proposed for VWN consider only PHY layer parameters e.g. CSI, rate requirements etc., as decision parameters for resource allocation. These schemes have a common assumption of delay insensitive nature of information flow. However, in practical scenarios, it is necessary to consider delay performance in resource provisioning policies as information flow is can have random bursty arrivals\cite{6157070}. This issue has been investigated in various resource provisioning schemes for regular wireless networks. Authors in \cite{4290029}, propose a delay-sensitive cross-layer design aiming to maximize the total system throughput subject to the individual user's delay constraint and total base station transmit power constraint. A dynamic resource allocation algorithm is developed to maximize the relay network throughput subject to a given delay QoS constraint for relay networks in \cite{4205048}. Furthermore, in \cite{4024729}, a resource allocation problem in a heterogeneous multiuser OFDM system is proposed aiming to maximize the sum-rate of all the users with non delay constraint traffic while maintaining guaranteed rates for the delay constraint traffic under a total transmission power constraint.
+
+%I We first remove the cross layer dependencies of problem by substituting delay constraint with equivalent PHY layer constraint and afterward the problem is convexified to propose an iterative algorithm for resource provisioning.
+
+% Therefore, our major contributions in this paper are 1) we propose a dynamic delay-aware resource provisioning policy for WVN and 2) we consider a maximum delay limit for average delay of packet transmission at the users' queue of all slices.
+
+The rest of this paper is organized as follows. Section II introduces the system model and problem formulation. Section III develops the proposed iterative algorithm {for slice provisioning}. Section IV presents the simulation results and Section V concludes the paper.
+
+\section{System Model}
+We consider an up-link OFDMA transmission of a single-cell VWN, where the base station (BS) is virtualized to support a set of $\mathcal{G} = \{1,\cdots,G\}$ slices. Each slice $g \in \mathcal{G}$ serves a set of $\mathcal{N}_g  = \{1,\cdots,N_g\}$ users and $N = \sum_{g\in \mathcal{G}}N_g$ is the total number of users in the VWN. The total wireless channel bandwidth $B$ is equally divided into $\mathcal{K} = \{1,\cdots,K\}$ {set of OFDMA sub-carriers}. {The bandwidth $B_k = B/K$ of each sub-carrier $k \in \mathcal{K}$ is} assumed to be less than the coherence bandwidth $B_c$. Therefore, the link from user $n_g$ to the BS on sub-carrier $k$  exhibits flat fading with channel power gain  $h_{n_g,k}$. It is also assumed that the overall channel power gain vector $\textbf{h} = [h_{n_g,k}]_{\forall n_g,\forall g,\forall k}$ has a known stationary and ergodic cumulative distribution function (cdf) \cite{4217781,4472014}. %Therefore,%the avearge over time is  %\textit{Therefore, the distribution of $\textbf{h}(t)$ is independent of time $t$, because of stationary property and hence time averages in the problem can be replaced with ensemble averages through ergodicity\cite{4217781,4472014}.}
+%the time index $t$ in the definition of our problem can be removed .
+
+Let $w_{n_g,k}$ denote the {sub-carrier assignment indicator,} where $w_{n_g,k} = 1$ indicates that the sub-carrier $k$ is assigned to user $n_g$, otherwise $w_{n_g,k} = 0$. With this notation, the OFDMA exclusive sub-carrier assignment policy can be expressed as the following constraint
+\begin{align}
+\text{C1: }\sum\limits_{g\in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}w_{n_g,k} \leq 1 \text{ and } w_{n_g,k} \in \{0,1\}, ~\forall k \in \mathcal{K}.\nonumber
+\end{align}
+If $p_{n_g,k}$ is the power allocated to user $n_g$ on sub-carrier $k$ in time slot $t$, the corresponding achievable rate is $R_{n_g,k}= \log_2(1 + \frac{p_{n_g,k}h_{n_g,k}}{\sigma })$, where $\sigma$ is the noise power in each sub-carrier and users. Consequently, the total achievable rate of user $n_g$ becomes $R_{n_g}(\textbf{P},\textbf{W}) = \sum\limits_{k \in \mathcal{K}}R_{n_g,k}$, where $\textbf{P}=[p_{n_g,k}]_{\forall n_g, \forall g, \forall k}$ and  $\textbf{W}=[ w_{n_g,k}]_{\forall n_g, \forall g, \forall k}$ are the allocated power and sub-carrier vector to all users of all slices. To maintain isolation among slices and offer reliable QoS to each user in all slices, we consider following constraints:
+\begin{itemize}
+\item \textit{\textbf{Slice-Isolation constraints:}} by guaranteeing the minimum average rate $R_g^\text{rsv}$ i.e.,
+\begin{align}
+\text{C2: } \textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{n_g \in \mathcal{N}_g}R_{n_g}(\textbf{P},\textbf{W})\right\rbrace   \geq R_g^\text{rsv}, ~\forall g \in \mathcal{G}, \nonumber
+\end{align}
+where operator $\textbf{E}_{\textbf{h}}\{\cdot\}$ represents the expectation over random vector $\textbf{h}$.
+{\item \textit{\textbf{User QoS constraints:}} by keeping the average traffic delay for each user $n_g$ for all $g \in \mathcal{G}$ below the predefined threshold, $\alpha_{n_g}$ (Eq. $17$ in \cite{6157070} ), i.e., }
+\begin{align}
+\text{C3: } & {\alpha}_{n_g}\textbf{E}_{\textbf{h}}\{Q_{n_g}\}  \leq {D}_{n_g},~\forall n_g \in \mathcal{N}_g, ~\forall g \in \mathcal{G},\nonumber
+\end{align}
+where $Q_{n_g}$ and $ {\alpha}_{n_g}$ denote the queue length and average packet arrival rate at the queue of user $n_g$, respectively.
+\end{itemize}
+{With considering energy efficiency for VWN under
+the above two types of constraints,} the overall optimization
+problem can be written as
+\begin{align}\label{ERA}
+\min\limits_{\textbf{P},\textbf{W}}~ &\textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{g \in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}\sum\limits_{k \in \mathcal{K}}w_{n_g,k}p_{n_g,k}\right\rbrace \\
+\text{subject to }&\text{C1-C3}.\nonumber
+\end{align}
+Note that {the proposed resource provisioning problem \eqref{ERA} contains discrete and continuous variables such as $\textbf{W}$ and $\textbf{P}$, and is inherently non-convex in nature \cite{6364677}. Additionally, the constraints from both physical layer (C1 and C2) and  medium access control (MAC) layer (C3) add multi dimensional complexity to the optimization problem.}
+
+\section{Proposed Algorithm}
+{C3 contributes to the major complexity of \eqref{ERA}
+due to its relationship with cross-layer parameters}. As a first
+step to simplify \eqref{ERA}, we need to find the equivalence of C3
+in terms of $\textbf{P}$ and $\textbf{W}$ instead of $Q_{n_g}$ and $
+{\alpha}_{n_g}$. {In this context, according to Lemma 1 in
+\cite{4290029}, C3 can be rewritten as
+\begin{align}
+\widehat{\text{C3}}: \,\,\,\textbf{E}_{\textbf{h}}\left[R_{n_g}(\textbf{P},\textbf{W})\right]  \geq Z_{n_g},~\forall n_g \in \mathcal{N}_g,~\forall g \in \mathcal{G},\nonumber
+\end{align}}
+where $$Z_{n_g} = \frac{ (2 {D}_{n_g} {\alpha}_{n_g} + 2)  + \sqrt{ (2 {D}_{n_g} {\alpha}_{n_g} + 2)^2 - 8 {D}_{n_g} {\alpha}_{n_g}}}{4 {D}_{n_g}} {L}_{n_g}$$ and $ {L}_{n_g}$ is the average packet size at the queue of user $n_g$. {In the next step,} to get rid of combinatorial structure of problem, we apply the relaxation and re-transformation techniques to \eqref{ERA} {and consider} $w_{n_g,k} \in [0,~1]$,  representing the sub-carrier assignment for the fraction of a time slot \cite{6884195}. {Based on new transformations,} C1 is changed to
+\begin{align}
+\widetilde{\text{C1}}:~ \sum\limits_{g\in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}w_{n_g,k}\leq 1 \text{ and } w_{n_g,k} \in [0,~1], \forall k \in \mathcal{K}\nonumber.
+\end{align}
+Furthermore, in order to convexify \eqref{ERA}, we consider a new variable $x_{n_g,k} = p_{n_g,k}w_{n_g,k}$ to transform the rate as $$\widetilde{R}_{n_g}(\textbf{X},\textbf{W}) = \sum\limits_{k \in \mathcal{K}}w_{n_g,k}\log_2(1 + \frac{x_{n_g,k}h_{n_g,k}}{\sigma w_{n_g,k}}),$$ where $\textbf{X}$ is the vector of $x_{n_g,k}$ for all users and sub-carriers. The above transformed throughput belongs to the general class of convex function $f(x,y) = x\log(1 + \frac{y}{x})$ \cite{6251827,6364677}. {Therefore,} C2 and C3 become
+\begin{align}
+&\widetilde{\text{C2}}:~ \textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{n_g \in \mathcal{N}_g}\widetilde{R}_{n_g}(\textbf{X},\textbf{W})\right\rbrace   \geq R_g^\text{rsv}, ~\forall g \in \mathcal{G} \text{ and }\nonumber\\
+&\widetilde{\text{C3}}:~ \textbf{E}_{\textbf{h}}\left[\widetilde{R}_{n_g}(\textbf{X},\textbf{W})\right]  \geq Z_{n_g},~\forall n_g \in \mathcal{N}_g,~\forall g \in \mathcal{G},\nonumber
+\end{align}
+respectively. Consequently, \eqref{ERA} can be rewritten as
+\begin{align}\label{ERAConvex}
+\min\limits_{\textbf{X},\textbf{W}}~ &\textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{g \in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}\sum\limits_{k \in \mathcal{K}}x_{n_g,k}\right\rbrace \\
+\text{subject to }&\widetilde{\text{C1}} - \widetilde{\text{C3}}\nonumber
+\end{align}
+Now, since \eqref{ERAConvex} is a convex problem, it can be solved via Lagrange dual method \cite{boyd2004convex,5895104} and the optimal solution can be achieved for this scenario. The Lagrange function of \eqref{ERAConvex} is
+\begin{align}\label{LagFun}
+\mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W}) = &-\textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{g \in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}\sum\limits_{k \in \mathcal{K}}x_{n_g,k}\right\rbrace  + \sum\limits_{g\in \mathcal{G}}\phi_g( \textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{n_g \in \mathcal{N}_g}\widetilde{R}_{n_g}\right\rbrace   - R_g^\text{rsv} ) \\
+& + \sum\limits_{g \in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}\zeta_{n_g}(\textbf{E}_{\textbf{h}}\left\lbrace  \widetilde{R}_{n_g}\right\rbrace - Z_{n_g}) + \sum\limits_{k \in \mathcal{K}}\rho_k\left(1- \sum\limits_{g\in \mathcal{G}}\sum\limits_{n_g \in \mathcal{N}_g}w_{n_g,k} \right) ,\nonumber
+\end{align}
+where $\rho_k$ for all $k\in \mathcal{K}$, $\phi_g$ for all $g \in \mathcal{G}$ and $\zeta_{n_g}$ for all $n_g \in \mathcal{N}_g$ are the positive Lagrange variables of $\widetilde{\text{C1}}$, $\widetilde{\text{C2}}$ and $\widetilde{\text{C3}}$, respectively. Let $\boldsymbol{\rho}$, $\boldsymbol{\phi}$ and $\boldsymbol{\zeta}$ be the vectors of the corresponding Lagrange variables $\rho_k$, $\phi_g$ and $\zeta_{n_g}$, respectively. Now, the Dual function related to \eqref{LagFun} is
+\begin{align}
+&\mathcal{D}(\boldsymbol{\phi},\boldsymbol{\zeta},\boldsymbol{\rho}) = \max\limits_{\textbf{X},\textbf{W}} \mathcal{L}(\boldsymbol{\phi},\boldsymbol{\zeta},\boldsymbol{\rho},\textbf{X},\textbf{W}) \nonumber
+\end{align}
+and consequently, the dual problem is
+\begin{align}\label{Dual}
+\min\limits_{\boldsymbol{\phi},\boldsymbol{\zeta},\boldsymbol{\rho}}~ &\mathcal{D}(\boldsymbol{\phi},\boldsymbol{\zeta},\boldsymbol{\rho})\\
+\text{subject to }&\widetilde{\text{C1}} - \widetilde{\text{C3}}.\nonumber
+\end{align}
+{For this type of resource allocation problem, the duality gap is zero for large number of sub-carriers, i.e., the solution of dual problem is equivalent to the solution of primal problem\cite{4472014,1658226}}. By applying the KKT condition to \eqref{Dual}, the optimal power for user $n_g$ on sub-carrier $k$, $p^*_{n_g,k}$, is
+\begin{align}\label{power}
+p^*_{n_g,k} = \left[\frac{\phi_g + \zeta_{n_g}}{\ln(2)} - \frac{\sigma}{h_{n_g,k}} \right]^{p_\text{max}}_0,
+\end{align}
+where $[x]^a_b = \max\{\min\{x,a\},b\}$. From KKT conditions, for optimal sub-carrier allocation $w_{n_g,k}^{*}$, we have,
+\begin{align}
+w_{n_g,k}^{*}
+\begin{cases}
+\begin{array}{ll}
+=0, & \frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}} < 0 \\
+\in [0,1], &\frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}} = 0\nonumber \\
+= 1, &\frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}} > 0,
+\end{array}
+\end{cases}
+\end{align}
+where
+\begin{align}
+\frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}} = (\phi_g + \zeta_{n_g})\left( \log_2(1 + \gamma_{n_g,k})- \frac{\gamma_{n_g,k}}{(1+\gamma_{n_g,k})\ln(2)}\right)\nonumber
+\end{align}
+and $\gamma_{n_g,k} = \frac{x_{n_g,k}h_{n_g,k}}{\sigma w_{n_g,k}}$. {In order to hold} the exclusive sub-carrier allocation of OFDMA, the sub-carrier $k$ is allocated to user which satisfy the followings
+%\begin{equation}\label{subcarrier}
+%w_{n'_g,k}^*=1,\,\, \text{for}\,\, n'_g =\max_{\forall n_g\in \mathcal{N}_g, \forall g \in \mathcal{G}}\frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}},
+%\end{equation}
+%otherwise $w_{n_g,k}=0$ for all $n_g \neq n'_g$.
+\begin{align}\label{subcarrier}
+&w_{n'_g,k}^{*} = 
+\begin{cases}
+\begin{array}{ll}
+1, & n'_g =\max_{\forall n_g\in \mathcal{N}_g, \forall g \in \mathcal{G}}\frac{\partial \mathcal{L}(\phi_g,\zeta_{n_g},\rho_{k},\textbf{X},\textbf{W})}{\partial w_{n_g,k}^{*}}, \\
+0, & n_g \neq n'_g.
+\end{array}
+\end{cases}
+\end{align}
+
+The iterative algorithm to derive the optimal sub-carrier and power algorithm for \eqref{ERAConvex}, summarized in Algorithm \ref{Effective Capacity Algorithm}, consists of two phases:
+%\vspace{-0.5em}
+\begin{itemize}
+ \item[] \textbf{1) Off-line Phase}: Generate different {channel state information (CSI)} samples of VWN according to a known channel distribution information (CDI) of users. Via these samples and gradient descent method, the Lagrange variables $\boldsymbol{\phi}$ and $\boldsymbol{\zeta}$ are updated as
+ \begin{align}
+ &\phi_g^*(j) = \phi_g(j-1) + \delta_{\phi_g}(\frac{\partial \mathcal{L}}{\partial \phi_g}),~\forall g\in \mathcal{G} \text{ and }\nonumber\\
+ &\zeta_{n_g}^*(j) = \zeta_{n_g}(j-1) + \delta_{\zeta_{n_g}}(\frac{\partial \mathcal{L}}{\partial \zeta_{n_g}}),~\forall n_g \in \mathcal{N}_g,~\forall g\in \mathcal{G},\nonumber
+ \end{align}
+where $0<\delta_{\phi_g} \ll 1$ and $0<\delta_{\zeta_{n_g}} \ll 1$ are small positive step sizes for $\phi_g$ and $\zeta_{n_g}$, respectively. The update functions can be equivalently rewritten as
+\begin{align}
+&\phi_g^*(j) =\phi_g(j-1) + \delta_{\phi_g}( \textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{n_g \in \mathcal{N}_g}\widetilde{R}_{n_g}(\textbf{X}(j-1),\textbf{W}(j-1))\right\rbrace - R_g^\text{rsv} ),\label{phiUpdate}\\
+&\zeta_{n_g}^*(j) = \zeta_{n_g}(j-1) + \delta_{\zeta_{n_g}}(\textbf{E}_{\textbf{h}}\left\lbrace  \widetilde{R}_{n_g}(\textbf{X}(j-1),\textbf{W}(j-1))\right\rbrace - Z_{n_g}).  \label{zetaUpdate}
+\end{align}
+
+%\begin{eqnarray}\label{8}
+%\lefteqn{\phi_g^*(j) =\phi_g(j-1) + }\\&&\!\!\!\!\!\!\!\!\!\!\!\!  \delta_{\phi_g}( \textbf{E}_{\textbf{h}}\left\lbrace \sum\limits_{n_g \in \mathcal{N}_g}\widetilde{R}_{n_g}(\textbf{X}(j-1),\textbf{W}(j-1))\right\rbrace - R_g^\text{rsv} ) \text{ and }\nonumber
+%\end{eqnarray}
+%\vspace{-0.5em}
+%\begin{eqnarray}
+%\label{9}
+%\lefteqn{\zeta_{n_g}^*(j) = \zeta_{n_g}(j-1)+}\\&& \delta_{\zeta_{n_g}}(\textbf{E}_{\textbf{h}}\left\lbrace  \widetilde{R}_{n_g}(\textbf{X}(j-1),\textbf{W}(j-1))\right\rbrace - Z_{n_g}).  \nonumber
+%\end{eqnarray}
+The iterative process will be terminated if
+\begin{equation}\label{stop}
+\|\phi_g^*(j) - \phi_g(j-1)\| \leq \varepsilon_1 \,  \text{and} \,  \| \zeta_{n_g}^*(j) - \zeta_{n_g}(j-1)\| \leq \varepsilon_2
+\end{equation}
+where $0<\varepsilon_1\ll 1$ and $0<\varepsilon_2 \ll 1$.
+\item[] \textbf{2) On-line Phase}: Power and sub-carrier are allocated according to \eqref{power} and \eqref{subcarrier} at each time slot, based on the values derived from off-line phase for fixed CDIs.
+\end{itemize}
+\begin{algorithm}
+    \caption{: Slice Provisioning Algorithm}\label{Effective Capacity Algorithm}
+    \begin{algorithmic}[]
+        \STATE \hspace{-1em}\textbf{\underline{Off-line Phase}:}
+        \STATE \textbf{Initialization:} Set arbitrary values for $j=0$, $\boldsymbol{\phi}(j=0),~\boldsymbol{\zeta}(j=0),~\delta_{\phi_g}(j=0),~\delta_{\zeta_{n_g}}(j=0)$, and $j_\text{max}\gg 1$,  as the maximum number of iteration for offline phase.
+        \STATE \textbf{Repeat:} $j = j + 1$
+        \STATE ~~ Update $\boldsymbol{\phi(j)}$ and $\boldsymbol{\zeta(j)}$ according to \eqref{phiUpdate} and \eqref{zetaUpdate}.
+        \STATE \textbf{Until} \eqref{stop} holds or $j \geq j_\text{max}$.
+    %   \STATE ~~~~\textbf{if} ~ Stop.%~~ \textbf{end if}.
+        \STATE \hspace{-1em}\textbf{\underline{On-line Phase}:}
+        \STATE Update $\textbf{P}$ and $\textbf{W}$ according to \eqref{power} and \eqref{subcarrier}, respectively.
+        %\STATE \textcolor{green}{Set $t=t+1$,}
+        \STATE If CDI changes, go to \textbf{Off-line Phase}, otherwise, continue  \textbf{On-line Phase} for next time instance.
+    \end{algorithmic}
+\end{algorithm}
+When CDI is changed, \textbf{Off-line Phase} is executed to up-date $\boldsymbol{\phi}$ and $\boldsymbol{\zeta}$\cite{4217781,4472014}.
+
+\section{Simulations Results}
+
+
+\begin{figure}[hbt]
+    \centering
+    \subfigure[Total transmit power versus ${D}_{n_g}$ for Case 1]{%
+        \includegraphics[scale=0.6]{PowerVsDelayclose}
+        \label{PowerVsDelay_close}
+    }
+    \subfigure[Total transmit power versus ${D}_{n_g}$ for Case 2]{%
+        \includegraphics[scale=0.6]{PowerVsDelayfar}
+        \label{PowerVsDelay_far}
+    }
+    \caption{Total transmit power versus delay ${D}_{n_g}$ for $G=2$ slices, $N_1=N_2=2$ users, $K=64$ sub-carriers with $R_{g1}^\text{rsv} = R_{g2}^\text{rsv} = 1.0$ bps/Hz and $\alpha = 5$ packets/slot}
+    \label{PowerVsDelay}
+\end{figure}
+
+
+
+In this section, we evaluate the performance of proposed algorithm
+via simulation results. We consider a single BS serving $G=2$ slices
+with $K=64$ OFDMA sub-carriers. VWN has $N=4$, total number of users
+with each slice having $N_1 = N_2 = 2$ users. {Each
+slot length $t$ is normalized to one.} Furthermore, we set maximum
+average delay of packet transmission at each user's queue
+{${D}_{n_g} = 0.5$,}
+minimum reserved rate $R_{g_1}^\text{rsv} = R_{g_2}^\text{rsv} =
+1.0$ bps/Hz for slices $g_1$ and $g_2$, and packet arrival process
+as Poisson process with average $5$ packets/slot, i.e.,
+$\alpha=\alpha_{n_g}=5$ packets/slot for all $n_g$  unless otherwise
+stated {\cite{6157070}}.  The channel gain fading follows Rayleigh
+distribution, i.e., $h_{n_g,k} = \mathcal{X}d_{n_g}^{-\beta}$, where
+$\beta = 3$ is path loss exponent, {$d_{n_g} \geq 0.35$ is distance between user $n_g$ and BS,} normalized to the cell diameter, and $\mathcal{X}$ is exponentially distributed with mean
+one. The simulations are performed for $1000$
+on-line time slots and off-line parameters are up-dated after every
+$25$ slots. For off-line phase, we set $\varepsilon_1 =
+\varepsilon_2 = 10^{-3}$.
+
+\begin{figure}[hbt]
+    \centering
+    \subfigure[Total transmit power versus $\alpha$ for Case 1]{%
+        \includegraphics[scale=0.6]{PowerVsAlphaclose}
+        \label{PowerVsAlphaclose}
+    }
+    \subfigure[Total transmit power versus $\alpha$ for Case 2]{%
+        \includegraphics[scale=0.6]{PowerVsAlphafar}
+        \label{PowerVsAlphafar}
+    }
+    \caption{Total transmit power versus $\alpha$ for $G=2$ slices, $N_1=N_2=2$ users, $K=64$ sub-carriers with {$D_{n_g} = 0.5 $} and $R_{g1}^\text{rsv} = R_{g2}^\text{rsv} = 1.0$ bps/Hz}
+    \label{PowerVsAlpha}
+\end{figure}
+
+{Clearly, by increasing $R_g^\text{rsv}$ and decreasing $D_{n_g}$, the transmit power should be increased to hold the related constraints. To understand better their effects on the allocated power, performance of the proposed approaches, we consider two different user-location cases: \textbf{Case 1} with users close to cell-center, i.e., $d_{n_g} = \{0.35, ~0.45\}$; and \textbf{Case 2} with users close to cell-boundary, i.e., $d_{n_g} = \{0.55, ~0.65\}$.} % Moreover, we introduce $\eta=\frac{\textbf{Total transmit power for Case 2}}{\textbf{Total transmit power for Case 1}}$ as a dimension less power ratio factor between two cases. Obviously, total transmit power of users Case 1 is less than total transmit power of Case 2. Thus, $\eta$ should be always greater than 1. }
+\begin{table}
+    \caption{Different Sets based on $R_g^\text{rsv}$ and ${L}_{n_g}$}\label{setstable}
+    \begin{center}
+        \begin{tabular}{| c | c | c | c |}
+            \hline
+            %   \vspace{0.1mm}
+            \small{\backslashbox{${R}_g^\text{rsv}$}{${L}_{n_g}$}}  & 2.50 b/Hz & 1.50 b/Hz & 0.25 b/Hz   \\ \hline
+            2.0 bps/Hz & Set 1 & Set 2 & Set 3 \\ % \hline
+            1.0 bps/Hz & Set 4 & Set 5 & Set 6 \\ %\hline
+            0.5 bps/Hz & Set 7 & Set 8 & Set 9 \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+The different sets of system parameters, $R_g^\text{rsv}$ and ${L}_{n_g}$, are summarized in Table \ref{setstable}. These two parameters determine the lower bound of $\widetilde{\text{C2}}$ and $\widetilde{\text{C3}}$, respectively. By increasing these two parameters, VWN needs more transmit power to satisfy the slice-isolation and/or QoS constraints. Based on our definition, Set 1 has the most stringent constraints while Set 9 has the loosest constraints. Specifically, Sets 1-3 have the strictest $\widetilde{\text{C2}}$ with $R_g^\text{rsv}=2.0$ while Sets 7-9 have relaxed $\widetilde{\text{C2}}$ with $R_g^\text{rsv}=0.5$. Sets 1, 4 and 7 have a larger packet size $ {L}_{n_g}=2.5$ b/Hz leading to higher $Z_{n_g}$ than Sets 3, 6 and 9 with $ {L}_{n_g}=0.5$ b/Hz. % from more strict value in the first set to a relaxed value in the last set within each group of sets. Therefore, with these values of system parameters, Set 1 is the most strict and Set 9 is the least strict among all sets.
+
+
+%Furthermore to analyze the effects of packet transmission delay $D_{n_g}$, we consider two scenarios:  It is obvious that with increasing  \textcolor{blue}{}
+
+
+
+%\begin{figure}[!htb]
+%   \minipage{0.49\textwidth}
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{PowerVsDelayclose}
+%   \caption{Total transmit power versus delay ${D}_{n_g}$ for Case 1}
+%   \label{PowerVsDelay_close}
+%   \endminipage\hfill
+%   \minipage{0.49\textwidth}
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{PowerVsDelayfar}
+%   \caption{Total transmit power versus delay ${D}_{n_g}$ for Case 2}
+%   \label{PowerVsDelay_far}
+%   \endminipage
+%\end{figure}
+%\begin{figure}[!htb]
+%\centering
+%\includegraphics[width=\linewidth]{../figures/etaVsDelay}
+%\caption{$\eta$ versus  delay $D_{n_g}$}
+%\label{fig:etaVsDelay}
+%\end{figure}
+
+%\textcolor{blue}{Fig. \ref{fig:etaVsDelay} illustrates the effects of constraints in the considered sets on $\eta$ versus delay $D_{n_g}$. It is observed that for sets 1, 4 and 7, $\eta$ increases with increasing $D_{n_g}$ until a constant value, except for set 7. Moreover, the increasing rate of $\eta$ reduces with increasing $R_g^\text{rsv}$ i.e., from set 7 to 1. This is because sets 1, 4 and 7 have larger packet size and therefore, for lower values of $D_{n_g}$, the constraint C3 has more prominent contribution in the high power transmission of VWN's users as compared to path-loss of users. However, for higher values of $D_{n_g}$, the delay requirements relaxes, therefore, the path loss factor starts dominating its effect on power transmission as compared to constraint C3, thereby causing an increase in the value of $\eta$. Similar to the effect of strict value of $D_{n_g}$, at the higher values of $R_g^\text{rsv}$, constraint C2 starts dominating the path-loss factor when $D_{n_g}$ increases in sets 1 and 4, thereby, significantly reducing the rate of increase in $\eta$ for sets 1 and 4 as compared to set 7. The variations of $\eta$ for sets 2, 5 and 8 are similar to sets 1, 4 and 7, respectively, due to same reason. However, for sets 3, 6 and 9, the constraints are relaxed therefore, there is negligible effect of path-loss and increasing $D_{n_g}$ on $\eta$. }
+
+Figs. \ref{PowerVsDelay_close} and \ref{PowerVsDelay_far} depict the transmit power versus ${D}_{n_g}$ for Case 1 and Case 2, respectively. Both figures show that for sets 3, 6 and 9 with smallest average packet size ${L}_{n_g}$, the variations in total transmission power with respect to $ {D}_{n_g}$ is negligible in comparison to the other sets with higher values of $ {L}_{n_g}$. This is because for the small packet size, ${D}_{n_g}$ does not have a strict effect on $Z_{n_g}$, and hence, the total transmit power is robust against variation in ${D}_{n_g}$, while for large ${L}_{n_g}$ (i.e., Sets 1, 4, and 7), ${D}_{n_g}$ has a strong effect on $Z_{n_g}$, leading to higher transmit power. Furthermore, it is also observed that with increasing $R_g^\text{rsv}$, the transmit power increases to achieve the required minimum rate of slices. The transmit power of Case 2 is larger than Case 1 to compensate the path-loss.
+
+%\textcolor{blue}{Fig. \ref{PowerVsRgRsvRatio} investigates the effect of the distance of the users on the total transmit power versus $R_g^\text{rsv}$ and ${L}_{n_g}$.} At higher $R_g^\text{rsv}$, $\eta$ for different values of ${L}_{n_g}$ are converged to $4$, meaning that $\widetilde{\text{C2}}$ is dominant in optimization problem \eqref{ERAConvex} and $\widetilde{\text{C3}}$ does not have any effect on the performance. However, for small $R_g^\text{rsv}$, $\widetilde{\text{C3}}$ specifies the feasibility region of optimization problem \eqref{ERAConvex}. Therefore, $\eta$ for different values of ${L}_{n_g}$ is completely different.
+
+
+%\begin{figure}
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{PowerVsRgRsvRatio}
+%   \caption{$\eta$ versus $R_g^\text{rsv}$}
+%   \label{PowerVsRgRsvRatio}
+%\end{figure}
+
+%\textcolor{blue}{Fig. \ref{fig:etaVsAlpha} depicts the effect of average packet arrival rate $\alpha$ and packet size on $\eta$. It is observed that for $L_{n_g} = 2.50$ b/Hz and $L_{n_g} = 1.50$ b/Hz, $\eta$ first increases and then decreases with increasing $\alpha$. This is because at low values of $\alpha$, the contribution of path-loss in power transmission of VWN is not very significant, however, as the value of $\alpha$ increases slightly, the strictness of $\widehat{\text{C3}}$ increases and hence $\alpha$ increases due to dominance of path-loss contribution in VWN power. At even higher values of $\alpha$, the constraint $\widehat{\text{C3}}$ plays significant role in VWN power as compared to path-loss and hence $\eta$ decreases.}
+
+{Figs. \ref{PowerVsAlphaclose} and \ref{PowerVsAlphafar} depict the transmit power versus ${\alpha}_{n_g}$ for Case 1 and Case 2, respectively, where $R_{g1}^\text{rsv}$ and $R_{g2}^\text{rsv}$ are set to $1.0$ bps/Hz and {$D_{ng} = 0.5$}. Both figures show that with increasing ${\alpha}_{n_g}$, the total transmit power is increased for ${L}_{n_g}>0.25$. However, for ${L}_{n_g}\leq 0.25$, ${\alpha}_{n_g}$ does not have considerable affect on the transmit power. This is because for large values of packet size (${L}_{n_g}>0.25$), $Z_{n_g}$ increases with increasing $\alpha_{n_g}$ and hence increases the strictness of constraint $\widetilde{\text{C3}}$. As a result, total transmit power requirements of users increases to satisfy the feasibility of  $\widetilde{\text{C3}}$. On the other side, for small values of  packet size (${L}_{n_g}\leq 0.25$), $Z_{n_g}$ does not increase significantly with increasing $\alpha_{n_g}$ and hence $\widetilde{\text{C3}}$ is not affected much. Consequently, for small packet size, increasing $\alpha_{n_g}$, negligibly affect the total power transmission of users. Therefore, when $\widetilde{\text{C3}}$ is dominant constraint among the other constraints of considered resource allocation problem, increasing ${\alpha}_{n_g}$ affect the feasibility region of resource allocation problem, and hence, the total transmit power is increased. Whereas, for small packet size, $\widetilde{\text{C3}}$ is no longer dominate as compared to other constraints of the considered problem and the increment of ${\alpha}_{n_g}$ does not affect the feasibility region.}
+
+%Figs. \ref{PowerVsAlphaclose} and \ref{PowerVsAlphafar} depict the transmit power versus ${\alpha}_{n_g}$ for Case 1 and Case 2, respectively, \textcolor{blue}{where $R_{g1}^\text{rsv}$ and $R_{g2}^\text{rsv}$ are set to $1.0$ bps/Hz and $D_{ng} = 0.5$ seconds}. Both figures show that with increasing ${\alpha}_{n_g}$ \textcolor{blue}{which directly leads to increase in ${Z}_{n_g}$}, the total transmit power is increased for ${L}_{n_g}>0.25$. However, for ${L}_{n_g}\leq 0.25$, ${\alpha}_{n_g}$ does not have considerable effect on the transmit power since ${Z}_{n_g}$ is small and consequently, increasing ${\alpha}_{n_g}$ does not have much effects on $\widetilde{\text{C3}}$. \textcolor{blue}{Therefore, when $\widetilde{\text{C3}}$ is not dominant constraint on the constraint of resource allocation problem, increasing ${\alpha}_{n_g}$ does not have effect on the feasibility region of resource allocation problem, and therefore, the total transmit power is not increased. However, for large value of ${L}_{n_g}$, i.e., ${L}_{n_g}> 0.25$, the increment of ${\alpha}_{n_g}$ directly influences the vale of ${Z}_{n_g}$ which causes highly increment on the transmit power of both cases. This is expected from the fact that increasing ${\alpha}_{n_g}$ in this scenario dominates $\widetilde{\text{C3}}$, and forces the users to transmit more power for satisfying the delay constraints.   }
+
+
+
+
+
+%\begin{figure}[!htb]
+%   \minipage{0.48\textwidth}
+%   \centering
+%   \includegraphics[width=1.0\linewidth]{PowerVsAlphaclose}
+%   \caption{Total VWN power versus $\alpha$ for Case 1}
+%   \label{PowerVsAlphaclose}
+%   \endminipage\hfill
+%   \minipage{0.48\textwidth}
+%   \centering
+%   \includegraphics[width=1.0\linewidth]{PowerVsAlphafar}
+%   \caption{Total VWN power versus $\alpha$ for Case 2}
+%   \label{PowerVsAlphafar}
+%   \endminipage
+%\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=\linewidth]{../figures/etaVsAlpha}
+%\caption{$\eta$ versus $\alpha$}
+%\label{fig:etaVsAlpha}
+%\end{figure}
+\begin{figure}[]
+    \centering
+    \includegraphics[scale=0.8]{Convergence}
+    \caption{Convergence of Lagrange Multipliers}
+    \label{Convergence}
+\end{figure}
+
+{In summary, Figs. \ref{PowerVsDelay}-\ref{PowerVsAlpha} show the effect of channel attenuation, i.e., the users with lower channel gains need higher transmit power. In case that the transmit power of users is limited, the admission control policy, e.g., \cite{7127778}, is required to maintain the performance of networks. Otherwise, even with maximum transmit power by users, none of QoS of users and isolation factor between slices can be satisfied.}
+
+
+Finally, we study the convergence of Lagrange variables in off-line phase for $1000$ CSI samples generated with prior CDI information. Fig. \ref{Convergence} shows the values of Lagrange multipliers $\phi_g$ (for $\widetilde{\text{C2}}$) and $\zeta_{n_g}$ (for $\widetilde{\text{C3}}$) for all $g \in \mathcal{G}$ and $n_g \in \mathcal{N}_g$ versus off-line iterations with $L_{n_g} = 2.5$ b/Hz. All the Lagrange variables converge to a constant value with-in $60$ iterations, indicating the effectiveness of Alg \ref{Effective Capacity Algorithm}.
+
+%\section{Related Works}
+%\textcolor{blue}{This work is on the boarder of two important class of resource allocation problems in wireless networks: 1) cross-layer delay aware resource allocation in traditional wireless networks, 2) resource allocation for virtualized wireless networks (VWNs). For the first class, there exists a large body of literature e.g., \cite{1665000,6157070,4290029,4205048,4024729,4217781}, in which different techniques ranging from effective capacity to Markov decision process are applied to propose the solution for the case that both physical layer parameters, e.g., transmit power and sub-carrier allocation and MAC layer parameters, e.g., traffic arrival and packet size, are considered. We also utilize the concept of effective capacity to propose the delay aware resource allocation for VWNs. }
+%
+%\textcolor{blue}{The second class has been recently drawn a lot of interest where the main issue is how to satisfy the isolation of each slice while meeting the wireless networks objectives, e.g., power efficiency \cite{7324446,7324447,6887287}. For instance, \cite{6117098} proposes to provide this isolation either by static resource allocation to each slice or dynamic throughput reservation. In \cite{6398722}, authors propose a Karnaugh-map-like online embedding algorithm for VWN to handle network requests. In \cite{6177700}, the concept of game theory is used to provide dynamic interactions between slices and network operators. An opportunistic spectrum sharing method in VWNs with multiple physical networks is proposed in \cite{6952523}. The resource allocation schemes in VWNs to maximize the total rate under various QoS requirements of slices are investigated in \cite{7127778,7038181} for OFDMA and massive MIMO based VWNs, respectively. However, unlike the research of this paper, all of the above related works in VWNs only consider physical layer parameters in resource allocation policies to achieve isolation and satisfy the QoS requirements of slices. While, similar to traditional wireless networks, guarantee the quality of end user's experience under random traffic arrival in each user's queue is of high importance. To fill this gap in resource allocation problem of VWNs, in this paper, we propose the cross layer resource provisioning policies including traffic characteristics such as arrival rate and tolerable delay while satisfying the dynamic slice isolation with the objective to minimize the power consumption.}
+
+\section{Conclusions}
+In this work, we propose a delay-aware resource provisioning policy
+for VWN to minimize total transmit power subject to minimum average
+rates of each slice and maximum average packet transmission delay of
+each user. Via effective capacity, we transform all the constraints
+to the physical-layer dependent constraints, and convexify the
+formulated cross-layer resource allocation problem with relaxation
+techniques. {Iterative algorithm for joint power and
+sub-carrier allocation is proposed to solve the proposed delay-aware
+and power-efficient problem. Via simulation results, the effect of increasing the minimum required rate of slices and decreasing the amount of tolerable delay for each user, the total transmit power of users is incremented.  } %The effects of various system parameters on the total power of VWN are investigated via the simulations.
+\begin{singlespace}
+%   \vspace{-1mm}
+    \bibliographystyle{../bib/NoDashIEEEtran}
+    \bibliography{../bib/IEEEabrv,../bib/Reference}
+\end{singlespace}
+
+\end{document}

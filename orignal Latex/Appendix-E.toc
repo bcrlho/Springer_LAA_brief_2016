@@ -1,0 +1,30 @@
+\contentsline {section}{\numberline {I}Introduction}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}Motivation and Concept of U-LTE}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Benefits of U-LTE}{2}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-C}}Obstacles of U-LTE}{3}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-D}}Three Types of U-LTE}{4}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-E}}Coexistence of U-LTE and Wi-Fi}{4}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-F}}Requirements of U-LTE Coexistence Mechanisms}{5}
+\contentsline {section}{\numberline {II}An Overview on ETSI's and Wi-Fi's LBT Mechanisms}{6}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}ETSI's LBT Mechanisms}{6}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}1}FBE-based Mechanism}{6}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-A}2}LBE-based Mechanism}{8}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Wi-Fi's LBT Mechanism}{9}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-B}1}An Overview on IEEE 802.11 and 802.11e}{9}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-B}2}IEEE 802.11 CSMA-CA}{12}
+\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-B}3}Important Observations on IEEE 802.11 CSMA-CA}{17}
+\contentsline {section}{\numberline {III}An Overview on LTE-U and LAA-LTE}{18}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}LTE-U}{18}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}LAA-LTE}{19}
+\contentsline {section}{\numberline {IV}A Survey on Related Work}{20}
+\contentsline {section}{\numberline {V}Open Questions and Potential Research Directions}{26}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}LTE-U-aware CSMA-CA and LTE-U with LBT}{26}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}LAA-LTE with Exponential Back-off}{27}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Wi-Fi-aware LTE-U and LAA-LTE}{30}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-D}}Collaborative U-LTE and Wi-FiCollaborative U-LTE and Wi-Fi}{30}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-E}}Inter-operator U-LTE Coexistence}{30}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-F}}Other Considerations on Coexistence}{31}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-G}}Emerging Wi-Fi Technologies and U-LTE}{31}
+\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-H}}Further Investigation on MuLTEfire}{32}
+\contentsline {section}{\numberline {VI}Conclusions}{32}
+\contentsline {section}{References}{33}

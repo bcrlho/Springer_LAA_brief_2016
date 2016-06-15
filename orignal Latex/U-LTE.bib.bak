@@ -1,0 +1,230 @@
+@misc{cisco_mobile_traffic_2015,
+    title         = "Cisco Visual Networking Index: Global Mobile Data Traffic Forecast Update 2014-2019",
+    howpublished  = "white paper",
+    organization  = "Cisco",
+    month         = {},
+    year          = "2015"
+}
+
+@misc{Qualcomm-U-LTE-2013,
+    title         = "Extending {LTE} Advanced to unlicensed spectrum",
+    howpublished  = "white paper",
+    organization  = "Qualcomm Inc.",
+    month         = dec,
+    year          = "2013"
+}
+
+@INPROCEEDINGS{original-LTE-Wi-Fi-VTC-2013,
+author={A. M. Cavalcante and others},
+booktitle={Proceedings of 2013 IEEE Vehicular Technology Conference (VTC Spring)},
+title={Performance evaluation of {LTE} and {Wi-Fi} coexistence in unlicensed bands},
+year={2013},
+month={},
+pages={1--6}
+}
+
+@INPROCEEDINGS{original-LTE-Wi-Fi-WCNC-2013,
+author={Nihtila, T. and Tykhomyrov, V. and Alanen, O. and Uusitalo, M.A. and Sorri, A. and Moisio, M. and Iraji, S. and Ratasuk, R. and Mangalvedhe, N.},
+booktitle={2013 IEEE Wireless Communications and Networking Conference (WCNC)},
+title={System performance of {LTE} and {IEEE} 802.11 coexisting on a shared frequency band},
+year={2013},
+pages={1038-1043},
+keywords={3G mobile communication;Long Term Evolution;frequency allocation;radio links;wireless LAN;3GPP;IEEE 802.11;LTE downlink;LTE system performance analysis;WLAN;dynamic network simulation;fractional bandwidth sharing mechanism;unlicensed frequency band;wireless local area network;Bandwidth;Interference;Load modeling;Long Term Evolution;System performance;Throughput;Wireless LAN},
+doi={10.1109/WCNC.2013.6554707},
+ISSN={1525-3511},
+month={April},}
+
+@INPROCEEDINGS{LTE-U-PIMRC-2014,
+author={Babaei, A. and Andreoli-Fang, J. and Hamzeh, B.},
+booktitle={2014 IEEE 25th Annual International Symposium on Personal, Indoor, and Mobile Radio Communication (PIMRC)},
+title={On the impact of {LTE-U} on {Wi-Fi} performance},
+year={2014},
+pages={1621-1625},
+keywords={Long Term Evolution;radio spectrum management;wireless LAN;LTE networks;LTE-U;Wi-Fi networks;mobile data traffic;mobile network operators;unlicensed spectrum band;Delays;IEEE 802.11 Standards;Mobile communication;Protocols;Random variables;Throughput;LTE unlicensed;LTE-U;Wi-Fi;heterogeneous networks coexistence;radio spectrum management},
+doi={10.1109/PIMRC.2014.7136427},
+month={Sept},}
+
+@misc{U-LTE-Google-WP,
+    author        = "Nihar Jindal and Donald Breslin",
+    title         = "{LTE} and {Wi-Fi} in Unlicensed Spectrum: A Coexistence Study",
+    howpublished  = "white paper",
+    organization  = "Google",
+    month         = "",
+    year          = ""
+}
+
+@misc{LTE-U-CableLabs,
+    author          = "Joey Padden",
+    title           = "{Wi-Fi} vs. Duty Cycled {LTE}: A Balancing Act",
+    organization    = "CableLabs",
+    url             = "http://www.cablelabs.com/wi-fi-vs-duty-cycled-lte/"
+}
+
+@misc{LBT-CableLabs-2014,
+    author        = "A. Babaei, J. Padden and J. Andreoli-fang",
+    title         = "Overview of {EU} {LBT} and its Effectiveness for Coexistence of {LAA LTE} and {Wi-Fi}",
+    howpublished  = "IEEE 802.19-14/0082r0",
+    organization  = "CableLabs",
+    month         = nov,
+    year          = "2014"
+}
+
+@standard{LBT-ETSI-2014,
+    title         =   "ETSI EN 301 893 V1.7.2 (2014-07): Broadband Radio Access Networks (BRAN); 5 GHz high
+    performance RLAN; Harmonized EN covering the essential requirements of article 3.2 of the R\&TTE Directive",
+    organization  =   "European Telecommunications Standards Institute",
+    year          =   "2014"
+}
+
+@misc{U-LTE-Wi-Fi-Qualcomm-2014,
+    title         = "{LTE} in Unlicensed Spectrum: Harmonious Coexistence with {Wi-Fi}",
+    howpublished  = "white paper",
+    organization  = "Qualcomm Inc.",
+    month         = jun,
+    year          = "2014"
+}
+
+@misc{U-LTE-Wi-Fi-Qualcomm-FCC-2015,
+    title         = "Office of Engineering and Technology and Wireless Telecommunications
+                    Bureau Seek Information on Current Trends in {LTE-U} and {LAA} Technology",
+    howpublished  = "Comments of Qualcomm Incoporated",
+    organization  = "Qualcomm Inc.",
+    month         = jun,
+    year          = "2015"
+}
+
+@techreport{LTE-U-Wi-Fi-LTE-U-Forum-2015,
+    title           =   "{LTE-U} Technical Report: Coexistence Study for {LTE-U} {SDLV1.0 (2015-02)}",
+    institution     =   "LTE-U Forum",
+    month           =   "",
+    year            =   "2015"
+}
+
+@INPROCEEDINGS{LTE-U-ICC-WS-2015,
+author={Voicu, A.M. and Simic, L. and Petrova, M.},
+booktitle={2015 IEEE International Conference on Communication Workshop (ICCW)},
+title={Coexistence of pico- and femto-cellular {LTE}-unlicensed with legacy indoor {Wi-Fi} deployments},
+year={2015},
+pages={2294-2300},
+keywords={3G mobile communication;Long Term Evolution;femtocellular radio;indoor radio;picocellular radio;radio spectrum management;radiofrequency interference;telecommunication traffic;wireless LAN;3GPP;LTE-U coexistence mechanisms;LTE-U deployments;LTE-U networks;LTE-U transmit power levels;Long Term Evolution;cellular networks;cellular operators;coexistence-enabling mechanisms;contention-based Wi-Fi;femtocellular LTE-unlicensed;frequency 5 GHz;indoor IEEE 802.11n;indoor LTE-U femtocell;interference-aware channel selection;legacy indoor Wi-Fi deployments;licensed spectrum;listen-before-talk mechanisms;mobile data traffic;network densities;outdoor LTE-U picocell;picocellular LTE-unlicensed;Buildings;Downlink;IEEE 802.11 Standard;Interference;Multiaccess communication;Signal to noise ratio;Throughput},
+doi={10.1109/ICCW.2015.7247523},
+month={June},}
+
+@INPROCEEDINGS{LTE-U-Experiment-ICC-WS-2015,
+author={Yubing Jian and Chao-Fang Shih and Krishnaswamy, B. and Sivakumar, R.},
+booktitle={2015 IEEE International Conference on Communication Workshop (ICCW)},
+title={Coexistence of {Wi-Fi} and {LAA-LTE}: Experimental evaluation, analysis and insights},
+year={2015},
+pages={2325-2331},
+keywords={Long Term Evolution;wireless LAN;wireless channels;LAA-LTE;Wi-Fi;cellular technology;channel sharing;data access;license assisted access;mobile devices;mobile systems;Bandwidth;Degradation;IEEE 802.11n Standard;Interference;MIMO;Throughput;LAA-LTE;LTE-A;Wi-Fi;coexistence;experimental performance evaluation},
+doi={10.1109/ICCW.2015.7247528},
+month={June},}
+
+@mastersthesis{Enhanced-LTE-U-thesis-2015,
+  author        = "Alexandre Kanyeshuli",
+  title         = "{LTE} in Unlicensed Band: Medium Access and Performance Evaluation",
+  school        = "University of Agder",
+  address       = "Norway",
+  month         = may,
+  year          = "2015"
+}
+
+@misc{LAA-LTE-SI,
+    title         = "{3GPP™} Work Item: Study on Licensed-Assisted Access using {LTE} to Unlicensed Spectrum",
+    howpublished  = "",
+    organization  = "3rd Generation Partnership Project (3GPP)",
+    month         = "",
+    year          = ""
+}
+
+@standard{IEEE-802.19.1,
+    title         =   "{IEEE} 802.19.1-2014 - {IEEE} Standard for Information technology-
+    Telecommunications and information exchange between systems --
+    Local and metropolitan area networks-Specific requirements -
+    Part 19: {TV} White Space Coexistence Methods",
+    organization  =   "The Institute of Electrical and Electronics Engineers Standards Association",
+    year          =   "2014"
+}
+
+@misc{U-LTE-FCC-Cisco-2015,
+    author        = "Mary L. Brown",
+    title         = "Current Trends in {LTE-U} and {LAA} Technology",
+    howpublished  = "Comments of Qualcomm Incoporated",
+    organization  = "Qualcomm Inc.",
+    month         = jun,
+    year          = "2015"
+}
+
+@ARTICLE{U-LTE-survey-2015,
+    author      =   {Haijun Zhang and Xiaoli Chu and Weisi Guo and Siyi Wang},
+    journal     =   {IEEE Communications Magazine},
+    title       =   "Coexistence of {Wi-Fi} and heterogeneous small cell networks sharing unlicensed spectrum",
+    year        =   {2015},
+    volume      =   {53},
+    number      =   {3},
+    pages       =   {158-164},
+    keywords    =   {4G mobile communication;Long Term Evolution;intersymbol interference;wireless LAN;4G heterogeneous cellular networks;ABS scheme;Wi-Fi;almost blank subframe scheme;capacity growth;co-channel interference;heterogeneous small cell networks;inter-cell interference;network densification;terrestrial wireless communications;wireless data demand;Computer architecture;Handover;IEEE 802.11 Standards;Interference;Macrocell networks;Microprocessors},
+    doi         =   {10.1109/MCOM.2015.7060498},
+    ISSN        =   {0163-6804},
+    month       =   {March}
+}
+
+@ARTICLE{U-LTE-survey-2014,
+    author      =   {Abinader, F.M. and Almeida, E.P.L. and Chaves, F.S. and Cavalcante, A.M. and Vieira, R.D. and Paiva, R.C.D. and Sobrinho, A.M. and Choudhury, S. and Tuomaala, E. and Doppler, K. and Sousa, V.A.},
+    journal     =   {IEEE Communications Magazine},
+    title       =   "Enabling the coexistence of {LTE} and {Wi-Fi} in unlicensed bands",
+    year        =   {2014},
+    volume      =   {52},
+    number      =   {11},
+    pages       =   {54-61},
+    keywords    =   {Long Term Evolution;broadband networks;cellular radio;radio access networks;radio spectrum management;resource allocation;wireless LAN;LTE transmissions;Long Term Evolution;Wi-Fi;cellular technologies;coexistence mechanisms;radio resource management;radio spectrum scarcity;unlicensed bands;wireless broadband access network;wireless local area networks;IEEE 802.11 Standards;Interference;Long Term Evolution;OFDM;Resource management;Wireless communication},
+    doi         =   {10.1109/MCOM.2014.6957143},
+    ISSN        =   {0163-6804},
+    month       =   {Nov}
+}
+
+@ARTICLE{U-LTE-5G-2015,
+    author      =   {Al-Dulaimi, A. and Al-Rubaye, S. and Qiang Ni and Sousa, E.},
+    journal     =   {IEEE Vehicular Technology Magazine},
+    title       =   "{5G} Communications Race: Pursuit of More Capacity Triggers {LTE} in Unlicensed Band",
+    year        =   {2015},
+    volume      =   {10},
+    number      =   {1},
+    pages       =   {43-51},
+    keywords    =   {3G mobile communication;5G mobile communication;Long Term Evolution;computer network management;radio spectrum management;wireless LAN;3GPP;5G communication race;LTE-U transmission;Long Term Evolution unlicensed band;Wi-Fi band;adaptive LBT mechanism;coordinated network management;fair spectrum sharing;fifth generation network;listen-before-talk feature;noncoordinated network management;third-generation partnership project;tradeoff performance;virtualized core network;wireless technology;5G mobile communication;IEEE 802.11 Standards;Long Term Evolution;Radio access networks;Spaceborne radar;Vehicular and wireless technologies},
+    doi         =   {10.1109/MVT.2014.2380631},
+    ISSN        =   {1556-6072},
+    month       =   {March}
+}
+
+@ARTICLE{LBT-CSAT-2015,
+    author     =   {Cristina Cano and Douglas J. Leith},
+    journal     =   {Scentific Publication Data: Computer Science - Networking and Internet Architecture},
+    title       =   "Unlicensed {LTE}/{WiFi} Coexistence: Is {LBT} Inherently Fairer Than {CSAT}?",
+    year        =   {2015},
+    month       =   {nov}
+}
+
+%***
+
+@INPROCEEDINGS{LTE-U-Qualcomm-2015,
+    author      =   {Sadek, A.K. and Kadous, T. and Kai Tang and Heechoon Lee and Mingxi Fan},
+    booktitle   =   {Communication Workshop (ICCW), 2015 IEEE International Conference on},
+    title       =   "Extending {LTE} to unlicensed band - Merit and coexistence",
+    year        =   {2015},
+    pages       =   {2344-2349},
+    keywords    =   {Long Term Evolution;cellular radio;radio spectrum management;wireless LAN;LTE;Long Term Evolution;Wi-Fi deployment;cellular technology;data demand;efficient spectrum utilization;legacy technology;spectral efficiency enhancement;unlicensed band;user experience optimization;Conferences;IEEE 802.11 Standard;Interference;Performance evaluation;Sensors;Signal to noise ratio;Throughput;CSAT;LTE;Listen-before-talk;WiFi;carrier aggregation;channel sensing;coexistence;fair-sharing;heterogeneous network;unlicensed band},
+    doi         =   {10.1109/ICCW.2015.7247531},
+    month       =   {June}
+}
+
+@INPROCEEDINGS{LTE-U-Qualcomm-2015,
+    author      =   {Sagari, S. and Baysting, S. and Saha, D. and Seskar, I. and Trappe, W. and Raychaudhuri, D.},
+    booktitle   =   {2015 IEEE International Symposium on Dynamic Spectrum Access Networks (DySPAN)},
+    title       =   "Coordinated dynamic spectrum management of {LTE-U} and {Wi-Fi} networks",
+    year        =   {2015},
+    pages       =   {209-220},
+    keywords    =   {Long Term Evolution;radio spectrum management;radiofrequency interference;wireless LAN;LTE-U network;ORBIT testbed;USRP based SDR platform;Wi-Fi LTE network coexistence;coordinated dynamic spectrum management;intersystem interference;wireless access technology;Analytical models;Bandwidth;Downlink;IEEE 802.11 Standard;Interference;Protocols;Throughput;LTE-U;Wi-Fi;dynamic spectrum management;inter-network coordination;optimization},
+    doi         =   {10.1109/DySPAN.2015.7343904},
+    month       =   {Sept}
+}
