@@ -31,12 +31,12 @@ Specifically, the relationship between minimum contention window size for two tr
 \end{equation}
 where, $\sfrac{\theta_i}{\theta_j}$ is the proportion of channel access $i$ sees relative to class $j$, and $CW^x_{min}$ is the minimum contention window used by class $x$ \cite{chou}\cite{yoon}.  
 
-To use Eq. \ref{cw} to balance airtime between \mbox{LAA-LTE} and \mbox{Wi-Fi}, it is necessary to treat all \mbox{Wi-Fi} stations and all LAA-LTE networks as single traffic classes and account for the duration of channel access for each class. Between the two traffic classes, this duration will generally be significantly longer for LAA-LTE than for Wi-Fi due to the synchronization between licensed and unlicensed transmissions. For example, if a \mbox{Wi-Fi} channel access takes half the time of a \mbox{LAA-LTE} channel access, in the case of a single \mbox{LAA-LTE} station competing with a single \mbox{Wi-Fi} station, the \mbox{Wi-Fi} station should receive twice as many transmission opportunities as the \mbox{LAA-LTE} station in order to achieve equal airtime.  If there were two \mbox{Wi-Fi} stations, in order for each to have equal airtime, the \mbox{LAA-LTE} station should receive one third as many transmission opportunities as the combined \mbox{Wi-Fi} stations, so that proportionally each of the three stations would receive equal airtime on average.  Adding some proportionality constants ands olving Eq. \ref{cw} for the required $CW_{min}$ values to realize equal airtime,
+To use Eq. \ref{cw} to balance airtime between \mbox{LAA-LTE} and \mbox{Wi-Fi}, it is necessary to treat all \mbox{Wi-Fi} stations and all LAA-LTE networks as single traffic classes and account for the duration of channel access for each class. Between the two traffic classes, this duration will generally be significantly longer for LAA-LTE than for Wi-Fi due to the synchronization between licensed and unlicensed transmissions. For example, if a \mbox{Wi-Fi} channel access takes half the time of a \mbox{LAA-LTE} channel access, in the case of a single \mbox{LAA-LTE} station competing with a single \mbox{Wi-Fi} station, the \mbox{Wi-Fi} station should receive twice as many transmission opportunities as the \mbox{LAA-LTE} station in order to achieve equal airtime.  If there were two \mbox{Wi-Fi} stations, in order for each to have equal airtime, the \mbox{LAA-LTE} station should receive one third as many transmission opportunities as the combined \mbox{Wi-Fi} stations, so that proportionally each of the three stations would receive equal airtime on average.  Adding some proportionality constants and solving Eq. \ref{cw} for the required $CW_{min}$ values to realize equal airtime,
 
 \begin{equation}\label{cwlte}
-CW^{LTE}_{min} = \rho\cdot n_{WiFi} \cdot{CW^{WiFi}_{min}}
+CW^{LTE}_{min} = \rho\cdot{CW^{WiFi}_{min}}
 \end{equation}
-where $\rho$ is the ratio of \mbox{LAA-LTE} transmission time to average \mbox{Wi-Fi} transmission time and $n_{WiFi}$ is the number of competing \mbox{Wi-Fi} stations.  This relation provides an approximation of the optimal $CW^{LTE}_{min}$ to provide airtime fairness, however, the \mbox{Wi-Fi} traffic class may be made up of stations which are using different transmission rates and $CW_{min}$ values.  
+where $\rho$ is the ratio of \mbox{LAA-LTE} transmission time to average \mbox{Wi-Fi} transmission time.  This relation provides an approximation of the optimal $CW^{LTE}_{min}$ to provide airtime fairness, however, the \mbox{Wi-Fi} traffic class may be made up of stations which are using different transmission rates and $CW_{min}$ values.  
 
 In order to estimate the $CW^{WiFi}_{min}$ to use in Eq. \ref{cwlte}, and adjust to changing network topologies, an estimate of the average current Wi-Fi contention window being used is required.  Such an estimate can be obtained from the number of collisions on the channel which are being inferred by the LAA-LTE base station from its own failed transmissions.  In a strictly \mbox{Wi-Fi} system, the probability of collision in a saturated network is given by, 
 
@@ -51,23 +51,35 @@ Eq. \ref{cwavg} provides the average contention window size for all stations.  I
 \begin{equation}\label{cwwifi}
 CW^{WiFi}_{avg} = CW_{avg}\left ( \frac{n_{WiFi} + n_{LTE}}{n_{WiFi} + \rho\cdot n_{LTE}} \right )
 \end{equation}
-then from Eq. \ref{cwlte}, we set 
+then combining Eq. \ref{cwlte} through Eq. \ref{cwwifi},  we set 
 \begin{equation}\label{cwlteopt}
-CW^{LTE} = \rho \cdot n_{WiFi} \cdot{CW^{WiFi}_{avg}}
+CW^{LTE} = \rho \cdot{CW^{WiFi}_{avg}} = \frac{1}{1-e^{ \sfrac{ln(1-p)}{(n_{WiFi} + n_{LTE}-1)} }}\left ( \frac{n_{WiFi} + n_{LTE}}{n_{WiFi} + \rho\cdot n_{LTE}} \right )
 \end{equation}
 
-To facilitate the use of Eq. \ref{cwlteopt} to ensure fair coexistence, several channel monitoring capabilities are required.  It is assumed that the \mbox{LAA-LTE} base station is able to analyze the traffic on the channel and determine the number of competing stations and their types, as is assumed in other coexistence mechanisms.  It is further assumed the \mbox{LAA-LTE} base station is able to estimate average transmission durations either by decoding \mbox{Wi-Fi} headers to determine the modulation and coding schemes employed by the \mbox{Wi-Fi} stations or some other suitable mechanism, that successfully decoding a \mbox{Wi-Fi} transmission implies that the transmission was successful since other \mbox{Wi-Fi} stations will also hear and not attempt to transmit (i.e. ignoring the hidden terminal problem), and that failed \mbox{LAA-LTE} transmissions can be reported to the base station on control channels in the licensed spectrum.  Probability of collision, $p$, in Eq. \ref{cwavg} is estimated by the observed \mbox{LAA-LTE} collisions to the number of \mbox{LAA-LTE} channel uses.  Noting that this is an empirical estimate of the true statistic, it is unreliable for few samples.   
-
+In order to use Eq. \ref{cwlteopt} in an implementable algorithm, the unknown probability of collision  $p$ and knowledge of the number of competing Wi-Fi stations and LAA-LTE networks is required.
 
 \section{Proposed Mechanism}
 \label{proposed}
-NALT is defined as a simple distributed coordination function to be implemented by LAA-LTE base stations, allowing several LAA-LTE networks to effectively and independently fairly share the channel with incumbent Wi-Fi stations. The relationship in Eq. \ref{cwlteopt} is exploited to achieve fair airtime allocation by tuning the $CW_{min}$ values used by competing stations.  Since it is desired to avoid any changes to \mbox{Wi-Fi}, and fairer coexistence can be achieved by designing a more \mbox{``\mbox{Wi-Fi}-like"} MAC layer for \mbox{LAA-LTE}, i.e. the contention window used by \mbox{LAA-LTE} must increase as the number of collisions increases.  To facilitate fair airtime allocations across all competing devices, the contention window should follow Eq. \ref{cwlteopt}.  Based on the limitations of the estimates employed, and to ensure that the contention window stays within reasonable bounds, the maximum and minimum values for $CW^{LTE}$ are chosen to match the range of possible values for \mbox{Wi-Fi} \cite{80211}.  
+NALT is defined as a simple distributed coordination function to be implemented by LAA-LTE base stations, allowing several LAA-LTE networks to effectively and independently fairly share the channel with each other and incumbent Wi-Fi stations. 
+
+To gather the required information to utilize the relationships in the previous sections, the following assumptions are made:
+\begin{itemize}
+	\item NALT-enabled base stations are able to:
+	\begin{itemize}
+	\item Analyze traffic on the channel and determine the number of competing stations and their types, as is assumed in other coexistence mechanisms
+	\item Determine average transmission durations either by decoding headers to determine the modulation and coding schemes employed, actually timing the transmissions, or some other suitable mechanism
+	\end{itemize} 
+	\item Successfully decoding a transmission implies that the transmission was successful (i.e. ignoring the hidden terminal problem) 
+	\item Failed \mbox{LAA-LTE} transmissions can be reported to the base station on control channels in the licensed spectrum
+\end{itemize}
+
+In order to use Eq. \ref{cwlteopt} in an implementable algorithm, the unknown probability of collision  $p$ and knowledge of the number of competing Wi-Fi stations and LAA-LTE networks is required. Since these values cannot be known beforehand, the number of competitors is learned over time and the required probability of collision is estimated in each NALT-enabled LAA-LTE network as the ratio of observed \mbox{LAA-LTE} collisions to the number of \mbox{LAA-LTE} channel uses.  Noting that this is an empirical estimate of the true statistic, its reliability is inversely proportional to the number of samples and improves over time. The relationship in Eq. \ref{cwlteopt} is exploited to achieve fair airtime allocation by tuning the $CW_{min}$ values used by competing stations in each LAA-LTE network.  Since it is desired to avoid any changes to \mbox{Wi-Fi}, and fairer coexistence can be achieved by designing a more \mbox{``\mbox{Wi-Fi}-like"} MAC layer for \mbox{LAA-LTE}, i.e. the contention window used by \mbox{LAA-LTE} must increase as the number of collisions increases.  To facilitate fair airtime allocations across all competing devices, the contention window should follow Eq. \ref{cwlteopt}.  Based on the limitations of the estimates employed, and to ensure that the contention window stays within reasonable bounds, the maximum and minimum values for $CW^{LTE}$ are chosen to match the range of possible values for \mbox{Wi-Fi} \cite{80211}.  
 
 Combining these requirements, and the preceding equations and assumptions, at each time instance an \mbox{LAA-LTE} station will estimate the average \mbox{Wi-Fi} contention window as follows:
-\begin{align*}
-CW^{WiFi}_{avg} = CW^{WiFi}_{min}, &\text{if \{\mbox{Wi-Fi} Tx\}$> \rho\cdot$\{\mbox{LAA-LTE} Tx\}}\\ 
-&\text{Otherwise, update according to Eq. \ref{cwwifi}.}
-\end{align*}
+\begin{align}
+CW^{WiFi}_{avg} = CW^{WiFi}_{min}, \text{  if \{ \# of \mbox{Wi-Fi} Tx\}$> \rho\cdot$\{  \# of \mbox{LAA-LTE} Tx\}}\notag\\ 
+\text{Otherwise, update according to Eq. \ref{cwwifi}.}
+\end{align}
 Thus, \mbox{LAA-LTE} will follow the same backoff procedure as \mbox{Wi-Fi}, and increase its contention window after a collision according to
 \begin{align}
 &CW^{LTE}=\;\;min\left[max\left(CW^{LTE}*2,\rho \cdot CW^{WiFi}_{avg}\right), CW^{LTE}_{MAX}\right]
@@ -77,7 +89,9 @@ and decreasing its contention window after a successful transmission according t
 &CW^{LTE}=\;\;min\left[max\left(CW^{LTE}_{MIN},\rho \cdot CW^{WiFi}_{avg}\right), CW^{LTE}_{MAX}\right]
 \end{align}
 
-%TODO: Update with new simulation results, network topologies and test (see logbook)
+These equations, in addition to channel usage statistics gathering function, are implemented in each of the competing LAA-LTE base stations.  This mechanism requires no explicit coordination between the LAA-LTE base stations, nor any changes to Wi-Fi stations.
+
+%TODO: Update with performance evaluation details, results, and edit from here down
 \section{Performance Evaluation}\label{perf-eval}
 To evaluate the performance of NALT, a high-level MATLAB simulation of a single \mbox{LAA-LTE} device contending with several \mbox{Wi-Fi} stations was developed and the proportion of channel accesses by each class of devices was tracked.  Simulating a small number of \mbox{LAA-LTE} devices is reasonable since it can be assumed that \mbox{LAA-LTE} user equipment will be coordinated via licensed band control channels, with scheduling done by the base station so that there is coordinated channel accesses for both uplink and downlink traffic.  Thus, each device in fact represents an independent network of LAA-LTE devices which are not required to contend with each other.
 
@@ -103,14 +117,14 @@ For simplicity, we assume that both \mbox{LAA-LTE} and \mbox{Wi-Fi} stations use
 		\noalign{\smallskip}\hline\noalign{\smallskip}
 	\end{tabular}
 	$^1$ Defined interframe spaces per 802.11n operating in the 5 GHz band \\
-	$^2$ Based on header Tx at lowest supported rate and remaining frame at specified bitrate	 
+	$^2$ Based on header transmitted at lowest supported rate and remaining frame at specified bitrate	 
 \end{table}
 
 \subsection{Simulation Results}
 \label{sim-results}
 
 Since the coexistence mechanism is probabilistic, $1000$ trials were run for each considered network topology of between $1$ and $10$ \mbox{Wi-Fi} stations contending with a \mbox{LAA-LTE} station.  The average number of successful channel accesses was tracked across all trials and is related to airtime by the transmission duration of each class of devices.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{results}.
-\begin{figure}[t]
+\begin{figure}[t] %TODO: new figures should be made to look better constructed
 	\centering
 	\subfloat[With LAA-LTE using NALT]{\includegraphics[width=3.5in]{figures/withadapt}%
 		\label{results}}

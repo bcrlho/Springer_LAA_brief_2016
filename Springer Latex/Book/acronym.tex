@@ -1,14 +1,105 @@
-%%%%%%%%%%%%%%%%%%%%%%acronym.tex%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[]%%%%%%%%%%%%%%%%%%%%%%acronym.tex%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % sample list of acronyms
 %
 % Use this file as a template for your own input.
 %
 %%%%%%%%%%%%%%%%%%%%%%%% Springer %%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%useful awk: 
+%   awk '/^$/ {next}{printf "\item[%s]{%s}\n",substr($1, index($0,$0)), substr($0, index($0,$2))}' < [input]] > [output]
 \extrachap{Acronyms}
 %TODO: Compile list of Acronyms
 \begin{description}[CABR]
-\item[ABC]{Spelled-out abbreviation and definition}
-\item[BABI]{Spelled-out abbreviation and definition}
-\item[CABR]{Spelled-out abbreviation and definition}
+\item[﻿3G,4G,5G]{Third, Fourth, Fifth Generation cellular networks}
+\item[3GPP]{3rd Generation Partnership Project}
+\item[AC]{Access Category}
+\item[ACK]{Acknowledgment, a postive response of reception }
+\item[AP]{Access Point, Wi-Fi station which acts as base station in infrastructure mode}
+\item[BI]{Backoff Interval}
+\item[CAP]{Controlled Access Phase}
+\item[CCA]{Clear Channel Assessment}
+\item[CFP]{Contention-free Period, in which polling is completed under the PCF}
+\item[CoMP]{Coordinated Multi-Point }
+\item[CoT]{Channel Occupancy Time}
+\item[CP]{Contention Period, in which STAs contend with each other under the PCF}
+\item[CSAT]{Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism}
+\item[CSMA/CA]{Carrier-sense Multiple Access with Collision Avoidance}
+\item[CTS]{Clear to Send}
+\item[CW]{Contention Window, range of possible backoff values a Wi-Fi station will select from}
+\item[DCF]{Distributed Coordination Function, a random access based MAC protocol used in IEEE 802.11 Wi-Fi}
+\item[DCS]{Dynamic Channel Selection}
+\item[DIFS]{DCF Inter-frame Space}
+\item[DL]{Downlink, transmission from base station to user equipment}
+\item[ECCA]{Extended Clear Channel Assessment }
+\item[EDCA]{Enhanced Distributed Channel Access, }
+\item[EDCF]{Enhanced Distributed Coordination Function,  a random access based MAC protocol used in IEEE 802.11e Wi-Fi}
+\item[EDGE]{Enhanced Data rates for GSM Evolution}
+\item[ED]{Energy Detect}
+\item[EIRP]{Equivalent Isotropically Radiated Power}
+\item[eNB]{evolved Node B }
+\item[EPC]{Evolved Packet Core}
+\item[ETSI]{European Telecommunications Standards Institute}
+\item[E-UTRA]{Evolved Universal Terrestrial Radio Access }
+\item[E-UTRAN]{Evolved Universal Terrestrial Radio Access Network}
+\item[FBE]{Frame-based Equipment}
+\item[FCC]{Federal Communications Commission}
+\item[FDD]{Frequency Division Duplex}
+\item[GC]{Global Controller}
+\item[GSM]{Global System for Mobile communication}
+\item[HARQ]{Hybrid Automatic Repeat Request }
+\item[HCCA]{HCF Controlled Channel Access}
+\item[HCF]{Hybrid Coordination Function, a polling based MAC protocol used in IEEE 802.11e Wi-Fi}
+\item[HetNet]{Heterogeneous Network, a wireless network made up of different types of access nodes }
+\item[HSPA]{High Speed Packet Access}
+\item[IEEE]{Institute of Electrical and Electronics Engineers }
+\item[IFS]{Inter-frame Space}
+\item[IoT]{Internet of Things}
+\item[IP]{Internet Protocol}
+\item[ITU]{Internation Telecommunications Union}
+\item[LAA/LAA-LTE]{Licensed-Assisted Access LTE using LBT}
+\item[LBE]{Load-based Equipment}
+\item[LBT]{Listen-Before-Talk Medium Access Strategy}
+\item[LTE]{Long Term Evolution, 3GPP Releases 8 and 9}
+\item[LTE-A]{LTE-A LTE Advanced, 3GPP Releases 10 to 13, possibly more}
+\item[LTE-U]{LTE-U LTE in Unlicensed bands using a duty-cycled coexistence mechanism }
+\item[MAC]{Medium Access Control, sublayer of the Data Link Layer}
+\item[MIMO]{Multiple Input Multiple Output }
+\item[MME]{Mobility Management Entity}
+\item[MTC]{Machine Type Communications }
+\item[NALT]{Network-aware Adative Listen-Before-Talk, a proposed LAA-LTE/Wi-Fi co-existence mechanism}
+\item[NAV]{Network Allocation Vector}
+\item[OFDM]{Orthogonal Frequency Division Multiplexing }
+\item[OFDMA]{Orthogonal Frequency Division Multiple Access}
+\item[PCF]{Point Coordination Function, a polling based MAC protocol used in IEEE 802.11 Wi-Fi}
+\item[PDN]{Packet Data Network}
+\item[P-GW]{PDN Gateway}
+\item[PHY]{Physical Layer}
+\item[PRB]{Physical Resource Block}
+\item[QAM]{Quadrature Amplitude Modulation }
+\item[QoS]{Quality of Service}
+\item[RAN]{Radio Access Network}
+\item[RAT]{Radio Access Technology}
+\item[RC]{Regional Controller}
+\item[RSSI]{Received Signal Strength Indicator }
+\item[RTS]{Request to Send}
+\item[Rx]{Receiver}
+\item[SC-FDMA]{Single-Carrier Frequency Division Multiple Access }
+\item[SDL]{Supplemental Downlink}
+\item[SDN]{Software Defined Networking}
+\item[S-GW]{Serving Gateway}
+\item[SIFS]{Short Inter-frame Space}
+\item[ST]{Slot Time}
+\item[STA]{Station, a member of wireless network }
+\item[TC]{Traffic Classes}
+\item[TDD]{Time Division Duplex}
+\item[TDM]{Time Division Multiplex}
+\item[TS]{Traffic Streams}
+\item[Tx]{Transmitter or Transmission}
+\item[TXOP]{Transmission Opportunity}
+\item[UE]{User Equipment}
+\item[UL]{Uplink}
+\item[U-LTE]{LTE LTE in Unlicensed bands, catchall phrase to cover all methods of using LTE in unlicensed frequency bands}
+\item[UMTS]{Univesral Mobile Telecommunications System}
+\item[VoIP]{Voice over IP}
+\item[VoLTE]{Voice over LTE}
+\item[WLAN]{Wireless Local Area Network}
 \end{description}

@@ -20,27 +20,7 @@
 
 \section{System Overview}
 \label{sys-overview}
-The enhancements to the Long Term Evolution (LTE)/E-UTRAN to meet the requirements set out for fourth generation (4G) cellular networks are collectively known as LTE-A, and were formalized in 3GPP TR 36.913, releases 10 through 13 \cite{tr36913}.  LTE itself was a logical evolution from the GSM/EDGE and UMTS/HSPA technologies used in previous generations to meet the increasing demands for higher data rates and improved quality of service. LTE meets these demands at the access level through improved spectral efficiency, using OFMDA and SC-FDMA for downlink and uplink, respectively, and improved mobility support and cell edge data rates through enhanced adaptive modulation and bandwidth selection and downlink spatial multiplexing support. To support these gains beyond the access layer, LTE transitioned to an all IP packet switched core network with the introduction of the evolved packet core, and a flattened network architecture of enhanced base stations called evolved NodeB's (eNB) which are interconnected via high-speed.  Combined, this allowed LTE networks to significantly increase user data rates and reduce control and user plane latency and connection set-up and handover times.  While the gains made by LTE were significant, they fell short of the requirements set out for 4G networks by the International Telecommunications Union, specifically in the case of peak data rates, spectral efficiency, and cell edge performance \cite{itu-advanced}. Some important ITU requirements and achieved performance levels for LTE and LTE-A are highlighted in Table \ref{perf-table}
-
-%TODO: Fill in table, consider changing some requirements and such
-\begin{table}
-	\caption{ITU-A Requirements for 4G vs. LTE/LTE-A Capabilities \cite{tr36913}\cite{lte-3gpp}\cite{itu-advanced}}
-	\label{perf-table}      
-	\begin{tabular}{p{4.8cm}p{2.4cm}p{2.4cm}p{2.4cm}}
-		\hline\noalign{\smallskip}
-		Description/Requirements & ITU-A & LTE (Release 8) & LTE-A (Release 13)  \\
-		\noalign{\smallskip}\svhline\noalign{\smallskip}
-		DL peak spectral efficiency (bps/Hz) &  15   & 5  & 30 \\
-		UL peak spectral efficiency (bps/Hz)& 6.75  & 2.5  & 15 \\
-		Min. cell edge spectral \\ \hspace{0.8em} efficiency for high-mobility (bps/Hz) & 0.04 & XX & XX \\
-		Peak data rates for low/high \\ \hspace{0.8em}mobility$^1$ (Mbits/s) & 1000 / 100   & XX & XX \\
-		Scalable bandwidth up to (MHz) & 40 & XX  & XX \\
-		
-		\noalign{\smallskip}\hline\noalign{\smallskip}
-	\end{tabular}
-	$^1$ Low mobility pedestrian traffic and high mobility of speeds of 60-250 km/h, or more. 	 
-\end{table}
-Among other innovations, in order to meet these requirements, LTE-A extends LTE by adding carrier aggregation to increase bandwidth while maintaining backwards compatibility, expands MIMO/spatial multiplexing support up to 8x8 for DL and 4x4 for UL, adds coordinated multi-point operation and relay nodes to increase spectral efficiency and cell edge data rates, and improves heterogeneous network planning with the enhancement of support for small cells and relay nodes to increase area coverage with reduced power requirements.
+The enhancements to the Long Term Evolution (LTE)/E-UTRAN to meet the requirements set out for fourth generation (4G) cellular networks are collectively known as LTE-A, and were formalized in 3GPP TR 36.913, releases 10 through 13 \cite{tr36913}.  LTE itself was a logical evolution from the GSM/EDGE and UMTS/HSPA technologies used in previous generations to meet the increasing demands for higher data rates and improved quality of service. LTE meets these demands at the access level through improved spectral efficiency, using OFMDA and SC-FDMA for downlink and uplink, respectively, and improved mobility support and cell edge data rates through enhanced adaptive modulation and bandwidth selection and downlink spatial multiplexing support. To support these gains beyond the access layer, LTE transitioned to an all IP packet switched core network with the introduction of the evolved packet core, and a flattened network architecture of enhanced base stations called evolved NodeB's (eNB) which are interconnected via high-speed.  Combined, this allowed LTE networks to significantly increase user data rates and reduce control and user plane latency and connection set-up and handover times.  
 
 \subsection{Network Architecture}
 \label{net-arch}
@@ -58,11 +38,36 @@ To meet these requirements, LTE adopted the flat architecture shown in Fig. \ref
 The distributed radio network and medium access control allows eNBs to quickly adapt to changing radio medium condition and user scheduling based on local information.  The low-latency X2 interface connections between eNBs allows for fast user handover, including forwarding of queued data for seamless user experience.  Additionally, with direct connections between neighboring cells, this architecture facilitates more effective multi-point transmission and reception coordination and inter-cell interference and load management, independent of conditions in other areas of the network.  
 
 \subsection{Capabilities and Features}
-\label{cap-feat}
-As of the writing of this book, the current requirements for LTE-A are defined in LTE-A Release 13.  
+
+While the gains made by LTE were significant, they fell short of the requirements set out for 4G networks by the International Telecommunications Union, specifically in the case of peak data rates, spectral efficiency, and cell edge performance \cite{itu-advanced}. Some important ITU requirements and achieved performance levels for LTE and LTE-A are highlighted in Table \ref{perf-table}
+
+%TODO: verify the contents of this table
+\begin{table}
+	\caption{ITU-A Requirements for 4G vs. LTE/LTE-A Achievements \cite{lte-3gpp}\cite{lteA-3gpp}\cite{itu-advanced}\cite{abdullah}}
+	\label{perf-table}      
+	\begin{tabular}{p{4.8cm}p{2.4cm}p{2.4cm}p{2.4cm}}
+		\hline\noalign{\smallskip}
+		Description/Requirements & ITU-A & LTE & LTE-A   \\
+		\noalign{\smallskip}\svhline\noalign{\smallskip}
+		DL peak spectral efficiency (bps/Hz) &  15   & 15  & 30 \\
+		UL peak spectral efficiency (bps/Hz)& 6.75  & 3.75  & 15 \\
+		Min. cell edge spectral \\ \hspace{0.8em} efficiency (bps/Hz) & 0.04 & 0.024 & 0.04 \\
+		DL Peak data rates (Mbps) & 1000$^1$  & 300 & 1000 \\
+		UL Peak data rates (Mbps) & 1000$^1$  & 75 & 500 \\
+		Scalable bandwidth up to (MHz) & 40 & 20  & 100$^2$ \\
+		
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+	\end{tabular}
+	$^1$ For low mobility with requirement of min. 100 Mbps for speeds of up to 350 km/h. 	 \\
+	$^2$ With carrier aggregation up to five carrier components.
+\end{table}
+
+Among other innovations, in order to meet these requirements, LTE-A extends bandwidth scalability in LTE by adding carrier aggregation to increase bandwidth while maintaining backwards compatibility and enabling a higher bandwidth for providers who cannot support it in contiguous spectrum allotments.  LTE-A also expands MIMO/spatial multiplexing support up to 8x8 for DL and 4x4 for UL, adds coordinated multi-point operation and relay nodes to increase spectral efficiency and cell edge data rates, and improves heterogeneous network planning with the enhancement of support for small cells and relay nodes to increase area coverage with reduced power requirements.
 
 \section{Channel Access Mechanisms}
 \label{channel-access}
+Having been designed for use on dedicated licensed spectrum allocations, LTE-A uses a centrally controlled and scheduled channel access mechanism which divides the  .  The dedicated channel allows the LTE-A eNB schedule its users in time and frequency with a minimum of delay and no need for
+
 
 %TODO: Consider re-ordering
 \subsection{LTE-A Medium Access Protocol}
@@ -73,12 +78,12 @@ Consider that the MAC layer is really not that important as some coexistence mec
 
 \subsection{LTE-A Physical Layer Protocol}
 \label{lte-phy}
-Description of both OFDMA and SC-FDMA, primarily researched/reference from 3GPP TR 36.201 \cite{tr36201}.  Consider including figures of both UL/DL framing, showing, from the point of view of Wi-Fi, that interference will/would span many WiFi transmission attempts (increased BO time due to no free channel time to decrement BO counter, resulting in significant frame delay, but not necessarily drops, but retransmission from the higher layers will likely cause drops from the queue .. ..  )
+Description of both OFDMA and SC-FDMA, primarily researched/reference from 3GPP TR 36.201 \cite{tr36201}. Consider including figures of both UL/DL framing, showing, from the point of view of Wi-Fi, that interference will/would span many WiFi transmission attempts (increased BO time due to no free channel time to decrement BO counter, resulting in significant frame delay, but not necessarily drops, but retransmission from the higher layers will likely cause drops from the queue .. ..  )
 
 
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
-Brief outline of major work items which are expected to be included in releases 14/15 that could concievably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
+Brief outline of major work items which are expected to be included in releases 14/15 that could conceivably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
 Possibly another table/chart
 
 per 3GPP work plan available from their site (grab the citation at some later point) as well as the summary pages they have put together (see links saved in book refs folders)

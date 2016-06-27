@@ -1,0 +1,116 @@
+﻿3G,4G,5G Third, Fourth, Fifth Generation cellular networks
+3GPP 3rd Generation Partnership Project
+
+AC Access Category
+ACK Acknowledgment, a postive response of reception 
+AP Access Point, Wi-Fi station which acts as base station in infrastructure mode
+BI Backoff Interval
+
+CAP Controlled Access Phase
+CCA Clear Channel Assessment
+CFP Contention-free Period, in which polling is completed under the PCF
+CoMP Coordinated Multi-Point 
+CoT Channel Occupancy Time
+CP Contention Period, in which STAs contend with each other under the PCF
+CSAT Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism
+CSMA/CA Carrier-sense Multiple Access with Collision Avoidance
+CTS Clear to Send
+CW Contention Window, range of possible backoff values a Wi-Fi station will select from
+
+DCF Distributed Coordination Function, a random access based MAC protocol used in IEEE 802.11 Wi-Fi
+DCS Dynamic Channel Selection
+DIFS DCF Inter-frame Space
+DL Downlink, transmission from base station to user equipment
+
+
+ECCA Extended Clear Channel Assessment 
+EDCA Enhanced Distributed Channel Access, 
+EDCF Enhanced Distributed Coordination Function,  a random access based MAC protocol used in IEEE 802.11e Wi-Fi
+EDGE Enhanced Data rates for GSM Evolution
+ED Energy Detect
+EIRP Equivalent Isotropically Radiated Power
+eNB evolved Node B 
+EPC Evolved Packet Core
+ETSI European Telecommunications Standards Institute
+E-UTRA Evolved Universal Terrestrial Radio Access 
+E-UTRAN Evolved Universal Terrestrial Radio Access Network
+
+FBE Frame-based Equipment
+FCC Federal Communications Commission
+FDD Frequency Division Duplex
+
+GC Global Controller
+GSM Global System for Mobile communication
+
+HARQ Hybrid Automatic Repeat Request 
+HCCA HCF Controlled Channel Access
+HCF Hybrid Coordination Function, a polling based MAC protocol used in IEEE 802.11e Wi-Fi
+HetNet Heterogeneous Network, a wireless network made up of different types of access nodes 
+HSPA High Speed Packet Access
+
+IEEE Institute of Electrical and Electronics Engineers 
+IFS Inter-frame Space
+IoT Internet of Things
+IP Internet Protocol
+ITU Internation Telecommunications Union
+
+LAA/LAA-LTE Licensed-Assisted Access LTE using LBT
+LBE Load-based Equipment
+LBT Listen-Before-Talk Medium Access Strategy
+LTE Long Term Evolution, 3GPP Releases 8 and 9
+LTE-A LTE Advanced, 3GPP Releases 10 to 13, possibly more
+LTE-U LTE in Unlicensed bands using a duty-cycled coexistence mechanism 
+
+MAC Medium Access Control, sublayer of the Data Link Layer
+MIMO Multiple Input Multiple Output 
+MME Mobility Management Entity
+MTC Machine Type Communications 
+
+NALT Network-aware Adative Listen-Before-Talk, a proposed LAA-LTE/Wi-Fi co-existence mechanism
+NAV Network Allocation Vector
+
+OFDM Orthogonal Frequency Division Multiplexing 
+OFDMA Orthogonal Frequency Division Multiple Access
+
+PCF Point Coordination Function, a polling based MAC protocol used in IEEE 802.11 Wi-Fi
+PDN Packet Data Network
+P-GW PDN Gateway
+PHY Physical Layer
+PRB Physical Resource Block
+
+QAM Quadrature Amplitude Modulation 
+QoS Quality of Service
+
+RAN Radio Access Network
+RAT Radio Access Technology
+RC Regional Controller
+RSSI Received Signal Strength Indicator 
+RTS Request to Send
+Rx Receiver
+
+SC-FDMA Single-Carrier Frequency Division Multiple Access 
+SDL Supplemental Downlink
+SDN Software Defined Networking
+S-GW Serving Gateway
+SIFS Short Inter-frame Space
+ST Slot Time
+STA Station, a member of wireless network 
+
+TC Traffic Classes
+TDD Time Division Duplex
+TDM Time Division Multiplex
+TS Traffic Streams
+Tx Transmitter or Transmission
+TXOP Transmission Opportunity
+
+UE User Equipment
+UL Uplink
+U-LTE LTE in Unlicensed bands, catchall phrase to cover all methods of using LTE in unlicensed frequency bands
+UMTS Univesral Mobile Telecommunications System
+
+VoIP Voice over IP
+VoLTE Voice over LTE
+
+WLAN Wireless Local Area Network
+
+
