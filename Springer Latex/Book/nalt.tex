@@ -15,8 +15,8 @@
 
 %\abstract*{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.
 %Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
-%TODO: Edit the abstract to be at least 1-2 lines shorter in the typeset document
-\abstract{In the absence of coordination between radio access technologies, and with the goal of deploying unlicensed LTE without requiring changes to the Wi-Fi MAC layer, it falls to the LTE base stations to ensure fair coexistence.   The multiple access method used in 802.11 Wi-Fi is designed for fair sharing of the channel resources among devices with similar transmission and medium access profiles.  This can easily lead to Wi-Fi stations being barred from the channel if LAA-LTE is not designed to ensure fairness.  If no changes are to be made to Wi-Fi devices, then the greatest gains in fair coexistence are achieved when unlicensed LTE behaves in as Wi-Fi like a manner as possible, however, this may not allow LTE to make the best use of the channel.  In this chapter, a network-aware adaptive LBT mechanism (NALT) is proposed which passively monitors both channel conditions and usage activity to maximize its transmission opportunities while respecting fair sharing of the channel, in a way that is transparent to incumbent Wi-Fi devices.  Simulation results are presented showing the resulting proportional fair sharing which results from several independent NALT enable LAA-LTE networks sharing the channel with existing Wi-Fi stations.}
+
+\abstract{In the absence of coordination between radio access technologies, and with the goal of deploying unlicensed LTE without requiring changes to the Wi-Fi MAC layer, it falls to the LTE base stations to ensure fair coexistence.   The multiple access method used in Wi-Fi is designed for fair sharing of the channel resources among devices designed with the same goal.  This can easily lead to Wi-Fi stations being barred from the channel, if LAA-LTE is not designed to ensure fairness.  If no changes are to be made to Wi-Fi devices, then the greatest gains in fair coexistence are achieved when LAA-LTE behaves in as Wi-Fi like a manner as possible, however, this may not allow LTE to make the best use of the channel.  In this chapter, a network-aware adaptive LBT mechanism (NALT) is proposed which passively monitors both channel conditions and usage activity to maximize its transmission opportunities while respecting fair sharing of the channel, in a way that is transparent to incumbent Wi-Fi devices.  Simulation results are presented showing the resulting proportional fair sharing which results from several independent NALT-enable LAA-LTE networks sharing the channel with existing Wi-Fi stations.}
 
 \section{Background and Theoretical Basis}
 \label{background}
@@ -47,7 +47,7 @@ where $CW_{avg}$ is the average contention window currently being employed in th
 \begin{equation}\label{cwavg}
 CW_{avg} = \frac{1}{1-e^{ \sfrac{ln(1-p)}{(n-1)} }}
 \end{equation}
-Eq. \ref{cwavg} provides the average contention window size for all stations.  In order to consider only the average contention window size for the \mbox{Wi-Fi} stations, and noting the optimal $CW^{LTE}_{min}$ to $CW^{WiFi}_{min}$ ratio, we can estimate $CW^{WiFi}_{min}$ as
+Eq. \ref{cwavg} provides the average contention window size for all stations, both LAA-LTE and Wi-Fi.  In order to consider only the average contention window size for the \mbox{Wi-Fi} stations, and noting the optimal $CW^{LTE}_{min}$ to $CW^{WiFi}_{min}$ ratio, we can estimate $CW^{WiFi}_{min}$ as
 \begin{equation}\label{cwwifi}
 CW^{WiFi}_{avg} = CW_{avg}\left ( \frac{n_{WiFi} + n_{LTE}}{n_{WiFi} + \rho\cdot n_{LTE}} \right )
 \end{equation}
@@ -56,13 +56,13 @@ then combining Eq. \ref{cwlte} through Eq. \ref{cwwifi},  we set
 CW^{LTE} = \rho \cdot{CW^{WiFi}_{avg}} = \frac{1}{1-e^{ \sfrac{ln(1-p)}{(n_{WiFi} + n_{LTE}-1)} }}\left ( \frac{n_{WiFi} + n_{LTE}}{n_{WiFi} + \rho\cdot n_{LTE}} \right )
 \end{equation}
 
-In order to use Eq. \ref{cwlteopt} in an implementable algorithm, the unknown probability of collision  $p$ and knowledge of the number of competing Wi-Fi stations and LAA-LTE networks is required.
+%In order to use Eq. \ref{cwlteopt} in an implementable algorithm, the unknown probability of collision  $p$ and knowledge of the number of competing Wi-Fi stations and LAA-LTE networks is required.
 
 \section{Proposed Mechanism}
 \label{proposed}
 NALT is defined as a simple distributed coordination function to be implemented by LAA-LTE base stations, allowing several LAA-LTE networks to effectively and independently fairly share the channel with each other and incumbent Wi-Fi stations. 
 
-To gather the required information to utilize the relationships in the previous sections, the following assumptions are made:
+To make use of the relationships in the previous sections, the following assumptions are made:
 \begin{itemize}
 	\item NALT-enabled base stations are able to:
 	\begin{itemize}

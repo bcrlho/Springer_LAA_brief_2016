@@ -1,13 +1,13 @@
-[]%%%%%%%%%%%%%%%%%%%%%%acronym.tex%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%acronym.tex%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % sample list of acronyms
 %
 % Use this file as a template for your own input.
 %
 %%%%%%%%%%%%%%%%%%%%%%%% Springer %%%%%%%%%%%%%%%%%%%%%%%%%%
 %useful awk: 
-%   awk '/^$/ {next}{printf "\item[%s]{%s}\n",substr($1, index($0,$0)), substr($0, index($0,$2))}' < [input]] > [output]
+%   awk '/^$/ {next}{printf "\item[%s]{%s}\n",substr($1, index($0,$0)), substr($0, index($0,$2))}' < [inputfile] > [outputfile]
 \extrachap{Acronyms}
-%TODO: Compile list of Acronyms
+%TODO: Compile/edit list of Acronyms, have text file and awk function which can parse and add latex 
 \begin{description}[CABR]
 \item[﻿3G,4G,5G]{Third, Fourth, Fifth Generation cellular networks}
 \item[3GPP]{3rd Generation Partnership Project}
@@ -23,19 +23,19 @@
 \item[CP]{Contention Period, in which STAs contend with each other under the PCF}
 \item[CSAT]{Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism}
 \item[CSMA/CA]{Carrier-sense Multiple Access with Collision Avoidance}
-\item[CTS]{Clear to Send}
+\item[CTS]{Clear to Send, channel reservation response in 802.11 Wi-Fi}
 \item[CW]{Contention Window, range of possible backoff values a Wi-Fi station will select from}
 \item[DCF]{Distributed Coordination Function, a random access based MAC protocol used in IEEE 802.11 Wi-Fi}
 \item[DCS]{Dynamic Channel Selection}
-\item[DIFS]{DCF Inter-frame Space}
+\item[DIFS]{DCF Inter-frame Space, minimum delay after channel becomes free before a Wi-FI station will attempt to transmit}
 \item[DL]{Downlink, transmission from base station to user equipment}
-\item[ECCA]{Extended Clear Channel Assessment }
-\item[EDCA]{Enhanced Distributed Channel Access, }
+\item[ECCA]{Extended Clear Channel Assessment, additional CCA done in ETSI LBT when channel is known to have been recently busy }
+\item[EDCA]{Enhanced Distributed Channel Access, QoS enhancements for Wi-Fi in 802.11e }
 \item[EDCF]{Enhanced Distributed Coordination Function,  a random access based MAC protocol used in IEEE 802.11e Wi-Fi}
 \item[EDGE]{Enhanced Data rates for GSM Evolution}
 \item[ED]{Energy Detect}
 \item[EIRP]{Equivalent Isotropically Radiated Power}
-\item[eNB]{evolved Node B }
+\item[eNB]{eNodeN, an evolved Node B base stations used in LTE/LTE-A networks}
 \item[EPC]{Evolved Packet Core}
 \item[ETSI]{European Telecommunications Standards Institute}
 \item[E-UTRA]{Evolved Universal Terrestrial Radio Access }
@@ -79,15 +79,15 @@
 \item[RAN]{Radio Access Network}
 \item[RAT]{Radio Access Technology}
 \item[RC]{Regional Controller}
-\item[RSSI]{Received Signal Strength Indicator }
-\item[RTS]{Request to Send}
-\item[Rx]{Receiver}
+\item[RSSI]{Received Signal Strength Indicator, measure of received power in wireless networks }
+\item[RTS]{Request to Send, channel reservation request in 802.11 Wi-Fi}
+\item[Rx]{Receiver or Reception}
 \item[SC-FDMA]{Single-Carrier Frequency Division Multiple Access }
 \item[SDL]{Supplemental Downlink}
 \item[SDN]{Software Defined Networking}
 \item[S-GW]{Serving Gateway}
-\item[SIFS]{Short Inter-frame Space}
-\item[ST]{Slot Time}
+\item[SIFS]{Short Inter-frame Space, delay before a response is made or expected to certain frames in 802.11}
+\item[ST]{Slot Time, duration of an OFDM symbol in 802.11}
 \item[STA]{Station, a member of wireless network }
 \item[TC]{Traffic Classes}
 \item[TDD]{Time Division Duplex}

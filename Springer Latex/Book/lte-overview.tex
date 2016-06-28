@@ -24,9 +24,10 @@ The enhancements to the Long Term Evolution (LTE)/E-UTRAN to meet the requiremen
 
 \subsection{Network Architecture}
 \label{net-arch}
-The requirements to provide high data rates while supporting high-speed mobility requires the ability to set up and tear down user connections and manage inter-cell handoffs with as little latency as possible.  The hierarchical structure consisting of base stations or NodeB's connected to a central controller which had been used in past cellular networks requires additional hops in both data transmissions and hand off negotiation which introduce significant delay.  For many increasingly ubiquitous end-user applications, such as online gaming, the additional latency in connection set up and handover can impair quality of experience see by users.  
+The requirements to provide high data rates while supporting high-speed mobility requires the ability to set up and tear down user connections and manage inter-cell handoffs with as little latency as possible.  The hierarchical structure consisting of base stations or eNodeBs (eNB) connected to a central controller which had been used in past cellular networks requires additional hops in both data transmissions and hand off negotiation which introduce significant delay.  For many increasingly ubiquitous end-user applications, such as online gaming, the additional latency in connection set up and handover can impair quality of experience see by users.  
 
-To meet these requirements, LTE adopted the flat architecture shown in Fig. \ref{figs:LTE-A-Network} and migrated the functions of radio network and medium access control to the evolved NodeBs (eNB) \cite{lte-3gpp}.  The global functions and connections to external networks are handled at a the evolved packet core (EPC in the the figure). The mobile management entity (MME) handles authentication, authorization and accounting functions, among others.  The packet data network gateway (P-GW) and serving gateway (S-GW) handle user data packet forwarding, filtering, and usage tracking, as well as acting as a mobility anchor for inter-eNB and inter-RAT handovers.
+%TODO: expand from content of reference tr36300
+To meet these requirements, LTE adopted the flat architecture shown in Fig. \ref{figs:LTE-A-Network} and migrated the functions of radio network and medium access control to the eNBs \cite{tr36300}. 
 %TODO:better figure?
 \begin{figure}[!ht]
 	\centering
@@ -34,14 +35,23 @@ To meet these requirements, LTE adopted the flat architecture shown in Fig. \ref
 	\caption{Basic structure of LTE-A cellular network.}
 	\label{figs:LTE-A-Network}
 \end{figure}
+The global functions and connections to external networks are handled at a the evolved packet core (EPC in the the figure). The mobile management entity (MME) handles authentication, authorization and accounting functions, among others.  The packet data network gateway (P-GW) and serving gateway (S-GW) handle user data packet forwarding, filtering, and usage tracking, as well as acting as a mobility anchor for inter-eNB and inter-RAT handovers.  The functional split between the various components of the network is shown in further detail in Fig. \ref{figs:funcSplit}.
+
+%TODO: Figure MUST be changed as it is taken from 3GPP doc for reference/placeholder only
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=4.25in]{figures3/functionalsplit}
+	\caption{Functional split between eNodeB and evolved packet core.}
+	\label{figs:funcSplit}
+\end{figure}
 
 The distributed radio network and medium access control allows eNBs to quickly adapt to changing radio medium condition and user scheduling based on local information.  The low-latency X2 interface connections between eNBs allows for fast user handover, including forwarding of queued data for seamless user experience.  Additionally, with direct connections between neighboring cells, this architecture facilitates more effective multi-point transmission and reception coordination and inter-cell interference and load management, independent of conditions in other areas of the network.  
 
 \subsection{Capabilities and Features}
 
-While the gains made by LTE were significant, they fell short of the requirements set out for 4G networks by the International Telecommunications Union, specifically in the case of peak data rates, spectral efficiency, and cell edge performance \cite{itu-advanced}. Some important ITU requirements and achieved performance levels for LTE and LTE-A are highlighted in Table \ref{perf-table}
+While the gains made by LTE were significant, they fell short of the requirements set out for 4G networks by the International Telecommunications Union, specifically in the case of peak data rates, spectral efficiency, and cell edge performance \cite{itu-advanced}. Some important ITU requirements and achieved performance levels for LTE and LTE-A are highlighted in Table \ref{perf-table}PLACEHOLDER:
 
-%TODO: verify the contents of this table
+%TODO: verify the contents/details of this table and expand if possibe
 \begin{table}
 	\caption{ITU-A Requirements for 4G vs. LTE/LTE-A Achievements \cite{lte-3gpp}\cite{lteA-3gpp}\cite{itu-advanced}\cite{abdullah}}
 	\label{perf-table}      
@@ -59,28 +69,59 @@ While the gains made by LTE were significant, they fell short of the requirement
 		\noalign{\smallskip}\hline\noalign{\smallskip}
 	\end{tabular}
 	$^1$ For low mobility with requirement of min. 100 Mbps for speeds of up to 350 km/h. 	 \\
-	$^2$ With carrier aggregation up to five carrier components.
+	$^2$ With carrier aggregation of up to five carrier components.
 \end{table}
 
 Among other innovations, in order to meet these requirements, LTE-A extends bandwidth scalability in LTE by adding carrier aggregation to increase bandwidth while maintaining backwards compatibility and enabling a higher bandwidth for providers who cannot support it in contiguous spectrum allotments.  LTE-A also expands MIMO/spatial multiplexing support up to 8x8 for DL and 4x4 for UL, adds coordinated multi-point operation and relay nodes to increase spectral efficiency and cell edge data rates, and improves heterogeneous network planning with the enhancement of support for small cells and relay nodes to increase area coverage with reduced power requirements.
 
 \section{Channel Access Mechanisms}
 \label{channel-access}
-Having been designed for use on dedicated licensed spectrum allocations, LTE-A uses a centrally controlled and scheduled channel access mechanism which divides the  .  The dedicated channel allows the LTE-A eNB schedule its users in time and frequency with a minimum of delay and no need for
+Like other cellular access technologies, LTE-A has been designed for use on dedicated licensed spectrum allocations where there is generally no need to contend for the channel.  While interference, fading, and path loss can corrupt LTE transmissions, and recovery and retransmission functions are necessary, in general a centrally controlled and tightly scheduled channel access mechanism is able to guarantee service level requirements of all uplink and downlink traffic \cite{tr36300}.  Multiple access is achieved through OFDMA in the downlink, and SC-FDMA in the uplink to increase battery life of user equipment (UE).  Further, LTE-A supports both TDD and FDD to allow transmission in both paired and unpaired spectrum, coordinated multipoint (CoMP) is supported by allowing UEs to be configured to process channel state information from multiple eNBs, and both single-user and multi-user MIMO are supported in multiple configurations to achieve transmit diversity or multi-layer transmissions with beamforming possible in both horizontal and vertical dimensions.
 
+The basic structure of the protocol stack used in LTE networks to facilitate channel access is shown in Fig. \ref{figs:stack}.
+%TODO: Figure MUST be changed as it is taken from 3GPP doc for reference/placeholder only
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/protocolStack}
+	\caption{E-UTRA radio interface protocol architecture.}
+	\label{figs:stack}
+\end{figure}
+For both UL and DL, the physical transmission are divided into 
 
 %TODO: Consider re-ordering
+\subsection{LTE-A Physical Layer Protocol}
+\label{lte-phy}
+Description of both OFDMA and SC-FDMA, primarily researched/referenced from 3GPP TR 36.201 \cite{tr36201}. Consider including figures of both UL/DL framing, showing, from the point of view of Wi-Fi, that interference will/would span many WiFi transmission attempts (increased BO time due to no free channel time to decrement BO counter, resulting in significant frame delay, but not necessarily drops, but retransmission from the higher layers will likely cause drops from the queue .. ..  )  link adaptation? MIMO? not sure if this has any bearing on the issue at hand, but should probably be included for completeness
+%TODO:Make figure
+\begin{figure}[!ht] 
+	\centering
+	\subfloat[OFMDA used in downlink.]{\includegraphics[width=2in]{figures/withadapt}%
+		\label{ofdma}}
+	\hfil
+	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=2in]{figures/withoutadapt}%
+		\label{sc-fdma}}
+	\caption{PLACEHOLDER: Multiple access strategies used in LTE for uplink and downlink.}
+	\label{fig:ofdma_sc-fdma_comp}
+\end{figure}
+
+
 \subsection{LTE-A Medium Access Protocol}
 \label{lte-mac}
 Description of (high-level) MAC sub-layer protocol activities and results, reference 3GPP TR 36.321 \cite{tr36321}
-Consider that the MAC layer is really not that important as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
+%Consider that the MAC layer is really not that important as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
 
 
-\subsection{LTE-A Physical Layer Protocol}
-\label{lte-phy}
-Description of both OFDMA and SC-FDMA, primarily researched/reference from 3GPP TR 36.201 \cite{tr36201}. Consider including figures of both UL/DL framing, showing, from the point of view of Wi-Fi, that interference will/would span many WiFi transmission attempts (increased BO time due to no free channel time to decrement BO counter, resulting in significant frame delay, but not necessarily drops, but retransmission from the higher layers will likely cause drops from the queue .. ..  )
+%TODO:Make figure
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=2.5in]{figures3/lteAnet}
+	\caption{PLACEHOLDER: LTE MAC sublayer detail.}
+	\label{figs:LTE-MAC-protocol}
+\end{figure}
 
 
+
+%Consider section change to sources of coexistence issues
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
 Brief outline of major work items which are expected to be included in releases 14/15 that could conceivably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
