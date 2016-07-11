@@ -76,9 +76,9 @@ Among other innovations, in order to meet these requirements, LTE-A extends band
 
 \section{Channel Access Mechanisms}
 \label{channel-access}
-Like other cellular access technologies, LTE-A has been designed for use on dedicated licensed spectrum allocations where there is generally no need to contend for the channel.  While interference, fading, and path loss can corrupt LTE transmissions, and recovery and retransmission functions are necessary, in general a centrally controlled and tightly scheduled channel access mechanism is able to guarantee service levels required by all uplink and downlink traffic \cite{tr36300}.  Channel access is achieved through frequency division multiple access and either time or frequency division duplexing.  Orthogonal frequency division (OFDMA) is used in the downlink to allow the eNB to efficiently schedule transmissions for many users in the same transmission interval.  Single carrier frequency division (SC-FDMA) is used in the uplink to reduce the power consumption requirements of battery dependent user equipment (UE) to communicate with the eNB.  Further, coordinated multipoint (CoMP) is supported by allowing UEs to be configured to process channel state information from multiple eNBs, and both single-user and multi-user MIMO are supported in multiple configurations to achieve transmit diversity or multi-layer transmissions with beamforming possible in both horizontal and vertical dimensions.
+Like other cellular access technologies, LTE-A has been designed for use on dedicated licensed spectrum allocations where there is, generally, no need to contend for channel access.  While interference, fading, and path loss can corrupt LTE transmissions, and recovery and retransmission functions are necessary, in general a centrally controlled and tightly scheduled channel access mechanism is able to guarantee service levels required by all uplink and downlink traffic \cite{tr36300}.  Channel access is achieved through frequency division multiple access (FDMA) and either time or frequency division duplexing.  Orthogonal frequency division (OFDMA) is used in the downlink to allow the eNB to efficiently schedule transmissions for many users in the same transmission time interval.  Single carrier frequency division (SC-FDMA) is used in the uplink to reduce the power consumption requirements of battery dependent user equipment (UE) to communicate with the eNB.  Further, coordinated multipoint (CoMP) is supported by allowing UEs to be configured to process channel state information from multiple eNBs, and both single-user and multi-user MIMO are supported in multiple configurations to achieve transmit diversity or multi-layer transmissions with beamforming possible in both horizontal and vertical dimensions.
 
-The basic structure of the protocol stack used in LTE networks to facilitate channel access is shown in Fig. \ref{figs:stack}.
+The basic structure of the protocol stack used in LTE networks to facilitate channel access is shown in Fig. \ref{figs:stack} \cite{tr36201}.
 %TODO: Figure MUST be changed as it is taken from 3GPP doc for reference/placeholder only
 \begin{figure}[!ht]
 	\centering
@@ -86,27 +86,42 @@ The basic structure of the protocol stack used in LTE networks to facilitate cha
 	\caption{E-UTRA radio interface protocol architecture.}
 	\label{figs:stack}
 \end{figure}
-For both UL and DL, the physical transmission are divided into 
+UL and DL transmissions are divided amongst several physical channels, according to the type of transmission, i.e. traffic or control information, and the type of transmission, i.e broadcast or unicast and scheduled or random access. The information bearing physical channels are mapped by the PHY layer into transport channels supplied to the MAC sublayer, which in turn remaps these into logical channels provided to the higher layers. 
 
-%TODO: Consider re-ordering
 \subsection{LTE-A Physical Layer Protocol}
 \label{lte-phy}
-Description of both OFDMA and SC-FDMA, primarily researched/referenced from 3GPP TR 36.201 \cite{tr36201}. Consider including figures of both UL/DL framing, showing, from the point of view of Wi-Fi, that interference will/would span many WiFi transmission attempts (increased BO time due to no free channel time to decrement BO counter, resulting in significant frame delay, but not necessarily drops, but retransmission from the higher layers will likely cause drops from the queue .. ..  )  link adaptation? MIMO? not sure if this has any bearing on the issue at hand, but should probably be included for completeness
-%TODO:Make figure
+The LTE PHY layer is designed to be both widely adoptable as well spectrally and power efficient.  In the DL, OFDMA is used to schedule many signals in the same transmission time interval and achieve a high spectral efficiency, however, the very high peak to average power ratio makes this multiple access strategy unattractive in the UL for battery dependent devices \cite{tr36201}\cite{tr36211}.  SC-FDMA is used in the UL to maintain a satisfactory spectral efficiency while significantly improving power efficiency and battery life. An example carrier allocation multiple access strategy for both OFDMA and SC-FDMA is shown in Fig. \ref{lte:of-sc-fdma}.
+
+%%TODO: Make new figure, this is copied as a placeholder
 \begin{figure}[!ht] 
 	\centering
-	\subfloat[OFMDA used in downlink.]{\includegraphics[width=2in]{figures/withadapt}%
+	\subfloat[OFMDA used in downlink.]{\includegraphics[width=5in]{figures3/lte-ofdma}%
 		\label{ofdma}}
-	\hfil
-	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=2in]{figures/withoutadapt}%
+	\\
+	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=5in]{figures3/lte-scdma}%
 		\label{sc-fdma}}
 	\caption{PLACEHOLDER: Multiple access strategies used in LTE for uplink and downlink.}
-	\label{fig:ofdma_sc-fdma_comp}
+	\label{lte:of-sc-fdma}
+\end{figure} 
+
+To support the widest range of devices and spectrum allocations available to carriers, variable transmission bandwidth, and both TDD and FDD are supported in both UL and DL. Additionally, the PHY layer provides forward error correction and automatic repeat requests, modulation/demodulation of physical channels, mapping and rate matching of physical channels to transport channels, frequency and time synchronization, and MIMO antenna processing, including transmit diversity and beamforming.  A variety of modulation schemes are supported depending on channel conditions, distance from receiver, and power requirements (up to 256 QAM in the downlink), and up to 16 transmit antennas, supporting both single and multi-user MIMO with either up to 8 streams or transmit diversity gains, with 3D beamforming.
+
+All transmission are organized into frames comprised of ten 1 ms subframes, each of of which is formed from two equal length slots \cite{tr36211}.  The minimum unit which can be allocated to a physical channel or user is the physical resource block (PRB).  A PRB a time and frequency mapping formed of either twelve sub-carriers of bandwidth 15 kHz or 24 sub-carriers of bandwidth 7.5kHz, allocated for one 0.5 ms slot, where between 6 and 10 PRBs will be allocated to achieve bandwidths between 1.4 and 20 MHz (though the occupied bandwidth will be smaller, 1.08 to 18 MHz).  Higher bandwidths are achieved through carrier aggregation in the same slot, either contiguous or not.  The top level frame structure is shown in Fig. \ref{lte:frame}.
+%%TODO: detetermine what, if any, figure would be illustrative in the above section
+%TODO:Make figure
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/lte-frame}
+	\caption{PLACEHOLDER: LTE frame and resource block}
+	\label{lte:frame}
 \end{figure}
+To support both TDD and FDD, two distinct frame structures are defined, as well as a third frame structure specifically for license assisted access (LAA-LTE) in the unlicensed bands.  All three have the same basic structure, with the differences being in how transmission are scheduled.  For FDD, both half and full duplex are supported and 10 subframes are available for both UL and DL, with transmissions separated in frequency only, for full duplex, or time and frequency for half duplex.  For TDD, the frame is organized into two 5 ms half-frames, with several UL/DL configurations and switching patterns supported.  As of Release 13, the special frame structure defined for LAA-LTE reserves all 10 subframed for DL, with transmission occupying one or more consecutive subframes, starting anywhere within the first subframe.
 
 
 \subsection{LTE-A Medium Access Protocol}
 \label{lte-mac}
+In LTE-A, two distinct MAC layers are defined for the UE and the eNB, owing to the different functions
+
 Description of (high-level) MAC sub-layer protocol activities and results, reference 3GPP TR 36.321 \cite{tr36321}
 %Consider that the MAC layer is really not that important as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
 
