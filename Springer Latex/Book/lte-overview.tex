@@ -105,6 +105,7 @@ The LTE PHY layer is designed to be both widely adoptable as well spectrally and
 
 To support the widest range of devices and spectrum allocations available to carriers, variable transmission bandwidth, and both TDD and FDD are supported in both UL and DL. Additionally, the PHY layer provides forward error correction and automatic repeat requests, modulation/demodulation of physical channels, mapping and rate matching of physical channels to transport channels, frequency and time synchronization, and MIMO antenna processing, including transmit diversity and beamforming.  A variety of modulation schemes are supported depending on channel conditions, distance from receiver, and power requirements (up to 256 QAM in the downlink), and up to 16 transmit antennas, supporting both single and multi-user MIMO to achieve transmit diversity gains or up to 8 streams, with 3D beamforming.
 
+
 All transmission are organized into frames comprised of ten 1 ms subframes, each of which is formed from two equal length slots \cite{tr36211}. The basic LTE frame structure is shown in Fig. \ref{lte:frame}.
 %TODO:Make new figure, this figure is a placeholder only
 \begin{figure}[!t]
@@ -124,7 +125,9 @@ In LTE-A, medium access is primarily tightly controlled and scheduled in both UL
 
 %figure out how much you want to say in this section and consider that the MAC layer is really not that important in this context as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
 
-%%TODO:Make figure
+%TODO: Finish this section. 
+
+%%TODO:Decide what, if any, figure would work well here, and make it if desired
 %\begin{figure}[!ht]
 %	\centering
 %	\includegraphics[width=2.5in]{figures3/lteAnet}
@@ -136,4 +139,9 @@ In LTE-A, medium access is primarily tightly controlled and scheduled in both UL
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
 
+Brief outline of major work items which are expected to be included in releases 14/15 that could conceivably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
+Possibly another table/chart per 3GPP work plan available from their site (grab the citation at some later point) as well as the summary pages they have put together (see links saved in book refs folders)
+
+Am considering dropping this section as it may not be interesting in the context of the rest of the book, would be either rather short OR very technical, and possible a section (such as in my 610 paper) detailing how the preceding sections contribute to potential sources of coexistence issues
+>>>>>>> 0f233e74467f779e155b62d5d6c92124d4508c04
 \input{referenc-lte}
