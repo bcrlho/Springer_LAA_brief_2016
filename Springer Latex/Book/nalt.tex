@@ -92,16 +92,24 @@ and decreasing its contention window after a successful transmission according t
 &CW^{LTE}=\;\;min\left[max\left(CW^{LTE}_{MIN},\rho \cdot CW^{WiFi}_{avg}\right), CW^{LTE}_{MAX}\right]
 \end{align}
 
-These equations, in addition to channel usage statistics gathering function, are implemented in each of the competing LAA-LTE base stations.  This mechanism requires no explicit coordination between the LAA-LTE base stations, nor any changes to Wi-Fi stations.
+These equations, in addition to channel usage statistics gathering function, are implemented in each of the competing LAA-LTE eNBs.  This mechanism requires no explicit coordination between the LAA-LTE base stations, nor any changes to Wi-Fi stations. The operation of NALT is depicted in Fig. \ref{NALT-flowchart}. 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/NALT-flowchart}
+	\caption{Network aware adaptive listen before talk algorithm.}
+	\label{NALT-flowchart}
+\end{figure}
+The operation is divided into three main functions: Learning (highlighted in yellow), where the NATL-enabled eNB learns about the other occupants of the network and their transmission profiles; Transmission (highlighted in blue), which follows a random back off interval; and Adaptation (highlighted in green), which uses the data gathered and employs exponential backoff to ensure fair coexistence
+
 
 %TODO: Update with performance evaluation details, results, and edit from here down
 \section{Performance Evaluation}\label{perf-eval}
-To evaluate the performance of NALT, a high-level MATLAB simulation of a single \mbox{LAA-LTE} device contending with several \mbox{Wi-Fi} stations was developed and the proportion of channel accesses by each class of devices was tracked.  Simulating a small number of \mbox{LAA-LTE} devices is reasonable since it can be assumed that \mbox{LAA-LTE} user equipment will be coordinated via licensed band control channels, with scheduling done by the base station so that there is coordinated channel accesses for both uplink and downlink traffic.  Thus, each device in fact represents an independent network of LAA-LTE devices which are not required to contend with each other.
+To evaluate the performance of NALT, a high-level MATLAB simulation was developed in which the proportion of successful channel accesses achieved by each class of devices was tracked. Since NALT is an adaptive medium access strategy, the simulation looks only at the proportion of successful channel accesses, and assumes all attempted transmissions only fail if a collision occurs.  That is, other interferences sources and problems such as hidden terminals, are ignored.  The ETSI LBT mechanism was simulated as a benchmark against which to measure the effectiveness of NALT.
 
 
 \subsection{System Model}
 \label{sys-model}
-For simplicity, we assume that both \mbox{LAA-LTE} and \mbox{Wi-Fi} stations use the same modulation and coding scheme and channel bandwidth, resulting in a data rate of $135$ Mbps.  Other than the adaptive contention window, the channel occupancy, and minimum time idle were modeled after ETSI LBE LBT and the proposed mechanisms for \mbox{LAA-LTE} \cite{3gpp}. The other pertinent simulation parameters are listed in Table \ref{params}.
+The system models a number of NALT enable LAA-LTE networks interacting with a varying number of Wi-Fi devices.  LAA-LTE transmissions in the unlicensed bands are expected to be aligned with the LTE-A frames in the licensed spectrum, thus it can be assumed that \mbox{LAA-LTE} user equipment will be coordinated via licensed control channels, with scheduling done by the eNB so that there is coordinated channel accesses for both uplink and downlink traffic.  The systel model incorporates this by assuming the LAA-LTE eNB will not overschedule its own DL transmission, or two UE UL transmission, in the same time-frequency slot, so that the only sources of collisions are from Wi-Fi stations and other LAA-LTE networks. Thus, each simulated LAA-LTE device in fact represents an independent network of LAA-LTE devices which are not required to contend with each other. Additionally, although the NALT-enabled eNB would be capable of analyzing traffic on the channel to determine the average Wi-Fi transmission parameters, such as bitrate and channel occupancy time, for simplicity, we assume that both \mbox{LAA-LTE} and \mbox{Wi-Fi} stations use the same modulation and coding scheme and channel bandwidth, resulting in a data rate of $135$ Mbps.  Wi-Fi stations are modeled after $802.11$n \cite{80211}.  Other than the adaptive contention window, the LAA-LTE channel occupancy and minimum time idle were modeled after ETSI LBE LBT and the proposed mechanisms for \mbox{LAA-LTE} \cite{3gpp}.  The other pertinent simulation parameters are listed in Table \ref{params}.
 \begin{table}
 	\caption{NALT Simulation Parameters}
 	\label{params}      
@@ -115,32 +123,58 @@ For simplicity, we assume that both \mbox{LAA-LTE} and \mbox{Wi-Fi} stations use
 		Short Interframe Spacing $^1$ & 16 $\mu$s   \\ 
 		\mbox{Wi-Fi} Frame Size & 1536 bytes  \\ 
 		\mbox{Wi-Fi} Tx Duration $^2$(Frame Tx + SIFS +ACK) & 198 $\mu$s   \\ 
-		Number of independent LTE Networks & 2 \\
+		Number of independent LTE Networks & 1, 5 \\
 		\mbox{LAA-LTE} Channel Occupancy Time  & 1000 $\mu$s \\ 	
 		\noalign{\smallskip}\hline\noalign{\smallskip}
 	\end{tabular}
-	$^1$ Defined interframe spaces per 802.11n operating in the 5 GHz band \\
+	$^1$ Defined inter-frame spacing per 802.11n operating in the 5 GHz band \\
 	$^2$ Based on header transmitted at lowest supported rate and remaining frame at specified bitrate	 
 \end{table}
 
-\subsection{Simulation Results}
+\subsection{Simulation Results}%TODO: new figures should be made to look better constructed
 \label{sim-results}
+Since the coexistence mechanism is probabilistic, $1000$ trials were run for each considered network topology of between $1$ and $10$ \mbox{Wi-Fi} stations contending with \mbox{LAA-LTE} networks.  The average number of successful channel accesses was tracked across all trials and is related to airtime by the transmission duration of each class of devices.  
 
-Since the coexistence mechanism is probabilistic, $1000$ trials were run for each considered network topology of between $1$ and $10$ \mbox{Wi-Fi} stations contending with a \mbox{LAA-LTE} station.  The average number of successful channel accesses was tracked across all trials and is related to airtime by the transmission duration of each class of devices.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{results}.
-\begin{figure}[t] %TODO: new figures should be made to look better constructed
+Initially, NALT was tested with a simple network of a single LAA-LTE network competing with between 1 and 10 Wi-Fi stations.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{basic-results}.
+\begin{figure}[!ht]
 	\centering
-	\subfloat[With LAA-LTE using NALT]{\includegraphics[width=3.5in]{figures/withadapt}%
-		\label{results}}
-	\hfil
-	\subfloat[With LAA-LTE using ETSI LBE LBT]{\includegraphics[width=3.5in]{figures/withoutadapt}%
-		\label{fig_second_case}}
-	\caption{Airtime allocations for each station type, normalized to number of stations, with and without NALT.}
+	\includegraphics[width=3.5in]{figures3/withadapt}
+	\caption{Airtime allocations for each station type with LAA-LTE using NALT.}
+	\label{basic-results}
+\end{figure} 
+%TODO: Recalculate the numbers for fairness, also consider if other metrics are warranted
+In each configuration, fair sharing was achieved, with a minimum and average fairness index of $X$ and $Y$, respectively. 
+
+For comparison, the simulation was run with the same parameters as in Table \ref{params}, but with a fixed contention window size of $16$, corresponding to the approximate midpoint of possible values under ETSI LBE LBT \cite{3gpp}. The resulting airtime allocations, normalized to the number of devices, are shown in Fig. \ref{compresults}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/withoutadapt}
+	\caption{Airtime allocations for each station type with LAA-LTE using ETSI LBE LBT.}
 	\label{compresults}
 \end{figure}
-For comparison, the simulation was run with the same parameters as in Table \ref{params}, but with a fixed contention window size of $16$, corresponding to the approximate midpoint of possible values under ETSI LBE LBT \cite{3gpp}. The resulting airtime allocations per device are shown in Fig. \ref{compresults}.
+As expected, LAA-LTE transmission receive a disproportionately high number of channel accesses.
+
+Since it is likely that any LAA-LTE network will be deployed alongside other competing LAA-LTE networks, the simulation was extended to evaluate the effectiveness of NALT under these conditions.  The simulation was run with 5 independent NALT-enabled LAA-LTE networks competing against each other as well as Wi-Fi stations.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{multi-results}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/withadapt}
+	\caption{PLACEHOLDER: Airtime allocations for each station type with five LAA-LTE networks using NALT.}
+	\label{multi-results}
+\end{figure}
+In each configuration, fair sharing was again achieved, with a minimum and average fairness index of $X$ and $Y$, respectively. 
+
+%TODO: I cannot remember what I simulated, but should probably be a varied number of LAA-LTE networks
+If it further conceivable that LAA-LTE networks will be deployed where there are either no competing Wi-Fi stations, or the level of interference between the RATs is negligible.  Fig. \ref{NALT-only-results}, shows the resulting proportion of airtime for each device when NALT is used in a LAA-LTE only deployment. 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/withadapt}
+	\caption{PLACEHOLDER: Airtime allocations from LAA-LTE only channel contention when using NALT.}
+	\label{NALT-only-results}
+\end{figure}
+In each configuration, fair sharing was again achieved, with a minimum and average fairness index of $X$ and $Y$, respectively. 
 
 \section{Discussion and Future Work}
 \label{future-work}
-NALT requires no changes to \mbox{Wi-Fi} devices and in high-level simulations it shows promise in providing fair coexistence. As noted, several assumptions were made which affect the results.  It is reasonable that \mbox{LAA-LTE} would be able to analyze the channel and determine the number or competing \mbox{Wi-Fi} stations as well as their transmission bit rates, from the \mbox{Wi-Fi} preamble and MAC header.  The simulation assumed all \mbox{Wi-Fi} stations were using the same data rate, which should provide the same results as an average data rate, but the impact on individual \mbox{Wi-Fi} stations utilizing the channel access opportunities in a multi-rate environment was not explored.  Further, the impacts of hidden terminals, non-saturated stations, and lossy channels, were not explored, and may have interesting implications. The assumption that up/downlink traffic within a single \mbox{LAA-LTE} network would be centrally coordinated by the base station simplifies the problem. However, NALT does not consider the scenario where several uncoordinated \mbox{LAA-LTE} networks operate in the same frequency band.  Without coordination between unrelated \mbox{LAA-LTE} networks, contention between \mbox{LAA-LTE} user equipment, whether or not \mbox{Wi-Fi} devices are also present, will present a further challenge. Treating \mbox{LAA-LTE} devices in the same way as \mbox{Wi-Fi} devices when estimating contention parameters and average transmission rates and durations would potentially render the outcome invalid.  Further simulations of this scenario, and possibly adjustments to the algorithm to account for different classes of devices, is a necessary next step in the development of NALT.
+NALT requires no changes to \mbox{Wi-Fi} devices and in high-level simulations it shows promise in providing fair coexistence in several deployment scenarios.  As noted, several simplifying assumptions were made which may affect the results.  It is reasonable that \mbox{LAA-LTE} would be able to analyze the channel and determine the number or competing \mbox{Wi-Fi} stations as well as their transmission profiles, from the \mbox{Wi-Fi} preamble and MAC header.  The simulation assumed all \mbox{Wi-Fi} stations were using the same data rate, which should provide the same results as an average data rate, but the impact on individual \mbox{Wi-Fi} stations utilizing the channel access opportunities in a multi-rate environment was not explored.  It is desirable to implement the learning functions depicted in Fig. \ref{NALT-flowchart} and determine if the processing overhead could reasonably meet the timing constraints. Further, the impacts of hidden terminals, non-saturated stations, and lossy channels, were not explored, and may have interesting implications. 
 
 \input{referenc-nalt}

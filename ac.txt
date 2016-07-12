@@ -1,10 +1,10 @@
 ﻿3G,4G,5G Third, Fourth, Fifth Generation cellular networks
 3GPP 3rd Generation Partnership Project
 
-AC Access Category
+AC Access Category, 
 ACK Acknowledgment, a postive response of reception 
 AP Access Point, Wi-Fi station which acts as base station in infrastructure mode
-BI Backoff Interval
+BI Backoff Interval, period of deferment used in IEEE 802.11 Wi-Fi 
 
 CAP Controlled Access Phase
 CCA Clear Channel Assessment
@@ -13,13 +13,13 @@ CoMP Coordinated Multi-Point
 CoT Channel Occupancy Time
 CP Contention Period, in which STAs contend with each other under the PCF
 CSAT Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism
-CSMA/CA Carrier-sense Multiple Access with Collision Avoidance
+CSMA/CA Carrier-sense Multiple Access with Collision Avoidance, medium access protocol used in IEEE 802.11 Wi-Fi
 CTS Clear to Send
 CW Contention Window, range of possible backoff values a Wi-Fi station will select from
 
 DCF Distributed Coordination Function, a random access based MAC protocol used in IEEE 802.11 Wi-Fi
 DCS Dynamic Channel Selection
-DIFS DCF Inter-frame Space
+DIFS DCF Inter-frame Space, in IEEE 802.11 Wi-Fi
 DL Downlink, transmission from base station to user equipment
 
 
