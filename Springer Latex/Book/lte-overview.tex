@@ -88,17 +88,17 @@ The basic structure of the protocol stack used in LTE networks to facilitate cha
 \end{figure}
 UL and DL transmissions are divided amongst several physical channels, according to the type of transmission, i.e. traffic or control information, and the type of transmission, i.e broadcast or unicast and scheduled or random access. The information bearing physical channels are mapped by the PHY layer into transport channels supplied to the MAC sublayer, which in turn remaps these into logical channels provided to the higher layers. 
 
-\subsection{LTE-A Physical Layer Protocol}
+\subsection{LTE-A Physical Layer}
 \label{lte-phy}
 The LTE PHY layer is designed to be both widely adoptable as well spectrally and power efficient.  In the DL, OFDMA is used to schedule many signals in the same transmission time interval and achieve a high spectral efficiency, however, the very high peak to average power ratio makes this multiple access strategy unattractive in the UL for battery dependent devices \cite{tr36201}\cite{tr36211}.  SC-FDMA is used in the UL to maintain a satisfactory spectral efficiency while significantly improving power efficiency and battery life. An example carrier allocation multiple access strategy for both OFDMA and SC-FDMA is shown in Fig. \ref{lte:of-sc-fdma}.
 
 %%TODO: Make new figure, this is copied as a placeholder
 \begin{figure}[!ht] 
 	\centering
-	\subfloat[OFMDA used in downlink.]{\includegraphics[width=5in]{figures3/lte-ofdma}%
+	\subfloat[OFMDA used in downlink.]{\includegraphics[width=4in]{figures3/lte-ofdma}%
 		\label{ofdma}}
 	\\
-	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=5in]{figures3/lte-scdma}%
+	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=4in]{figures3/lte-scdma}%
 		\label{sc-fdma}}
 	\caption{PLACEHOLDER: Multiple access strategies used in LTE for uplink and downlink.}
 	\label{lte:of-sc-fdma}
@@ -106,41 +106,40 @@ The LTE PHY layer is designed to be both widely adoptable as well spectrally and
 
 To support the widest range of devices and spectrum allocations available to carriers, variable transmission bandwidth, and both TDD and FDD are supported in both UL and DL. Additionally, the PHY layer provides forward error correction and automatic repeat requests, modulation/demodulation of physical channels, mapping and rate matching of physical channels to transport channels, frequency and time synchronization, and MIMO antenna processing, including transmit diversity and beamforming.  A variety of modulation schemes are supported depending on channel conditions, distance from receiver, and power requirements (up to 256 QAM in the downlink), and up to 16 transmit antennas, supporting both single and multi-user MIMO with either up to 8 streams or transmit diversity gains, with 3D beamforming.
 
-All transmission are organized into frames comprised of ten 1 ms subframes, each of of which is formed from two equal length slots \cite{tr36211}.  The minimum unit which can be allocated to a physical channel or user is the physical resource block (PRB).  A PRB a time and frequency mapping formed of either twelve sub-carriers of bandwidth 15 kHz or 24 sub-carriers of bandwidth 7.5kHz, allocated for one 0.5 ms slot, where between 6 and 10 PRBs will be allocated to achieve bandwidths between 1.4 and 20 MHz (though the occupied bandwidth will be smaller, 1.08 to 18 MHz).  Higher bandwidths are achieved through carrier aggregation in the same slot, either contiguous or not.  The top level frame structure is shown in Fig. \ref{lte:frame}.
-%%TODO: detetermine what, if any, figure would be illustrative in the above section
-%TODO:Make figure
-\begin{figure}[!ht]
+All transmission are organized into frames comprised of ten 1 ms subframes, each of of which is formed from two equal length slots \cite{tr36211}. The basic LTE frame structure is shown in Fig. \ref{lte:frame}.
+%TODO:Make new figure, this figure is a placeholder only
+\begin{figure}[!t]
 	\centering
-	\includegraphics[width=3.5in]{figures3/lte-frame}
+	\includegraphics[width=3in]{figures3/lte-frame}
 	\caption{PLACEHOLDER: LTE frame and resource block}
 	\label{lte:frame}
 \end{figure}
+The minimum unit which can be allocated to a physical channel or user is the physical resource block (PRB).  A PRB a time and frequency mapping formed of either twelve sub-carriers of bandwidth 15 kHz or 24 sub-carriers of bandwidth 7.5kHz, allocated for one 0.5 ms slot, where between 6 and 10 PRBs will be allocated to achieve bandwidths between 1.4 and 20 MHz (though the occupied bandwidth will be smaller, 1.08 to 18 MHz).  Higher bandwidths are achieved through carrier aggregation in the same slot, either contiguous or not.  
+
 To support both TDD and FDD, two distinct frame structures are defined, as well as a third frame structure specifically for license assisted access (LAA-LTE) in the unlicensed bands.  All three have the same basic structure, with the differences being in how transmission are scheduled.  For FDD, both half and full duplex are supported and 10 subframes are available for both UL and DL, with transmissions separated in frequency only, for full duplex, or time and frequency for half duplex.  For TDD, the frame is organized into two 5 ms half-frames, with several UL/DL configurations and switching patterns supported.  As of Release 13, the special frame structure defined for LAA-LTE reserves all 10 subframed for DL, with transmission occupying one or more consecutive subframes, starting anywhere within the first subframe.
 
 
-\subsection{LTE-A Medium Access Protocol}
+\subsection{LTE-A Medium Access Control}
 \label{lte-mac}
-In LTE-A, two distinct MAC layers are defined for the UE and the eNB, owing to the different functions
+LTE-A defines two distinct MAC layers for the UE and the eNB, owing to the differing functions and requirements specific to each, however there is a large overlap.  In LTE-A, medium access is primarily tightly controlled and scheduled, and the primary function for medium access control are reliable data transfers through radio resource management and the mapping and multiplexing of several transport channels into one or more logical channels delivered to the upper layers \cite{tr36321}. To facilitate these primary functions, the MAC layers handles HARQ signaling, channel prioritization, random access control (in the case of UE connection requests and some other procedures), data transfer, and scheduling information reporting and requests.  
 
-Description of (high-level) MAC sub-layer protocol activities and results, reference 3GPP TR 36.321 \cite{tr36321}
-%Consider that the MAC layer is really not that important as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
+%TODO: Finish this section. 
 
+look at \cite{tr36300} pg 65 or so, as well as 321 .. figure out how much you want to say in this section and consider that the MAC layer is really not that important in this context as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
 
-%TODO:Make figure
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=2.5in]{figures3/lteAnet}
-	\caption{PLACEHOLDER: LTE MAC sublayer detail.}
-	\label{figs:LTE-MAC-protocol}
-\end{figure}
-
-
+%%TODO:Make figure
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=2.5in]{figures3/lteAnet}
+%	\caption{PLACEHOLDER: LTE MAC sublayer detail.}
+%	\label{figs:LTE-MAC-protocol}
+%\end{figure}
 
 %Consider section change to sources of coexistence issues
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
 Brief outline of major work items which are expected to be included in releases 14/15 that could conceivably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
-Possibly another table/chart
+Possibly another table/chart per 3GPP work plan available from their site (grab the citation at some later point) as well as the summary pages they have put together (see links saved in book refs folders)
 
-per 3GPP work plan available from their site (grab the citation at some later point) as well as the summary pages they have put together (see links saved in book refs folders)
+Am considering dropping this section as it may not be interesting in the context of the rest of the book, would be either rather short OR very technical, and possible a section (such as in my 610 paper) detailing how the preceding sections contribute to potential sources of coexistence issues
 \input{referenc-lte}
