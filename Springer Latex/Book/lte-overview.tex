@@ -121,27 +121,24 @@ To support both TDD and FDD, two distinct frame structures are defined, as well 
 
 \subsection{LTE-A Medium Access Control}
 \label{lte-mac}
-In LTE-A, medium access is primarily tightly controlled and scheduled in both UL and DL.  Distinct MAC sublayers for the UE and the eNB are defined, owing to the differing functions and requirements specific to each, however, the primary function remains reliable data transfer \cite{tr36321}.  The MAC sublayer facilitates reliable data transfer through radio resource allocation and the mapping and multiplexing between transport channels and one or more logical channels.  Further, the MAC sublayer handles HARQ signaling, channel prioritization, random access control (in the case of UE connection requests and some other procedures), data transfer, and scheduling information reporting and requests.  
+Medium access is tightly controlled and scheduled in both UL and DL in LTE-A, with the eNB controlling the time and frequency resource block assignment for all but random access channels (used for UE connection requests and some other procedures) \cite{tr36321}.  Distinct MAC sublayers for the UE and the eNB are defined, as well as several configurations for UE, depending on the specific functions implemented, such as dual connectivity (similar to carrier aggregation but across small and macro cells) or sidelink for UE to UE communication. The basic structure of the MAC sublayer is shown in Fig. \ref{figs:lte-mac}.
+%TODO: Decide if a figure is really needed here, and if so make a new one as this one cannot be used in publication
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=3.5in]{figures3/lteAmac}	\caption{PLACEHOLDER: LTE MAC sublayer detail.}
+	\label{figs:lte-mac}
+\end{figure}
+The MAC sublayer facilitates reliable data transfer through radio resource allocation and the mapping and multiplexing between transport channels and one or more logical channels.  Further, the MAC sublayer handles HARQ signaling, channel prioritization with dynamic scheduling, random access control, data transfer, and scheduling information reporting and requests.  
 
-%figure out how much you want to say in this section and consider that the MAC layer is really not that important in this context as some coexistence mechanism for the unlicensed channel will obviously need to be in place that will work in parallel to the MAC layer for controlling access to the licensed spectrum.
-
-%TODO: Finish this section. 
-
-%%TODO:Decide what, if any, figure would work well here, and make it if desired
-%\begin{figure}[!ht]
-%	\centering
-%	\includegraphics[width=2.5in]{figures3/lteAnet}
-%	\caption{PLACEHOLDER: LTE MAC sublayer detail.}
-%	\label{figs:LTE-MAC-protocol}
-%\end{figure}
+The specific implementation of these, and other layer 2 functions such as radio link control, are quite complex and beyond the scope of this brief, however the underlying design paradigm is that global of knowledge facilitating tight control over medium usage. The MAC sublayer in the eNB is aware of the channel conditions for each UE to be scheduled in both the UL and DL, and the UE adheres to the schedule of time and frequency provided by the eNB.  PRBs are assigned to UL and DL transmissions to achieve the greatest advantage from local channel conditions. Little consideration of inter-user or inter-carrier interference is necessary, due to the dedicated frequency bands and orthogonal carriers discussed in Sec. \ref{lte-phy}.  
 
 %Consider section change to sources of coexistence issues
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
+%Am considering dropping this section as it may not be interesting in the context of the rest of the book, would be either rather short OR very technical, and possible a section (such as in my 610 paper) detailing how the preceding sections contribute to potential sources of coexistence issues
+LTE-A brings cellular networks into the realm of 4G, as defined by \cite{itu-advanced}.  As far as LTE-A has taken us, it will not be enough for fifth generation networks which are expected to support use cases ranging from smart cities and Internet of Things devices to  self-driving vehicles and industrial automation with \emph{gigabyte} per second, high speed mobile broadband \cite{itu-2020}.  In The ITU has set targets for 5G around peak and average data rates, spectral and energy efficiency, mobility, capacity and density which current wireless networks are incapable of achieving.  
 
-Brief outline of major work items which are expected to be included in releases 14/15 that could conceivably have any impact on LAA-LTE/WiFi coexistence, or are just really interesting features 
-Possibly another table/chart per 3GPP work plan available from their site (grab the citation at some later point) as well as the summary pages they have put together (see links saved in book refs folders)
+In order to move towards 5G networks, 3GPP has numerous study items underway and planned for future releases, to meet the ITU requirements in \cite{itu-2020}.  These include significant enhancements to inter- and intra-band carrier aggregation and licenses-assisted access to ISM bands, TV white space, and other under-utilized spectrum resources, as well as multi-carrier enhancements and improved CoMP and device to device communications \cite{lteA-gantt}.  Wireless network virtualization and hardware resource sharing, cloud-based radio access networks, and new system architectures are under consideration to support the requirements around energy efficiency and and low-latency communications, among others.  Additionally, the possibility of moving to an entirely new radio and medium access protocols is also under consideration, which would not be hindered by the need to be backwards compatible, and move forward with only the necessity of meeting the ITU 5G requirements.  
 
-Am considering dropping this section as it may not be interesting in the context of the rest of the book, would be either rather short OR very technical, and possible a section (such as in my 610 paper) detailing how the preceding sections contribute to potential sources of coexistence issues
->>>>>>> 0f233e74467f779e155b62d5d6c92124d4508c04
+
 \input{referenc-lte}
