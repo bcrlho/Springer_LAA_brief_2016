@@ -7,48 +7,73 @@
 %%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
 %\motto{Use the template \emph{chapter.tex} to style the various elements of your chapter content.}
 \chapter{An Overview of IEEE 802.11/Wi-Fi}
-\label{overview-wifi} % Always give a unique label
-% use \chaptermark{}
-% to alter or adjust the chapter heading in the running head
-
-%\abstract*{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.
-%Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+\label{overview-wifi}
 
 %TODO: Abstract
 \abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.\newline\indent
 Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
 
+\section{The IEEE 802.11 Standard Family and Wi-Fi Alliance}
+\label{wifi-lbt}
+
+The IEEE 802.11 is a branch of 802 family of standards created and maintained by the Institute of Electrical and Electronics Engineers (IEEE) LAN/MAN Standards Committee (IEEE 802). It defines a set of specifications of physical (PHY) and MAC layers of Wireless Local Area Networks (WLANs) operating in a number of unlicensed radio frequency bands including sub-Ghz, $2.4$, $5$, and $60$ GHz. Commercial products based on IEEE 802.11 standards are branded as Wi-Fi. Wi-Fi Alliance is an organization made up of leading wireless equipment and software providers with the missions of certifying all 802.11-based products for interoperability and promoting the term Wi-Fi as the global brand name. The IEEE 802.11 has evolved with different generations since it was first introduced in 1997. The most commonly deployed are 802.11a, 802.11b, 802.11g, 802.11n and 802.11ac. More than $10$ billions of Wi-Fi devices have been shipped and deployed in homes, offices, buildings, factories, and so on. Today, most businesses are using 802.11n and are looking to adopt 802.11ac as it is the fastest and latest available. Fig. \ref{figs:Wi-Fi-evolution} gives an overview on the evolution of IEEE 802.11/Wi-Fi technology.
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{figures2/Wi-Fi-evolution.pdf}
+	\caption{IEEE 802.11/Wi-Fi Standard Evolution.}
+	\label{figs:Wi-Fi-evolution}
+\end{figure}
+
+The original 802.11 standard (introduced in 1997) can support only $1$ or $2$ Mbps which is quite low. It was aimed to provide an alternative to and/or to replace wired Ethernet connectivity. The WLAN rate is then significantly improved with IEEE 802.11b and IEEE 802.11a rectified in 1999. The 802.11b, considered as the \textit{first generation} WLAN technology, features two well-known spread spectrum technologies to distribute packets over a wireless medium: Frequency-Hopping Spread Spectrum (FHSS) and Direct-Sequence Spread Spectrum (DSSS) that are still in use by most wireless networks today. It operates in $2.4$ GHz frequency band and can support a maximum data rate of $11$ Mbps. The IEEE 802.11a - the \textit{second generation} WLAN technology - employs the Orthogonal Frequency Division Multiplexing (OFDM) technology to enable a higher data rate of $54$ Mbps. Using the $5$ GHz band, this standard has a significant advantage when the $2.4$ GHz band is heavily crowded. Next, the \textit{third generation }WLAN technology - the IEEE 802.11g - was released in 2003. It operates in the $2.4$ GHz band (as the IEEE 802.11b) and uses OFDM to match the $54$ Mbps data rate achieved by the 802.11a. The 802.11e was then introduced in 2005 to enhance the 802.11a and b with the support of QoSs. It operates at radio frequencies of up to $5.8$ GHz and is most suitable for networks with multimedia applications. In order to further boost the data rate, in 2007, the 802.11n using Multiple Input Multiple Output (MIMO) technology was introduced. It is considered as the \textit{fourth generation} WLANs, using both $2.4$ and $5$ GHz frequency bands and can support up to $600$ Mbps. The 802.11n is now becoming the dominant deployed standard.
+
+The demand for higher throughput over the wireless medium escalated in the late 2000s, driven by mass adoption of smart phones, tablets, and video on demand services such as YouTube and Netflix. To address this, the 802.11ac, also known as the \textit{fifth generation} or gigabit Wi-Fi, was approved in 2014. It operates only in $5$ GHz band, incorporating the enhanced air interface of 802.11n with wider bandwidth, more MIMO streams, and high-density modulation to support at least $1$ Gbps. This standard is now incorporated in many mainstream Wi-Fi products. The 802.11ad is another gigabit Wi-Fi which was introduced in 2012, operating in the unlicensed $60$ GHz band and offering much higher transfer rates than previous 802.11 standards (its theoretical maximum transfer rate is up to $7$ Gbps). Technology based on the 802.11ad standard can supplement existing wireless networks for high-definition video streaming, offering the ability to offload heavy demands on $2.4$ and $5$ GHz that other 802.11 standards are operating on. The 802.11ax - the successor to the 802.11ac and also called  High-Efficiency Wireless (HEW) - is currently at its early stage of development that has the goal of providing $10$ Gbps in both $2.4$ and $5$ GHz bands. This new standard implements several technologies to enhance the efficiency of channel utilization and is therefore expected to provide users with consistent and reliable data throughput in crowded wireless environments. One of the biggest enabling technologies of this efficiency is multi-user technology, both in the form of Multi-User MIMO (MU-MIMO) and Multi-User OFDMA (MU-OFDMA).
+
 
 \section{IEEE 802.11 CSMA/CA}
 \label{csma}
-The IEEE 802.11, a branch of 802 family of standards, defines the specifications of both physical and MAC layers of wireless local area networks (WLANs). The MAC layer is composed of two access modes: distributed coordination function (DCF) and point coordination function (PCF).
 
 \subsection{PCF and DCF}
 \label{pcf-dcf}
-The first mode, DCF, is a contention-based LBT mechanism called \textit{Carrier Sense Multiple Access with Collision Avoidance (CSMA-CA)} that \textit{works in an entirely distributed manner without any coordination}. With CSMA-CA, stations (STAs) independently perform carrier sensing and back-off procedures to compete for the channel access. DCF is a mandatory MAC function and implemented in all IEEE 802.11/Wi-Fi devices. Details of CSMA-CA will be presented in subsection \ref{collision-avoidance}.
 
-The second mode, PCF, is built on the top of DCF. It aims to support applications that require near real-time services. Basically, PCF splits the time into periodic interval called beacon intervals, each of which is composed of contention-free period (CFP) and contention period (CP). \textit{CFP requires coordination from the access point (AP)} and allocates resources to STAs using polling mechanism. Specifically, AP maintains a list of registered PCF-enabled STAs and polls each of them using CF-Poll frames. Only after a STA is polled, it can start its data transmission. In case the polled STA does not have any frames to send, then it must transmit null frame. Channel access in CP of PCF is handled by CSMA-CA protocol. PCF is specified as an optional MAC function and has not been widely implemented due to its complexity.
+Despite that fact that many generations of IEEE 802.11 has been developed to enhance data rates and support additional features as presented in previous section, they basically share a common MAC layer which dictates how multiple devices can share the radio channel. In a nut shell, the 802.11 standard defines two operating modes. In the infrastructure mode, wireless clients are directly connected to an Access Point (AP) in the star topology. APs are connected to a distribution network, usually wired LANs, for Internet connection. In the ad-hoc mode, clients are connected to one another without any AP. While ad-hoc mode is only used in a limited number of scenarios, the infrastructure mode is deployed in almost all Wi-Fi networks. The MAC layer for the infrastructure Wi-Fi networks is composed of two radio channel coordination functions: distributed coordination function (DCF) and point coordination function (PCF).
 
-The timing of PCF and DCF of IEEE 802.11 is sketched in Fig. \ref{figs:802-11-PCF-DCF}. Within a given beacon interval, the start and end of CFP are marked by beacon and CF-End control frames, respectively. CP follows CFP and is terminated by a beacon frame of the next beacon interval. The biggest limitation of IEEE 802.11 is its lack of capability to differentiate frames in terms of channel access priorities for different applications. As a result, the IEEE developed enhancements in IEEE 802.11e to both coordination modes to facilitate QoS.
+DCF is a contention-based LBT mechanism called \textit{Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA)} that \textit{works in an entirely distributed manner without any coordination}. With CSMA/CA, stations (STAs) independently perform carrier sensing and back-off procedures to compete for the channel access. DCF is a mandatory MAC function and implemented in all IEEE 802.11/Wi-Fi devices. CSMA/CA is focused in this chapter and its technical details will be presented in section \ref{collision-avoidance}.
+
+PCF is built on the top of DCF. It aims to support applications that require near real-time services. Basically, PCF splits the time into periodic interval called beacon intervals, each of which is composed of contention-free period (CFP) and contention period (CP). \textit{CFP requires coordination from the access point (AP)} and allocates resources to STAs using polling mechanism. Specifically, AP maintains a list of registered PCF-enabled STAs and polls each of them using CF-Poll frames. Only after a STA is polled, it can start its data transmission. In case the polled STA does not have any frames to send, then it must transmit null frame. Channel access in CP of PCF is handled by CSMA/CA protocol. PCF is specified as an optional MAC function and has not been widely implemented due to its complexity.
+
+The timing of PCF and DCF of IEEE 802.11 is sketched in Fig. \ref{figs:802-11-PCF-DCF}. Within a given beacon interval, the start and end of CFP are marked by beacon and CF-End control frames, respectively. CP follows CFP and is terminated by a beacon frame of the next beacon interval. The biggest limitation of IEEE 802.11 is its lack of capability to differentiate frames in terms of channel access priorities for different applications. As a result, the IEEE developed enhancements in IEEE 802.11e to both coordination modes to facilitate QoS. The following sections will present details of 802.11 CSMA/CA protocol and its enhancements introduced in 802.11e. 
+
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{figures2/802-11-PCF-DCF}
+	\caption{PCF and DCF in IEEE 802.11.}
+	\label{figs:802-11-PCF-DCF}
+\end{figure}
 
 \subsection{Basic Medium Access}
 \label{basic-medium-access}
-The LBT mechanism employed by the IEEE 802.11/Wi-Fi CSMA-CA basically follows the same philosophy of carrier sensing protocol family: when a STA needs to transmit a new frame, the channel is sensed and if it is found idle the frame is transmitted immediately. This simple mechanism is very effective when the medium is not heavily loaded since it allows STAs to transmit with a minimum delay. However, it cannot prevent channel access collisions when multiple STAs detect free channel and decide to transmit their frames at the same time. As a result, in addition to this basic channel access, a number of important mechanisms are mandated in CSMA-CA.
+
+The LBT mechanism employed by the IEEE 802.11/Wi-Fi CSMA/CA basically follows the same philosophy of carrier sensing protocol family. When a STA needs to transmit a new frame, the channel is sensed and if it is found idle the frame is transmitted immediately. This simple mechanism is very effective when the medium is not heavily loaded since it allows STAs to transmit with a minimum delay. However, it cannot prevent channel access collisions when multiple STAs detect free channel and decide to transmit their frames at the same time. As a result, in addition to this basic channel access, a number of important mechanisms are mandated in CSMA/CA.
+
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{figures2/CSMA-CA-flowchart}
-	\caption{Simplified flowchart of CSMA-CA.}
+	\caption{Simplified flowchart of CSMA/CA.}
 	\label{figs:CSMA-CA-flowchart}
 \end{figure}
 
+
 \subsection{Medium Access with Collision Avoidance}
 \label{collision-avoidance}
-Since it is difficult to detect collisions at a wireless receiver, the IEEE 802.11 protocol tries to avoid collisions, rather than detect and recover from collisions. This means that CA mechanisms are mandated to reduce the collision probability at the points where collisions would most likely occur. Specifically, most collisions happen when the medium has become idle (as indicated by CS function) after a busy state: several STAs could have been waiting for the medium to be available again, then all transmit at the same moment the medium is detected free. This situation necessitates a ``random'' back-off procedure to resolve medium contention conflicts. Also, the use of various Inter-Frame Spaces (IFSs) helps to resolve the problem. The CSMA-CA protocol is outlined as follows.
+
+Since it is difficult to detect collisions at a wireless receiver, the IEEE 802.11 protocol tries to avoid collisions rather than detect and recover from collisions. This means that CA mechanisms are mandated to reduce the collision probability at the points where collisions would most likely occur. Specifically, most collisions happen when the medium has become idle (as indicated by CS function) after a busy state: several STAs could have been waiting for the medium to be available again, then all transmit at the same moment the medium is detected free. This situation necessitates a ``random'' back-off procedure to resolve medium contention conflicts. Also, the use of various Inter-Frame Spaces (IFSs) helps to resolve the problem. The CSMA/CA protocol is outlined as follows.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.9\columnwidth]{figures2/CSMA-CA-back-off-no-collision}
-	\caption{CSMA-CA: An example of back-off procedure when there is no collision.}
+	\caption{CSMA/CA: An example of back-off procedure when there is no collision.}
 	\label{figs:CSMA-CA-back-off-no-collision}
 \end{figure}
 
@@ -61,24 +86,24 @@ When a transmission is lost (due to channel collision when two or more STAs decr
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{figures2/CSMA-CA-back-off-with-collision}
-	\caption{CSMA-CA: An example of back-off procedure when there is a collision (the contention window is exponentially increased).}
+	\caption{CSMA/CA: An example of back-off procedure when there is a collision (the contention window is exponentially increased).}
 	\label{figs:CSMA-CA-back-off-with-collision}
 \end{figure}
 
 The reason behind the exponential growth of contention window $W$ is explained as follows. When a STA experiences a collision, it has no information on how many STAs are involved in the collision. If there are only few colliding frames, it would make sense to choose the random back-off interval from a small set of small values, i.e., $W$ is small. But if many STAs are involved in a collision, then it makes sense to choose the back-off interval from a larger, more dispersed set of values, i.e., $W$ is large. Otherwise, if several STAs select the back-off interval from a small set of values, more than one STA would choose the same back-off value with high probability. This will result in high probability of collision.
 
-Fig. \ref{figs:CSMA-CA-flowchart} shows the flowchart of CSMA-CA protocol. Figs. \ref{figs:CSMA-CA-back-off-no-collision} and \ref{figs:CSMA-CA-back-off-with-collision} demonstrates the operations of the back-off procedure in two typical scenarios. As visualized in Fig. \ref{figs:CSMA-CA-back-off-no-collision}, by randomly selecting back-off intervals, STAs C and D randomize their channel access to minimize the chance that they transmit their frames at the same time. In case a collision takes place, as shown in Fig. \ref{figs:CSMA-CA-back-off-with-collision}, STAs C and D double their contention windows to further increase the randomness in their back-off interval generations.
+Fig. \ref{figs:CSMA-CA-flowchart} shows the flowchart of CSMA/CA protocol. Figs. \ref{figs:CSMA-CA-back-off-no-collision} and \ref{figs:CSMA-CA-back-off-with-collision} demonstrates the operations of the back-off procedure in two typical scenarios. As visualized in Fig. \ref{figs:CSMA-CA-back-off-no-collision}, by randomly selecting back-off intervals, STAs C and D randomize their channel access to minimize the chance that they transmit their frames at the same time. In case a collision takes place, as shown in Fig. \ref{figs:CSMA-CA-back-off-with-collision}, STAs C and D double their contention windows to further increase the randomness in their back-off interval generations.
 
-Here are some illustrative values of CSMA-CA operation parameters: ST = $20$ $\mu$s, SIFS = $10$ $\mu$s, DIFS = SIFS + $2\times$ST = $50$ $\mu$s, EIFS = Transmission time of ACK frame at lowest physical mandatory rate + SIFS + DIFS, $W_{\min}$ = $31$, and $W_{\max}$ = $1023$. Contention window of the initial transmission attempt is $W(0)=W_{\min}=31$. Contention window of the $k$-th re-transmission is $W(k)=\min\{2^{k}(W_{\min}+1)-1, W_{\max}\}$, where $k \in \{1,2, ..., K_{\max}\}$, $K_{\max}$ is the maximum number of re-transmission attempts. Assuming $K_{\max}=7$, then the progression of contention window with frame transmission/re-transmissions is as follows: $W(0)=31$ (the initial transmission attempt), $W(1)=63$ (the first re-transmission attempt), $W(2)=127$ (the second re-transmission attempt), $W(3)=255$ (the third re-transmission attempt), $W(4)=511$, $W(5)=1023$, $W(6)=1023$, and finally $W(7)=1023$. Different IEEE 802.11 physical layer standards could specify different values for these parameters to optimize their operations.
+Here are some illustrative values of CSMA/CA operation parameters: ST = $20$ $\mu$s, SIFS = $10$ $\mu$s, DIFS = SIFS + $2\times$ST = $50$ $\mu$s, EIFS = Transmission time of ACK frame at lowest physical mandatory rate + SIFS + DIFS, $W_{\min}$ = $31$, and $W_{\max}$ = $1023$. Contention window of the initial transmission attempt is $W(0)=W_{\min}=31$. Contention window of the $k$-th re-transmission is $W(k)=\min\{2^{k}(W_{\min}+1)-1, W_{\max}\}$, where $k \in \{1,2, ..., K_{\max}\}$, $K_{\max}$ is the maximum number of re-transmission attempts. Assuming $K_{\max}=7$, then the progression of contention window with frame transmission/re-transmissions is as follows: $W(0)=31$ (the initial transmission attempt), $W(1)=63$ (the first re-transmission attempt), $W(2)=127$ (the second re-transmission attempt), $W(3)=255$ (the third re-transmission attempt), $W(4)=511$, $W(5)=1023$, $W(6)=1023$, and finally $W(7)=1023$. Different IEEE 802.11 physical layer standards could specify different values for these parameters to optimize their operations.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.65\columnwidth]{figures2/802-11-RTS-CTS-NAV}
-	\caption{CSMA-CA enhanced with RTS/CTS handshake and NAV.}
+	\caption{CSMA/CA enhanced with RTS/CTS handshake and NAV.}
 	\label{figs:802-11-RTS-CTS-NAV}
 \end{figure}
 
-In order to provide guaranteed reservation of the channel and hence uninterrupted data transmission, CSMA-CA protocol can be enhanced with Request-To-Send (RTS)/Clear-To-Send (CTS) handshake and virtual carrier sense using Network Allocation Vector (NAV). The former is an optional mechanism and only employed for transmissions of long frames (determined by RTS threshold which is typically around $500$ bytes). The latter is a prominent mechanism which is widely used with CSMA-CA protocol.
+In order to provide guaranteed reservation of the channel and hence uninterrupted data transmission, CSMA/CA protocol can be enhanced with Request-To-Send (RTS)/Clear-To-Send (CTS) handshake and virtual carrier sense using Network Allocation Vector (NAV). The former is an optional mechanism and only employed for transmissions of long frames (determined by RTS threshold which is typically around $500$ bytes). The latter is a prominent mechanism which is widely used with CSMA/CA protocol.
 
 In RTS/CTS access mode, prior to the data transmission, the source STA will send a RTS frame to announce the upcoming transmission. When the destination STA receives RTS, it will send a CTS frame after a SIFS interval if it is available to receive the data. The source STA is allowed to transmit its data frame only if it receives the CTS frame correctly. The purpose of this RTS/CTS exchange is to clear hidden areas and avoid long collisions. RTS/CTS is illustrated in Fig. \ref{figs:802-11-RTS-CTS-NAV}.
 
@@ -97,9 +122,10 @@ IEEE 802.11e additionally introduces the concept of transmission opportunity (TX
 
 \subsection{EDCA and HCCA}
 \label{edca-hcca}
+
 Basic operations of HCCA are illustrated in Fig. \ref{figs:802-11e-HCCA}. HCCA is generally considered as the most advanced and complicated coordination function. With HCCA, QoS can be configured with great precision. QoS-enabled STAs have the ability to request specific transmission parameters (data rate, jitter, etc.), which should allow advanced applications like voice over IP (VoIP) and video streaming to work more effectively on Wi-Fi networks. However, due to its complexity and signaling overhead, HCCA has not been widely implemented.
 
-It can be seen IEEE 802.11 CSMA-CA is the most fundamental protocol for medium access in WLANs. In fact, IEEE 802.11e EDCA is primarily designed based on CSMA-CA. As a result, in-depth knowledge on medium access mechanisms employed by this protocol is imperative to unde
+It can be seen IEEE 802.11 CSMA/CA is the most fundamental protocol for medium access in WLANs. In fact, IEEE 802.11e EDCA is primarily designed based on CSMA/CA. As a result, in-depth knowledge on medium access mechanisms employed by this protocol is imperative to unde
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{figures2/802-11e-HCCA}
@@ -107,8 +133,10 @@ It can be seen IEEE 802.11 CSMA-CA is the most fundamental protocol for medium a
 	\label{figs:802-11e-HCCA}
 \end{figure}
 
-\section{Important Observations on CSMA-CA}
+
+\section{Important Observations on CSMA/CA}
 \label{csmaca-obs}
-It is important to note that IEEE 802.11 CSMA-CA is specified with a few key additional features that go beyond LBT requirements specified by ETSI \cite{LBT-ETSI-2014}. \textit{First}, a Wi-Fi device defers to signals that are much weaker than the minimum level required by ETSI. ETSI LBT requires a transmitter to defer if the received energy is above $-60$ dBm (for $20$ MHz), while Wi-Fi defers if the received energy is above $-62$ dBm (this level is referred to as the energy detect threshold, or ED for short) or if a valid Wi-Fi preamble is detected. Wi-Fi's ED threshold is nearly the same as ETSI's LBT threshold, but Wi-Fi preamble detection is required to work to at least $-82$ dBm, and in reality works to $-90$ dBm or lower in most products. Hence, Wi-Fi devices defer to other Wi-Fi transmissions much more conservatively (i.e., at a much larger distance) than a device which only meets ETSI requirements. \textit{Second}, Wi-Fi goes beyond the ETSI requirements in specifying how long a device must wait after the on-air energy falls below the threshold before initiating a transmission. \textit{Third}, when a collision is detected, Wi-Fi employs exponential back-off rule that doubles the contention window size and thus significantly increases the random back-off time in order to avoid future collision.
+
+It is important to note that IEEE 802.11 CSMA/CA is specified with a few key additional features that go beyond LBT requirements specified by ETSI \cite{LBT-ETSI-2014}. \textit{First}, a Wi-Fi device defers to signals that are much weaker than the minimum level required by ETSI. ETSI LBT requires a transmitter to defer if the received energy is above $-60$ dBm (for $20$ MHz), while Wi-Fi defers if the received energy is above $-62$ dBm (this level is referred to as the energy detect threshold, or ED for short) or if a valid Wi-Fi preamble is detected. Wi-Fi's ED threshold is nearly the same as ETSI's LBT threshold, but Wi-Fi preamble detection is required to work to at least $-82$ dBm, and in reality works to $-90$ dBm or lower in most products. Hence, Wi-Fi devices defer to other Wi-Fi transmissions much more conservatively (i.e., at a much larger distance) than a device which only meets ETSI requirements. \textit{Second}, Wi-Fi goes beyond the ETSI requirements in specifying how long a device must wait after the on-air energy falls below the threshold before initiating a transmission. \textit{Third}, when a collision is detected, Wi-Fi employs exponential back-off rule that doubles the contention window size and thus significantly increases the random back-off time in order to avoid future collision.
 
 \input{referenc-wifi}
