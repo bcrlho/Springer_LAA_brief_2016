@@ -82,53 +82,67 @@ UL and DL transmissions are divided amongst several physical channels, according
 \subsection{LTE-A Physical Layer}
 \label{lte-phy}
 The LTE PHY layer is designed to be both highly adaptable as well spectrally and power efficient.  In the DL, OFDMA is used to schedule many signals in the same transmission time interval and achieve a high spectral efficiency, however, the very high peak to average power ratio makes this multiple access strategy unattractive in the UL for battery dependent devices \cite{tr36201}\cite{tr36211}.  SC-FDMA is used in the UL to maintain a satisfactory spectral efficiency while significantly improving power efficiency and battery life. Example carrier allocations for both DL and UL are shown in Fig. \ref{lte:of-sc-fdma}.
-
-\begin{figure}[!ht] 
-	\centering
-	\subfloat[OFMDA used in downlink.]{\includegraphics[width=4in]{figures3/ofdma}%
+\begin{figure}[!ht] 	
+	\subfloat[OFDMA used in downlink.]{\includegraphics[width=\textwidth]{figures3/ofdma}%
 		\label{ofdma}}
 	\\
-	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=4in]{figures3/sc-fdma}%
+	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=\textwidth]{figures3/sc-fdma}%
 		\label{sc-fdma}}
-	\caption{PLACEHOLDER: Multiple access strategies used in LTE for uplink and downlink.}
+	\caption{Multiple access strategies used in LTE for uplink and downlink.}
 	\label{lte:of-sc-fdma}
 \end{figure}
-Each color and shade represents the carriers allocated to a specific user.  As shown in Fig. \ref{ofdma}, LTE-A supports both localized (contiguous) and distributed allocations and the assignment of sub-carriers to a given UE are driven by the specific loss and interference experienced by that user, called channel state information (CSI), in order to maximize the overall achieved rate of all users.  Sub-carrier assignments can further span disjoint frequency bands, including into unlicensed bands, through carrier aggregation.  In Fig. \ref{sc-fdma} a given subcarrier, with variable bandwidth, is assigned to a single UE, again based on CSI.  It should be emphasized that Fig. \ref{lte:of-sc-fdma} shows a single instant of time, over the range of frequency available. 
+Each color and shade represents the carriers allocated to a specific user.  The assignment of sub-carriers to a given UE are driven by the specific loss and interference experienced by that user, called channel state information (CSI), in order to maximize the overall achieved rate of all users.  As shown in Fig. \ref{ofdma}, in the DL LTE-A supports both localized (contiguous) and distributed allocations. Sub-carrier assignments can further span disjoint frequency bands, including into unlicensed bands, through carrier aggregation.  In Fig. \ref{sc-fdma}, which depicts an example UL allocation, a given sub-carrier, with variable bandwidth, is assigned to a single UE, again based on CSI.  It should be emphasized that Fig. \ref{lte:of-sc-fdma} shows a single instant of time, over subset of the available band. 
 
-All transmission are organized into frames comprised of twenty slots, every two of which comprise a subframe \cite{tr36211}. An exampled of one configuration for the LTE frame structure is shown in Fig. \ref{lte:frame}.
+All transmission are organized into frames comprised of twenty slots, every two of which comprise a subframe \cite{tr36211}. An example of one configuration for the LTE frame structure is shown in Fig. \ref{lte:frame}.
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures3/LTE-frame}
 	\caption{LTE frame and resource block structure.}
 	\label{lte:frame}
 \end{figure}
-A single sub-carrier, with either 7.5 or 15 kHz bandwidth, paired with a transmission duration required to transmit a single OFDM symbol is called a resource element. The minimum unit which can be allocated to a physical channel or user is the physical resource block (PRB). Depending on the configuration used, a DRB is formed of either 7, 6, or 3 OFDM symbols and 12 or 24 sub-carriers allocated for one 0.5 ms slot.  Between 6 and 10 PRBs will then be allocated to UE in order to achieve bandwidths between 1.4 and 20 MHz (though the occupied bandwidth will be smaller, 1.08 to 18 MHz).  Higher bandwidths are achieved through carrier aggregation in the same slot, either contiguous or not. 
+A single sub-carrier, with either 7.5 or 15 kHz bandwidth, paired with a transmission duration required to transmit a single OFDM symbol is called a resource element.  The minimum unit which can be allocated to a physical channel or user is the physical resource block (PRB).  For simplicity, in the breakout, a single PRB is depicted, though a single PRB spans only a small subset of the available sub-carriers. Depending on the configuration used, a PRB is formed of either 7, 6, or 3 OFDM symbols and 12 or 24 sub-carriers allocated for one 0.5 ms slot.  Between 6 and 10 PRBs will then be allocated to UE in order to achieve bandwidths between 1.4 and 20 MHz (though the occupied bandwidth will be smaller, 1.08 to 18 MHz).  Higher bandwidths are achieved through carrier aggregation in the same slot, either contiguous or not. 
 
-Two distinct frame structures are defined to support both time division duplexing (TDD) and frequency division duplexing (FDD), as well as a third frame structure specifically for license assisted access (LAA-LTE).  All three frame types have the same basic structure shown in Fig. \ref{lte:frame}, with the differences being in how specific transmission are scheduled.  Both half and full duplex are supported in FDD and 10 subframes are available for both UL and DL.  Transmissions are separated in frequency only, for full duplex, and both time and frequency for half duplex.  For TDD, the frame is organized into two 5 ms half-frames, with several UL/DL configurations and switching patterns supported.  As of Release 13, the special frame structure defined for LAA-LTE reserves all 10 subframes for DL, with transmission able to occupy one or more consecutive subframes, but required to start somewhere within the first subframe.
+Two distinct frame structures are defined to support both time division duplexing (TDD) and frequency division duplexing (FDD), as well as a third frame structure specifically for license assisted access (LAA-LTE).  All three frame types have the same basic structure shown in Fig. \ref{lte:frame}, with the differences being in how transmission are scheduled.  Both half and full duplex are supported in FDD and all 10 subframes are available for both UL and DL.  In half duplex configurations, transmission are seperated in both time and frequency, while for full duplex transmissions separation is in frequency only.  For TDD, the frame is organized into two 5 ms half-frames, with several UL/DL configurations and switching patterns supported.  As of Release 13, the special frame structure defined for LAA-LTE reserves all 10 subframes for DL, with transmission able to occupy one or more consecutive subframes, but required to start somewhere within the first subframe. LAA-LTE is expected to support for UL and DL in future releases.
 
 Beyond the features discussed in detail, the LTE-A PHY layer provides forward error correction and automatic repeat request functions, modulation/demodulation of physical signals, mapping and rate matching of physical channels to transport channels, frequency and time synchronization, and MIMO antenna processing, including transmit diversity and beamforming.  A variety of modulation schemes are supported depending on channel conditions, distance from receiver, and power requirements (up to 256 QAM in the downlink).  
 
-%TODO: continue editing from this point forwards
 \subsection{LTE-A Medium Access Control}
 \label{lte-mac}
-Medium access is tightly controlled and scheduled in both UL and DL in LTE-A, with the eNB controlling the time and frequency resource block assignment for all but random access channels (used for UE connection requests and some other procedures) \cite{tr36321}.  Distinct MAC sublayers for the UE and the eNB are defined, as well as several configurations for UE, depending on the specific functions implemented, such as dual connectivity (similar to carrier aggregation but across small and macro cells) or sidelink for UE to UE communication. The basic structure of the MAC sublayer is shown in Fig. \ref{figs:lte-mac}.
-
+Medium access in LTE is tightly controlled and scheduled in both UL and DL, with the eNB controlling the time and frequency resource block assignment for all but random access channels (used for UE connection requests and some other procedures) \cite{tr36321}.  Distinct MAC sublayers for the eNB and the UE are defined, optimized to their specific functions and resources.  Additionally, several MAC configurations are defined for UE depending on the specific functions implemented, such as dual connectivity to support Coordinated Multipoint (CoMP) transmission and sidelink channels for UE device-to-device communication. The basic structure of the MAC sublayer, without CoMP or sidelink configured, is shown in Fig. \ref{figs:lte-mac}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{figures3/LTE-MAC}	\caption{LTE MAC sublayer structure and channel mapping.}
+	\includegraphics[width=\textwidth]{figures3/LTE-MAC}	
+	\caption{LTE MAC sublayer structure and channel mapping.}
 	\label{figs:lte-mac}
 \end{figure}
-The MAC sublayer facilitates reliable data transfer through radio resource allocation and the mapping and multiplexing between transport channels and one or more logical channels.  Further, the MAC sublayer handles HARQ signaling, channel prioritization with dynamic scheduling, random access control, data transfer, and scheduling information reporting and requests.  
+The extension to other MAC configurations requires the duplication of this basic structure, and separate control and traffic channels required. In dual connectivity, for example, two such MAC structures are implemented for the master and secondary cell group, however only the broadcast, shared UL and DL, and random access channels are needed for the secondary cell group.  In sidelink configuration, only broadcast, discovery and duplex UL/DL shared channel are required.
 
-The specific implementation of these, and other layer 2 functions such as radio link control, are quite complex and beyond the scope of this brief, however the underlying design paradigm is that global of knowledge facilitating tight control over medium usage. The MAC sublayer in the eNB is aware of the channel conditions for each UE to be scheduled in both the UL and DL, and the UE adheres to the schedule of time and frequency provided by the eNB.  PRBs are assigned to UL and DL transmissions to achieve the greatest advantage from local channel conditions. Little consideration of inter-user or inter-carrier interference is necessary, due to the dedicated frequency bands and orthogonal carriers discussed in Sec. \ref{lte-phy}.  
+The MAC sublayer facilitates reliable data transfer through radio resource allocation, UL traffic prioritization in the UE, and the mapping and multiplexing between transport channels and one or more logical channels. Further, the MAC sublayer handles hybrid automatic repeat requests (HARQ) signaling, a combination of forward error correcting coding and error detection, as well as channel prioritization with dynamic scheduling, random access control, and scheduling information reporting and requests.
 
-%Consider section change to sources of coexistence issues
+The specific implementation of these, and other layer 2 functions such as radio link control, are quite complex and beyond the scope of this brief, however the underlying design paradigm is that global of knowledge facilitating tight control over medium access. The MAC sublayer in the eNB is aware of the channel conditions for each UE to be scheduled in both the UL and DL, and the UE adheres to the schedule of time and frequency provided by the eNB.  PRBs are assigned to UL and DL transmissions to achieve the greatest advantage from local channel conditions. Little consideration of inter-user or inter-carrier interference is necessary, due to the dedicated frequency bands and orthogonal carriers discussed in Sec. \ref{lte-phy}.  As result, LTE-A is able to achieve high spectral efficiency and reliability 
+
+
 \section {Changes Expected for Future Releases}
 \label{fut-chnge}
-%Am considering dropping this section as it may not be interesting in the context of the rest of the book, would be either rather short OR very technical, and possible a section (such as in my 610 paper) detailing how the preceding sections contribute to potential sources of coexistence issues
-LTE-A brings cellular networks into the realm of 4G, as defined by \cite{itu-advanced}.  As far as LTE-A has taken us, it will not be enough for fifth generation networks which are expected to support use cases ranging from smart cities and Internet of Things devices to  self-driving vehicles and industrial automation with \emph{gigabyte} per second, high speed mobile broadband \cite{itu-2020}.  In The ITU has set targets for 5G around peak and average data rates, spectral and energy efficiency, mobility, capacity and density which current wireless networks are incapable of achieving.  
+LTE-A brings cellular networks into the realm of 4G, as defined by \cite{itu-advanced}.  As far as LTE-A has taken us, it will not be enough for fifth generation networks which are expected to support existing and new use cases ranging from smart cities and Internet of Things devices (massive machine type communication) to self-driving vehicles and industrial automation (ultra-reliable and low latency communications) with  high speed mobile broadband on the order of \emph{gigabytes} per second \cite{itu-2020}.  Some of the specific requirements are outlined in Table \ref{5g-table}.
+\begin{table}
+	\caption{ITU-A Requirements for 4G vs. ITU-2020 Requirements for 5G  \cite{itu-2020}}
+	\label{5g-table}      
+	\begin{tabular}{p{0.6\textwidth}p{0.18\textwidth}p{0.18\textwidth}}
+		\hline\noalign{\smallskip}
+		Description/Requirements & ITU-A & ITU-2020  \\
+		\noalign{\smallskip}\svhline\noalign{\smallskip}
+		Peak data rates (Gbps) & 1  & 20\\
+		Average user data rates (Mbps) & 1  & 100  \\				
+		Mobility support(km/h) & 350  & 500 \\
+		Connection density (devices/km )& 10$^5$ & 10$^6$ \\
+		Traffic capacity (Mbits/s/m$^2$) & 0.1 & 10 \\
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+	\end{tabular}
+		
+\end{table}
+Beyond these specific targets set by the ITU, 5G networks must also achieve 10$\times$ reduced latency, 3$\times$ improved spectral efficiency and  100$\times$ network energy efficiency, compared to 4G networks 
 
-In order to move towards 5G networks, 3GPP has numerous study items underway and planned for future releases, to meet the ITU requirements in \cite{itu-2020}.  These include significant enhancements to inter- and intra-band carrier aggregation and licenses-assisted access to ISM bands, TV white space, and other under-utilized spectrum resources, as well as multi-carrier enhancements and improved CoMP and device to device communications \cite{lteA-gantt}.  Wireless network virtualization and hardware resource sharing, cloud-based radio access networks, and new system architectures are under consideration to support the requirements around energy efficiency and and low-latency communications, among others.  Additionally, the possibility of moving to an entirely new radio and medium access protocols is also under consideration, which would not be hindered by the need to be backwards compatible, and move forward with only the necessity of meeting the ITU 5G requirements.  
-
+In order to move towards 5G networks, 3GPP has numerous study items underway and planned for future releases, to meet the ITU requirements in \cite{itu-2020}.  These include significant enhancements to inter- and intra-band carrier aggregation and licenses-assisted access to ISM bands, TV white space, and other under-utilized spectrum resources, as well as multi-carrier enhancements and improved CoMP and device to device communications \cite{lteA-gantt}.  Wireless network virtualization and hardware resource sharing, cloud-based radio access networks, and new system architectures are under consideration to support the requirements around energy efficiency and and low-latency communications, among others.  Additionally, the possibility of moving to an entirely new radio and medium access protocols is also under consideration, which would not be hindered by the need to be backwards compatible, and move forward with only the necessity of meeting the ITU 5G requirements. 
 
 \input{referenc-lte}
