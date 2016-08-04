@@ -6,62 +6,59 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
 %\motto{Use the template \emph{chapter.tex} to style the various elements of your chapter content.}
-\chapter{An Overview on ETSI’s LBT Mechanisms}
+\chapter{Requirements and Regulations in the $5$ GHz Unlicensed Spectrum}
 \label{sec:LBT-overview} 
 
 %TODO: Abstract
-\abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.\newline\indent
-Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+\abstract{License and fee are not required for operators to use the $5$ GHz unlicensed spectrum. However, in order to avoid interference and to ensure a fair use of this resource, numerous requirements and regulations are imposed on this band by national and international organizations. The emerging U-LTE technology, therefore, needs to follow them as any other existing technologies, esp., IEEE 802.11/Wi-Fi, when deployed in this band. This chapter provides an overview on radio spectrum and related management/allocation concerns. It then summarizes a number of key requirements and regulations specified by the European Telecommunications Standards Institute (ETSI) and the Federal Communications Commission (FCC) on radio channels, operating channel selection, transmission power, and channel access rules. These technical details are the baselines to be followed when designing medium access control protocols for U-LTE and any other technologies operating in the $5$ GHz unlicensed radio band.}
 
 
-\section{Radio Spectrum and Its Allocation}
+\section{An Overview on Radio Spectrum Management}
 
-The radio spectrum is the part of the electromagnetic spectrum from $3$ Hz to $3000$ GHz ($3$ THz). Radio waves in this frequency range are widely used in modern technologies, especially in telecommunications. The radio spectrum is divided into different chunks or bands, each of which can be used by one or multiple technologies. Radio Frequency Interference (RFI) is the conduction or radiation of radio frequency energy that causes an electronic or electrical device to produce unwanted noise that typically interferes with functions of adjacent devices.  In radio communications, RFI can disrupt and disturb the normal functioning of devices, and thus it is always important to avoid or keep the RFI within acceptable levels. In order to prevent RFI, the generation and transmission of radio waves is strictly regulated by national laws, coordinated by international organizations, e.g., International Telecommunication Union (ITU), European Conference of Postal and Telecommunications Administrations (CEPT), Inter-American Telecommunication Commission (CITEL), European Telecommunications Standards Institute (ETSI), etc. 
+The Radio Frequency (RF) spectrum is the part of the electromagnetic spectrum from $3$ Hz to $3000$ GHz ($3$ THz). Radio waves in this frequency range are widely used in modern technologies, especially in telecommunications. The radio spectrum is divided into different chunks or bands, each of which can be used by one or multiple technologies. Radio Frequency Interference (RFI) is the conduction or radiation of radio frequency energy that causes an electronic or electrical device to produce unwanted noise that typically interferes with functions of adjacent devices. In radio communications, RFI can disrupt and disturb the normal functioning of devices, and thus it is always important to avoid or keep the RFI within acceptable levels. For this, the generation and transmission of radio waves is strictly regulated by national laws, coordinated by international organizations, e.g., Federal Communications Commission (FCC), Inter-American Telecommunication Commission (CITEL), International Telecommunication Union (ITU), European Telecommunications Standards Institute (ETSI), etc. 
 
-It most countries, the use of radio frequency bands is regulated by national radio allocation authorities. Spectrum allocation varies by country and/or regulatory domain. In United States, for example, the Federal Communications Commission (FCC) regulates inter-state communications by radio, television, wire, satellite, and cable in all states and territories. From management perspectives, radio bands are categorized into licensed and unlicensed. Licensing is a way of ensuring that wireless operators do not interfere with each others by giving each of them an exclusive use of given bands in given geographical areas over a set period of time. Licensed bands are mainly sold/assigned to operators through spectrum auction precess. They are mainly used by television broadcasting, commercial radio and cellular voice and data. Operating in licensed bands, mobile cellular networks can avoid RFI and thus guarantee quality of services to their subscribers. However, licensing would be very impractical for certain uses, like communications between cordless handsets and base units. Instead, such a kind of wireless technology transmits in unlicensed frequency bands - usually the Industrial, Scientific and Medical (ISM) band defined by the ITU radio regulations and allocated in most countries for free use by anyone without any license and fee. Unlicensed bands enable numerous technologies and products, e.g., Wi-Fi, Bluetooth, and many other low-power short-range communications technologies. They are also open sandboxes where users can operate without the high barriers to entry. They provide a platform for innovation, a greenfield space for technology start-ups and entrepreneurs and established companies. Internet of Things (IoT) - the development and deployment of networking technologies that provide connectivity for everyday objects for many innovative applications - is essentially enabled by unlicensed spectrum.
+Most countries consider RF spectrum as a national resource. The process of regulating the use of this resource is spectrum management or allocation. Spectrum allocation varies by country and/or regulatory domain. In United States, for example, FCC regulates inter-state communications by radio, television, wire, satellite, and cable in all states and territories. From management perspectives, radio bands are categorized into \textit{licensed} and \textit{unlicensed}. Licensing is a way of ensuring that wireless operators do not interfere with each others by giving each of them an exclusive use of one or multiple bands in given geographical areas over a set period of time. Licensed bands are mainly sold/assigned to operators through spectrum auction precess. They are mostly used by television broadcasting, commercial radio and cellular voice and data. Operating in licensed bands, operators can avoid RFI and thus guarantee quality of services they deliver to their subscribers. However, licensing would be very impractical for certain use cases, like communications between cordless handsets and base units. Instead, such a kind of wireless technology transmits its radio signals in unlicensed frequency bands - usually the Industrial, Scientific and Medical (ISM) band defined by the ITU radio regulations and allocated in most countries for free use by anyone without any license and fee. Unlicensed bands enable numerous technologies and products, e.g., Wi-Fi, Bluetooth, and many other low-power short-range communications technologies. They are open sandboxes where users can operate without the high barriers to entry. The availability of unlicensed bands provides a platform for innovation, a greenfield space for technology start-ups and entrepreneurs, as well as established companies. Internet of Things (IoT) - the development and deployment of networking technologies that provide connectivity for everyday objects for many innovative applications - is essentially enabled by unlicensed spectrum.
 
-There is a considerable amount of unlicensed spectrum. $2.4$ and $5$ GHz are the two most widely used unlicensed bands. Today, most people are within a few meters of consumer products (microwave ovens, Wi-Fi, Bluetooth, etc.) that use these bands. In other words, there is a great chance for RFI. As a result, even though no permission is required for the use of unlicensed bands, manufacturers and users of devices must comply with numerous rules and regulations (related to transmission power, transmission time, etc.) in order to minimize the RFI to others in these bands as well as to ensure a fair sharing of the radio resource. IEEE 802.11/Wi-Fi is the most successful and popular technology operating in unlicensed spectrum. Wi-Fi manufacturers need to obtain compliance certifications from Wi-Fi Alliance whose certification program is designed following rules imposed by radio spectrum management organizations/authorities such as ETSI and FCC. 
+Today, most people are within a few meters of consumer products (microwave ovens, Wi-Fi, Bluetooth, etc.) that use unlicensed bands. In other words, there is a great chance for RFI in these bands. As a result, even though no permission is required for the use of unlicensed bands, manufacturers and users must comply with numerous rules and regulations (related to transmission power, transmission time, etc.) in order to minimize the RFI to others as well as to ensure a fair sharing of the radio resource in these bands. IEEE 802.11/Wi-Fi is the most successful and popular technology operating in unlicensed spectrum. Wi-Fi manufacturers need to obtain compliance certifications from Wi-Fi Alliance whose certification program is designed following rules imposed by radio spectrum management organizations/authorities such as ETSI and FCC. 
 
-New technologies, particularly unlicensed LTE variants including LTE-U, LAA, and MulteFire (as mentioned in chapter xx), have been developed to operate in the $5$ GHz unlicensed spectrum alongside Wi-Fi. The $5$ GHz band is more often selected for new technologies rather than the $2.4$ GHz band due to the following reasons:
+The two most widely-used unlicensed bands are $2.4$ GHz and $5$ GHz. These two bands have their own advantages and disadvantages in various perspectives. $5$ GHz provides faster data rates at a shorter distance, whereas $2.4$ GHz offers coverage for farther distances but support lower rates. New technologies, particularly unlicensed LTE variants including LTE-U, LAA, and MulteFire (as mentioned in Chapter 1), have been targeted to operate in the $5$ GHz band alongside Wi-Fi. The selection of the $5$ GHz band for U-LTE technologies (rather than the $2.4$ GHz band) is mainly due to the following reasons:
 \begin{itemize}
 \item
-More available channels: In the $2.4$ GHz band, only $13$ channels are available. Moreover, these channels overlap excessively with one another. Due to this overlapping, the maximum possible
-number of parallel independent connections is limited to $3$ channels. 
+\textit{More available channels:} In the $2.4$ GHz band, only $14$ channels, each of with provides $20$ MHz of bandwidth, are defined. In U.S. (or Europe), only $11$ (or $13$) of those channels are legally available. However, those channels overlap excessively with one another. Due to this overlapping, the maximum possible number of parallel independent connections is limited to $3$ channels (channels $1$, $6$, and $11$). In the $5$ GHz band, there are $21$ non-overlapping $20$ MHz channels (or $9$ non-overlapping $40$ MHz channels). Figs. \ref{figs:2-5GHz-spectrum}(a) and (b) depict spectrum analyzer views of radio channels defined in $2.4$ and $5$ GHz bands, respectively.
 \item
-Lower level of interference: Since the $2.4$ ISM band has been released for use for many years, a great number of radio applications have been established for this band. As such, the 802.11b/g standard WLANs are often forced to compete with interference from these applications. In contrast, the relatively recent release of the $5$ GHz band for private use gives WLAN usage a very prominent position in this frequency range. Other than military applications, which are isolated from 802.11a/h by special mechanisms, there are virtually no sources of interference. 
+\textit{Lower level of interference:} Since the $2.4$ ISM band was released for Wi-Fi technology use more than fifteen years ago, this band is over-crowded with billions of existing Wi-Fi devices. There are also many consumer products use this band, including microwave ovens, cordless phones, baby monitors, garage door openers, etc. In contrast, the relatively recent release of the $5$ GHz band for private use makes this band much less crowded and thus having a much lower level of RFI. 
 \item
-Higher performance: The $5$ GHz band allows for significantly higher performance than the $2.4$ GHz band. This makes $5$ GHz band WLANs much better suited for outdoor applications and directional radio connections (point-to-point) than wireless connections in the $2.4$ GHz band. 
+\textit{Higher performance:} The $5$ GHz band operates on a larger spectrum and does not suffer the over-crowding. Therefore, compared to the $2.4$ GHz band, each channel in the $2.4$ GHz band allows for much better spectrum efficiency and therefore higher data rates.
 \end{itemize}
 
-It is imperative to ensure that U-LTE devices comply with unlicensed band rules and regulations in order to limit the RFI that this technology may introduce to Wi-Fi devices/networks currently used by billions of users every day in homes, offices, and buildings. Since the number of wireless devices using the $5$GHz band has grown rapidly over the last few years, ETSI has updated its related standards. For background knowledge necessary for the development of radio channel access protocol in this band, the following sections summarize a number of key requirements presented in ETSI EN 301 893 V1.7.2 regulations \cite{LBT-ETSI-2014} released in July 2014.
+As just mentioned, any technology operating in unlicensed bands needs to comply with unlicensed band rules and regulations in order to limit the RFI and to ensure that it does not unfairly grab a larger portion of the shared spectrum.  Coexistence is one of the most notable concerns when U-LTE technology in introduced in the $5$ GHz unlicensed band considering the fact that a sheer number of Wi-Fi devices/networks has been deployed in the same band for everyday applications in homes, offices, and buildings. Since the number of wireless devices using the $5$GHz band has grown rapidly over the last few years, ETSI has updated its related regulations. For background knowledge necessary for developments of radio channel access protocols for U-LTE and Wi-Fi technologies in this band, the following sections summarize a number of key requirements/mechanisms presented in ETSI EN 301 893. Specifically, frequency channels, transmission power, and channel access mechanisms are focused.
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/5GHz-spectrum.pdf}
-	\caption{$5$ GHz Unlicensed Spectrum.}
-	\label{figs:5GHz-spectrum}
+	\includegraphics[width=1.0\columnwidth]{figures2/2-5GHz-spectrum.pdf}
+	\caption{$2.4$ GHz and $5$ GHz Unlicensed Spectrums.}
+	\label{figs:2-5GHz-spectrum}
 \end{figure}
 
 
-\section{Frequency Bands}
+\section{Frequency Channels}
 
-To standardize the use of the $5$ GHz band in Europe, the European Commission issued the ETSI 301 893 standard on July 11, 2005. The member states of the EU were obliged to implement this by October 31, 2005. The ETSI 301 893 standard regulates three frequency bands with different specifications:
+The ETSI EN 301 893 V1.7.2 regulations \cite{LBT-ETSI-2014} released in July 2014 defined three unlicensed frequency bands as follows:
 \begin{itemize}
 \item
 RLAN band 1: $5150$ to $5350$ MHz, divided into 2 sub-bands
 \begin{itemize}
 \item
-Sub-band I: $5150$ MHz - $5250$ MHz (channels 36, 40, 44 and 48) 
+Sub-band I: $5150$ MHz - $5250$ MHz. This sub-band is comparable to FCC U-NII-1. 
 \item
-Sub-band II: $5250$ MHz - $5350$ MHz (channels 52, 56, 60 and 64) 
-\end{itemize}
+Sub-band II: $5250$ MHz - $5350$ MHz. This sub-band is comparable to FCC U-NII-2.
 \item
-RLAN band 2: $5470$ MHz - $5725$ MHz (channels 100, 104, 108, 112, 116, 120, 124, 128, 132, 136 and 140)
+RLAN band 2: $5470$ MHz - $5725$ MHz. This band comparable to FCC U-NII-2 extended (U-NII-2e).
 \item
-RLAN band 3, also known as Broadband Radio Access Networks (BRAN): $5725$ – $5875$ MHz (channels 147, 151, 155 and 167, may only be used in Great Britain)
+RLAN band 3, also known as Broadband Radio Access Networks (BRAN): $5725$ – $5875$ MHz. This sub-band is comparable to FCC U-NII-3 ($5725$ – $5825$ MHz) band with a higher upper frequency range,.
 \end{itemize}
 
-Fig. \ref{figs:5GHz-spectrum} summarizes radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations). Technical details and the availability of each channel in four main regions (U.S., Europ, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
+Fig. \ref{figs:2-5GHz-spectrum}(b) summarizes radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations). Technical details and the availability of each channel in four main regions (U.S., Europ, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
 
 \begin{figure}[!t]
 	\centering
@@ -73,42 +70,43 @@ Fig. \ref{figs:5GHz-spectrum} summarizes radio channels defined in the $5$ GHz b
 
 \section{Transmission Power}
 
-As presented in previous section, the $5$ GHz band is divided into three different ETSI RLAN bands. Each of these three bands have different power limits. Note that the RF output power is defined as the mean Equivalent Isotropic Radiated Power (EIRP) of the equipment during a transmission burst. In general, the limits are valid for the device with antenna gain and cable loss and not only the output power of WLAN module.
+Each of the three bands defined by ETSI EN 301 893 V1.7.2 regulations \cite{LBT-ETSI-2014} have different maximum allowable transmission power levels. Note that the RF output power is defined as the mean Equivalent Isotropic Radiated Power (EIRP) of the equipment during a transmission burst. In general, the limits are valid for the device with antenna gain and cable loss and not only the output power of WLAN module.
 
 \subsection{RLAN band 1 ($5150$ to $5350$ MHz)}
 
 \subsubsection{Indoor only Sub-band I ($5150$ - $5250$ MHz)}
-The first RLAN sub-band includes the channels $36$ to $48$ and has an EIRP power limit to $23$ dBm ($200$ mW). These channels are considered for indoor only usage and do not require any Dynamic Frequency Selection (DFS) or Transmit Power Control (TPC) features. It is comparable to FCC U-NII-1.
+The first RLAN sub-band includes the channels $36$ to $48$ and has an EIRP power limit to $23$ dBm ($200$ mW). These channels are considered for indoor only usage and do not require any Dynamic Frequency Selection (DFS) or Transmit Power Control (TPC) features. 
 
 \subsubsection{Indoor only Sub-band II ($5250$ - $5350$ MHz)}
-In the second sub-band of the RLAN band 1 with channels $52$ to $64$, the ETSI has set the EIRP power limit to $23$ dBm ($200$ mW) for devices with TPC and $20$ dBm ($100$ mW) for devices without TPC. For a device with TPC, the mean EIRP at the lowest power level of the TPC range must not exceed $17$ dBm ($50$ mW). This band requires DFS support and is comparable to FCC U-NII-2.
+In the second sub-band of the RLAN band 1 with channels $52$ to $64$, the ETSI has set the EIRP power limit to $23$ dBm ($200$ mW) for devices with TPC and $20$ dBm ($100$ mW) for devices without TPC. For a device with TPC, the mean EIRP at the lowest power level of the TPC range must not exceed $17$ dBm ($50$ mW). This band requires DFS support and 
 
 \subsection{RLAN band 2 ($5470$ to $5725$ MHz)}
 
-Channels from $100$ to $140$ are part of the second RLAN band and have an EIRP power limit of $30$ dBm ($1000$ mW) for TPC and $27$ dBm ($500$ mW) for non-TPC devices or $20$ dBm ($100$ mW) for devices without any TPC or DFS support. The mean EIRP power level for a slave device with TPC must not exceed $24$ dBm at the the lowest TPC power level if the device is also capable of radar detection or $17$ dBm otherwise. This band can be used for in- and outdoor deployments as well and is comparable to FCC U-NII-2e.
+Channels from $100$ to $140$ are part of the second RLAN band and have an EIRP power limit of $30$ dBm ($1000$ mW) for TPC and $27$ dBm ($500$ mW) for non-TPC devices or $20$ dBm ($100$ mW) for devices without any TPC or DFS support. The mean EIRP power level for a slave device with TPC must not exceed $24$ dBm at the the lowest TPC power level if the device is also capable of radar detection or $17$ dBm otherwise. 
 
 \subsection{BRAN ($5725$ to $5875$ MHz)}
 
-Comparable to the FCC U-NII-3 ($5725$ – $5825$ MHz) band with a higher upper frequency range, the ETSI has defined the channels $155$ to $171$ (155, 159, 163, 167, 172) for Broadband Wireless Access (BWA) use only. The idea is to give internet access to locations without any wired access network available. The maximum EIRP output power has been set to $36$ dBm ($4000$ mW) with the limitation of RF power into antenna of $304$ dBm ($1000$ mW).
+ETSI has defined the channels $155$ to $171$ (155, 159, 163, 167, 172) for Broadband Wireless Access (BWA) use only. The idea is to give internet access to locations without any wired access network available. The maximum EIRP output power has been set to $36$ dBm ($4000$ mW) with the limitation of RF power into antenna of $304$ dBm ($1000$ mW).
 
 
-\section{Spectrum Access Requirements}
+\section{Transmission Power Control (TPC)}
+
+Dynamic adjustment of the transmission power is intended to reduce RFI. Dynamically adjusting the transmission power facilitates the shared use of the $5250$-$5350$ MHz and $5470$-$5725$ MHz frequency bands with satellite services. TPC should cause an average reduction in the transmission power by at least $3$ dB compared with the maximum permitted transmission power. TPC determines the minimum transmission power necessary to maintain the connection with the partner (such as an access point).
+
+If TPC is not used within these frequency bands, then the highest permissible average EIRP and the corresponding maximum EIRP density are reduced by $3$ dB. This restriction does not apply to the frequency range of $5150$-$5350$ MHz. Without DFS and TPC, a maximum of only $30$ mW EIRP is permitted. When DFS and TPC are used, a maximum $1000$ mW EIRP is permitted as the transmission power (compared with $100$ mW with 802.11 b/g, $2.4$ GHz, DFS and TPC are not possible here). The higher maximum transmission power not only compensates for the higher attenuation of $5$ GHz radio waves in air, it also makes noticeably longer ranges possible than in the $2.4$ GHz range. 
+
+
+\section{Dynamic Frequency Selection (DFS)}
+
+DFS was stipulated to (i) detect interference from radar systems (radar detection) and to avoid co-channel operation with these systems; and (ii) to provide on aggregate a near-uniform loading of the spectrum (Uniform Spreading). DFS is stipulated for the frequency ranges of $5250$-$5350$ MHz and $5470$-$5725$ MHz. It is optional for the frequency range of $5150$-$5250$ MHz.
+
+DFS initially assumes that no channel is available in the corresponding frequency band. The WLAN device selects an arbitrary channel at the start and performs what is known as a Channel Availability Check (CAC). Before sending to a channel for $60$ seconds (Channel Observation Time, COT), a check is run to see if a different device is already working on this channel and the channel is therefore occupied. If this is the case, then a different channel is checked by the CAC. If not, then the WLAN device can perform the transmission operation. Even during operation, a check is run to see if a primary application such as a radar device is using this channel. This exploits the fact that radars frequently work according to the rotation method, whereby a tightly bundled directional transmission signal is transmitted by a rotating antenna. A remote receiver perceives the radar signal as a short pulse (radar peak). If a device receives such a radar peak, it pauses the transmission operation and monitors the channel for further pulses. If additional radar peaks occur during the COT, then a new channel is selected automatically. A check of this type is required to be carried out every $24$ hours. This is why interrupting the data transmission for $60$ seconds is unavoidable. 
+
+
+\section{Channel Access Mechanisms}
 \label{subsec:ETSI-overview}
 
-ETSI describes a number of spectrum access mechanisms to facilitate spectrum sharing for wireless access systems in $5$ GHz frequency band. This sections focuses on Dynamic Frequency Selection (DFS), Transmission Power Control (TPC), and Listen Before Talk (LBT)
-
-\subsection{Dynamic Frequency Selection (DFS)}
-
-DFS was stipulated to prioritize primary applications. DFS initially assumes that no channel is available in the corresponding frequency band. The WLAN device selects an arbitrary channel at the start and performs what is known as a Channel Availability Check (CAC). Before sending to a channel for 60 seconds (Channel Observation Time, COT), a check is run to see if a different device is already working on this channel and the channel is therefore occupied. If this is the case, then a different channel is checked by the CAC. If not, then the WLAN device can perform the transmission operation. Even during operation, a check is run to see if a primary application such as a radar device is using this channel. This exploits the fact that radars frequently work according to the rotation method, whereby a tightly bundled directional transmission signal is transmitted by a rotating antenna. A remote receiver perceives the radar signal as a short pulse (radar peak). If a device receives such a radar peak, it pauses the transmission operation and monitors the channel for further pulses. If additional radar peaks occur during the COT, then a new channel is selected automatically. A check of this type is required to be carried out every 24 hours. This is why interrupting the data transmission for 60 seconds is unavoidable. DFS is stipulated for the frequency ranges of 5250 - 5350 MHz and from 5470 - 5725
-MHz. It is optional for the frequency range of 5150 - 5250 MHz. 
-
-\subsection{Transmission Power Control (TPC)}
-Dynamic adjustment of the transmission power is intended to reduce radio interference. Dynamically adjusting the transmission power facilitates the shared use of the 5250-5350 MHz and 5470 - 5725 MHz frequency bands with satellite services. TPC should cause an average reduction in the transmission power by at least 3 dB compared with the maximum permitted transmission power. TPC determines the minimum transmission power necessary to maintain the connection with the partner (such as an access point). If TPC is not used within these frequency bands, then the highest permissible average EIRP and the corresponding maximum EIRP density are reduced by 3 dB. This restriction does not apply to the frequency range of 5150 - 5350 MHz. Without DFS and TPC, a maximum of only 30 mW EIRP is permitted. When DFS and TPC are used, a maximum 1000 mW EIRP is permitted as the transmission power (compared with 100 mW with 802.11 b/g, 2.4 GHz, DFS and TPC are not possible here). The higher maximum transmission
-power not only compensates for the higher attenuation of 5 GHz radio waves in air, it also makes noticeably longer ranges possible than in the 2.4 GHz range. 
-
-\subsection{Listen Before Talk (LBT)}
-
-LBT describes two machanisms that require an equipment or a device to apply CCA before using the channel to avoid collisions. The first mechanism is Frame Based Equipment (FBE) which defines a fixed (not directly demand-driven) timing frame for channel access. The second mechanism is Load Based Equipment (LBE) which defines demand-driven timing frame.
+In order to avoid channel collisions when two or more than two devices transmit the signal in the same channel at the same time, Listen Before Talk (BLT) strategy is employed. ETSI EN 301 893 V1.7.2 \cite{LBT-ETSI-2014} describes two mechanisms that require an equipment or a device to apply CCA before using the channel. The first mechanism is Frame Based Equipment (FBE) which defines a fixed (not directly demand-driven) timing frame for channel access. The second mechanism is Load Based Equipment (LBE) which defines demand-driven timing frame.
 
 \begin{figure}[!t]
 	\centering
@@ -125,7 +123,7 @@ LBT describes two machanisms that require an equipment or a device to apply CCA 
 \end{figure}
 
 
-\subsubsection{FBE-based Mechanism}
+\subsection{FBE-based Mechanism}
 \label{etsi-lbt:fbe}
 
 FBE shall comply with the following requirements:
@@ -189,7 +187,7 @@ A simplified flowchart and an illustrative of FBE are given in Figs. \ref{figs:F
 \end{figure}
 
 
-subsubsection{LBE-based Mechanism}
+\subsection{LBE-based Mechanism}
 \label{etsi-lbt:lbe}
 
 LBE shall comply with the following requirements:
