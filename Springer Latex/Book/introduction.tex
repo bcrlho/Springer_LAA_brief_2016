@@ -9,10 +9,7 @@
 \chapter{Introduction}
 \label{intro} 
 
-\abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.}
-
-%\newline\indent
-%Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+\abstract{The increasing penetration of mobile-connected devices and the emergence of numerous data-hungry mobile applications have been creating a wide range of business opportunities for mobile network operators and service providers. Meanwhile, they are placing a greater pressure on the capacity that the Radio Access Networks (RANs) have to provide. This chapter starts with technical challenges that urge for developments of cost-effective solutions to improve the capacity of RANs. The technology which utilizes the unlicensed frequency bands in Long-Term Evolution (LTE), namely U-LTE, is singled out as the most promising solution. Benefits and obstacles of this technology are then presented. Next, three typical forms of U-LTE including LTE-U, LAA-LTE, and MuLTEfire are explained. Concerns on the interactions between U-LTE and Wi-Fi in radio channel access and their coexistence are discussed in details. Finally, key requirements for the coexistence of U-LTE and Wi-Fi are summarized.}  
 
 
 \section{Motivations and Concepts of U-LTE}
@@ -110,5 +107,23 @@ In fact, U-LTE is still a nascent LTE technology with many technical details to 
 Even though the unlicensed bands may be used by anyone, there is a series of government guidelines and regulations to be followed. Those guidelines and regulations aim to ensure that different radio systems that operate in the same frequency bands are good neighbors of each other.
 
 In particular, for coexistence with Wi-Fi, at least U-LTE must satisfy local regulations such as the maximum transmission power in specific bands and the avoidance of bands dedicated to protected services. Furthermore, an U-LTE system should not cause any higher interference to a neighboring Wi-Fi system than a typical Wi-Fi system operating on the same channel. In other words, the impact of a U-LTE device to Wi-Fi devices (in terms of collision rate and probability of successful channel access) should be similar to that caused by a typical Wi-Fi device. These requirements ask for inclusions of a number of new features in LTE. For example, U-LTE should select a carrier which is least occupied in the area and it should dynamically change operating frequency to avoid conflict with protected systems, such as radar. It should also apply LBT or Clear Channel Assessment (CCA) techniques to check that a channel is free before making a transmission. Exactly how these decisions are made will be key aspects of U-LTE system designs.
+
+
+\section{Structure of This Brief}
+
+This Springer Brief is divided into seven chapters. This chapter has just provided an introduction to the emerging U-LTE technology with its motivations, concepts, benefits, and challenges. The technical concern on the coexistence of this new LTE technology and the existing Wi-Fi technology in the $5$ GHz unlicensed frequency band has also been addressed. The remainder of this brief is organized as follows: 
+
+For background knowledge, chapter 2 provides an overview on radio spectrum and related management/allocation concerns in the $5$ GHz unlicensed frequency band. It also summarizes a number of key requirements and regulations specified by the European Telecommunications Standards Institute (ETSI) and the Federal Communications Commission (FCC) on radio channels, operating channel selection, transmission power, and channel access rules. These technical details are the baselines to be followed when designing medium access control protocols for U-LTE and any other technologies.
+
+Next, chapter 3 presents a high-level overview of LTE-Advanced (LTE-A) networks and associated technologies to form a basis for discussion of the co-existence issues that exist for unlicensed LTE and Wi-Fi. Understanding the underlying architecture and protocols employed in LTE-A will provide readers a comparative framework to grasp how, and at what levels, LTE and Wi-Fi networks may interact and interfere with each other, and form a greater understanding of the challenges to be address in designing coexistence mechanisms.
+
+Chapter 4 then focuses on the Wi-Fi technology and starts with an overview of IEEE 802.11/Wi-Fi evolutions. Existing generations as well as the next generation of IEEE 802.11/Wi-Fi are presented. The majority of the chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how the CSMA/CA sense and occupy the radio medium when the LTE network is operating in vicinity are highlighted.
+
+Chapter 5 presents a big picture of research activities related to the coexistence of U-LTE and Wi-Fi technologies. The following questions are addressed in the chapter. First, what issues arise from simultaneous operation of LTE and Wi-Fi in the same spectrum bands. Second, which technology is affected the most. Third, which factors determine the impacts of U-LTE to Wi-Fi. Finally, the chapter identifies the strengths and weaknesses of existing solutions and suggests potential strategies to improve performance of these two technologies.
+
+In chapter 6, a network-aware adaptive Listen-Before-Talk mechanism (NALT) proposed for U-LTE is presented. The NALT passively monitors both channel conditions and usage activity to maximize transmission opportunities while respecting fair sharing of the channel, in a way that is transparent to incumbent Wi-Fi devices. Simulation results are presented demonstrating the effectiveness of NALT in providing proportional fair sharing among LAA-LTE and Wi-Fi devices.
+
+Finally, chapter 7 ends this Springer Brief by addressing a number of research issues and associated potential research directions. Potential solutions to those issues are also identified. Most of them suggest the cooperation of LTE and Wi-Fi so that they could have a better understanding of each other when operating in the same area using the same radio frequency band. This understanding is used to have more vigilant actions that help to avoid aggressive channel access that could corrupt on-going transmissions and to design relevant protocols for a fair spectrum sharing.
+
 
 \input{referenc-intro}
