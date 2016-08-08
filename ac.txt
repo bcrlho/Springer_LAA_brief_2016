@@ -1,33 +1,38 @@
 ﻿3G,4G,5G Third, Fourth, Fifth Generation cellular networks
-3GPP 3rd Generation Partnership Project
+3GPP 3rd Generation Partnership Project, cellular network standard organization
 
-AC Access Category, 
+AC Access Category, used to distinguish priority classes in IEEE 802.11e 
 ACK Acknowledgment, a postive response of reception 
 AP Access Point, Wi-Fi station which acts as base station in infrastructure mode
 BI Backoff Interval, period of deferment used in IEEE 802.11 Wi-Fi 
 
+CA Carrier aggregation
 CAP Controlled Access Phase
 CCA Clear Channel Assessment
 CFP Contention-free Period, in which polling is completed under the PCF
+CITEL Inter-American Telecommunication Commission
 CoMP Coordinated Multi-Point 
 CoT Channel Occupancy Time
 CP Contention Period, in which STAs contend with each other under the PCF
-CSAT Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism
+CSAT Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism based on a duty cycle
 CSMA/CA Carrier-sense Multiple Access with Collision Avoidance, medium access protocol used in IEEE 802.11 Wi-Fi
 CTS Clear to Send
 CW Contention Window, range of possible backoff values a Wi-Fi station will select from
 
+D2D Device-to-Device communication of user data
 DCF Distributed Coordination Function, a random access based MAC protocol used in IEEE 802.11 Wi-Fi
 DCS Dynamic Channel Selection
+DFS Dynamic Frequency Selection
 DIFS DCF Inter-frame Space, in IEEE 802.11 Wi-Fi
-DL Downlink, transmission from base station to user equipment
-
+DL Downlink, base station to user equipment communication
+DSSS Direct Sequence Spread Spectrum
 
 ECCA Extended Clear Channel Assessment 
-EDCA Enhanced Distributed Channel Access, 
-EDCF Enhanced Distributed Coordination Function,  a random access based MAC protocol used in IEEE 802.11e Wi-Fi
+EDCA Enhanced Distributed Channel Access, the LBT mechanism used in IEEE 802.11e
+EDCF Enhanced Distributed Coordination Function,  a random access based MAC protocol used in IEEE 802.11e
 EDGE Enhanced Data rates for GSM Evolution
 ED Energy Detect
+EIFS Extended Inter-frame Space, in IEEE 802.11 Wi-Fi
 EIRP Equivalent Isotropically Radiated Power
 eNB evolved Node B 
 EPC Evolved Packet Core
@@ -37,14 +42,16 @@ E-UTRAN Evolved Universal Terrestrial Radio Access Network
 
 FBE Frame-based Equipment
 FCC Federal Communications Commission
-FDD Frequency Division Duplex
+FDD Frequency Division Duplexing
+FHSS Frequency Hopping Spread Spectrum
 
 GC Global Controller
 GSM Global System for Mobile communication
 
+
 HARQ Hybrid Automatic Repeat Request 
 HCCA HCF Controlled Channel Access
-HCF Hybrid Coordination Function, a polling based MAC protocol used in IEEE 802.11e Wi-Fi
+HCF Hybrid Coordination Function, a polling based MAC protocol used in IEEE 802.11e
 HetNet Heterogeneous Network, a wireless network made up of different types of access nodes 
 HSPA High Speed Packet Access
 
@@ -52,6 +59,7 @@ IEEE Institute of Electrical and Electronics Engineers
 IFS Inter-frame Space
 IoT Internet of Things
 IP Internet Protocol
+ISM Industrial, Scientific and Medical radio bands
 ITU Internation Telecommunications Union
 
 LAA/LAA-LTE Licensed-Assisted Access LTE using LBT
@@ -61,10 +69,12 @@ LTE Long Term Evolution, 3GPP Releases 8 and 9
 LTE-A LTE Advanced, 3GPP Releases 10 to 13, possibly more
 LTE-U LTE in Unlicensed bands using a duty-cycled coexistence mechanism 
 
+M2M Machine-to-Machine communication of MTC data
 MAC Medium Access Control, sublayer of the Data Link Layer
+MAN Metropolitan Area Network
 MIMO Multiple Input Multiple Output 
 MME Mobility Management Entity
-MTC Machine Type Communications 
+MTC Machine-Type Communications 
 
 NALT Network-aware Adative Listen-Before-Talk, a proposed LAA-LTE/Wi-Fi co-existence mechanism
 NAV Network Allocation Vector
@@ -73,6 +83,7 @@ OFDM Orthogonal Frequency Division Multiplexing
 OFDMA Orthogonal Frequency Division Multiple Access
 
 PCF Point Coordination Function, a polling based MAC protocol used in IEEE 802.11 Wi-Fi
+PCDP Packet Data Convergence Protocol, sublater of the Data Link Layer in LTE
 PDN Packet Data Network
 P-GW PDN Gateway
 PHY Physical Layer
@@ -84,10 +95,16 @@ QoS Quality of Service
 RAN Radio Access Network
 RAT Radio Access Technology
 RC Regional Controller
+RF Radio Frequency
+RFI Radio Frequency Interference
+RLAN Radio Local Area Network, WLAN
+RLC Radio Link Control, sublayer of the Data Link Layer in LTE
+RRC Radio Resource Control, sublayer of the Network Layer in LTE
 RSSI Received Signal Strength Indicator 
 RTS Request to Send
 Rx Receiver
 
+SAE System Architecture Evolution
 SC-FDMA Single-Carrier Frequency Division Multiple Access 
 SDL Supplemental Downlink
 SDN Software Defined Networking
@@ -97,14 +114,15 @@ ST Slot Time
 STA Station, a member of wireless network 
 
 TC Traffic Classes
-TDD Time Division Duplex
-TDM Time Division Multiplex
+TDD Time Division Duplexing
+TDM Time Division Multiplexing
+TPC Transmit Power Control
 TS Traffic Streams
-Tx Transmitter or Transmission
+Tx Transmitter
 TXOP Transmission Opportunity
 
 UE User Equipment
-UL Uplink
+UL Uplink, user equipment to base station communication
 U-LTE LTE in Unlicensed bands, catchall phrase to cover all methods of using LTE in unlicensed frequency bands
 UMTS Univesral Mobile Telecommunications System
 
