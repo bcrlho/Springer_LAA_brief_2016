@@ -8,13 +8,13 @@
 %   awk '/^$/ {next}{printf "\item[%s]{%s}\n",substr($1, index($0,$0)), substr($0, index($0,$2))}' < [inputfile] > [outputfile]
 \extrachap{Acronyms}
 %TODO: Compile/edit list of Acronyms, have text file and awk function which can parse and add latex 
-\begin{description}[CAGR,labelwidth=\widthof{\bfseries L}]
+\begin{description}[CAGR,labelwidth=1cm]
 \item[﻿3G,4G,5G]{Third, Fourth, Fifth Generation cellular networks}
 \item[3GPP]{3rd Generation Partnership Project, cellular network standard organization}
 \item[AC]{Access Category, used to distinguish priority classes in IEEE 802.11e }
-\item[ACK]{Acknowledgment, a postive response of reception }
+\item[ACK]{Acknowledgment, a positive response of reception }
 \item[AP]{Access Point, Wi-Fi station which acts as base station in infrastructure mode}
-\item[BI]{Backoff Interval, period of deferment used in IEEE 802.11 Wi-Fi }
+\item[BI]{Backoff Interval, period of deferment used in IEEE 802.11/Wi-Fi }
 \item[CA]{Carrier aggregation}
 \item[CAP]{Controlled Access Phase}
 \item[CCA]{Clear Channel Assessment}
@@ -24,7 +24,7 @@
 \item[CoT]{Channel Occupancy Time}
 \item[CP]{Contention Period, in which STAs contend with each other under the PCF}
 \item[CSAT]{Carrier-sense Adaptive Transmission, a proposed LAA-LTE/Wi-Fi co-existence mechanism based on a duty cycle}
-\item[CSMA/CA]{Carrier-sense Multiple Access with Collision Avoidance, medium access protocol used in IEEE 802.11 Wi-Fi}
+\item[CSMA/CA]{Carrier-sense Multiple Access with Collision Avoidance, medium access protocol used in IEEE 802.11/Wi-Fi}
 \item[CTS]{Clear to Send}
 \item[CW]{Contention Window, range of possible backoff values a Wi-Fi station will select from}
 \item[D2D]{Device-to-Device communication of user data}
@@ -62,12 +62,12 @@
 \item[IoT]{Internet of Things}
 \item[IP]{Internet Protocol}
 \item[ISM]{Industrial, Scientific and Medical radio bands}
-\item[ITU]{Internation Telecommunications Union}
+\item[ITU]{International Telecommunications Union}
 \item[LAA/LAA-LTE]{Licensed-Assisted Access LTE using LBT}
 \item[LBE]{Load-based Equipment}
 \item[LBT]{Listen-Before-Talk Medium Access Strategy}
 \item[LTE]{Long Term Evolution, 3GPP Releases 8 and 9}
-\item[LTE-A]{LTE-A LTE Advanced, 3GPP Releases 10 to 13, possibly more}
+\item[LTE-A]{LTE-A LTE Advanced, 3GPP Releases 10 to current}
 \item[LTE-U]{LTE-U LTE in Unlicensed bands using a duty-cycled coexistence mechanism }
 \item[M2M]{Machine-to-Machine communication of MTC data}
 \item[MAC]{Medium Access Control, sublayer of the Data Link Layer}
@@ -75,12 +75,12 @@
 \item[MIMO]{Multiple Input Multiple Output }
 \item[MME]{Mobility Management Entity}
 \item[MTC]{Machine-Type Communications }
-\item[NALT]{Network-aware Adative Listen-Before-Talk, a proposed LAA-LTE/Wi-Fi co-existence mechanism}
+\item[NALT]{Network-aware Adaptive Listen-Before-Talk, a proposed LAA-LTE/Wi-Fi co-existence mechanism}
 \item[NAV]{Network Allocation Vector}
 \item[OFDM]{Orthogonal Frequency Division Multiplexing }
 \item[OFDMA]{Orthogonal Frequency Division Multiple Access}
 \item[PCF]{Point Coordination Function, a polling based MAC protocol used in IEEE 802.11 Wi-Fi}
-\item[PCDP]{Packet Data Convergence Protocol, sublater of the Data Link Layer in LTE}
+\item[PCDP]{Packet Data Convergence Protocol, sublayer of the Data Link Layer in LTE}
 \item[PDN]{Packet Data Network}
 \item[P-GW]{PDN Gateway}
 \item[PHY]{Physical Layer}
@@ -116,7 +116,7 @@
 \item[UE]{User Equipment}
 \item[UL]{Uplink, user equipment to base station communication}
 \item[U-LTE]{LTE LTE in Unlicensed bands, catchall phrase to cover all methods of using LTE in unlicensed frequency bands}
-\item[UMTS]{Univesral Mobile Telecommunications System}
+\item[UMTS]{Universal Mobile Telecommunications System}
 \item[VoIP]{Voice over IP}
 \item[VoLTE]{Voice over LTE}
 \item[WLAN]{Wireless Local Area Network}
