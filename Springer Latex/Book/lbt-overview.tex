@@ -10,12 +10,13 @@
 \label{sec:LBT-overview} 
 
 %TODO: Abstract
-\abstract{License and fee are not required for operators to use the $5$ GHz unlicensed spectrum. However, in order to avoid interference and to ensure a fair use of this resource, numerous requirements and regulations are imposed on this band by national and international organizations. The emerging U-LTE technology, therefore, needs to follow them as any other existing technologies, esp., IEEE 802.11/Wi-Fi, when deployed in this band. This chapter provides an overview on radio spectrum and related management/allocation concerns. It then summarizes a number of key requirements and regulations specified by the European Telecommunications Standards Institute (ETSI) and the Federal Communications Commission (FCC) on radio channels, operating channel selection, transmission power, and channel access rules. These technical details are the baselines to be followed when designing medium access control protocols for U-LTE and any other technologies operating in the $5$ GHz unlicensed radio band.}
+\abstract*{License and fee are not required for operators to use the $5$ GHz unlicensed spectrum. However, in order to avoid interference and to ensure a fair use of this resource, numerous requirements and regulations are imposed on this band by national and international organizations. The emerging U-LTE technology, therefore, needs to follow them as any other existing technologies, esp., IEEE 802.11/Wi-Fi, when deployed in this band. This chapter provides an overview on radio spectrum and related management/allocation concerns. It then summarizes a number of key requirements and regulations specified by the European Telecommunications Standards Institute (ETSI) and the Federal Communications Commission (FCC) on radio channels, operating channel selection, transmission power, and channel access rules. These technical details are the baselines to be followed when designing medium access control protocols for U-LTE and any other technologies operating in the $5$ GHz unlicensed radio band.}
 
+License and fee are not required for operators to use the $5$ GHz unlicensed spectrum. However, in order to avoid interference and to ensure a fair use of this resource, numerous requirements and regulations are imposed on this band by national and international organizations. The emerging U-LTE technology, therefore, needs to follow them as any other existing technologies, esp., IEEE 802.11/Wi-Fi, when deployed in this band. This chapter provides an overview on radio spectrum and related management/allocation concerns. It then summarizes a number of key requirements and regulations specified by the European Telecommunications Standards Institute (ETSI) and the Federal Communications Commission (FCC) on radio channels, operating channel selection, transmission power, and channel access rules. These technical details are the baselines to be followed when designing medium access control protocols for U-LTE and any other technologies operating in the $5$ GHz unlicensed radio band.
 
 \section{An Overview on Radio Spectrum Management}
 
-The Radio Frequency (RF) spectrum is the part of the electromagnetic spectrum from $3$ Hz to $3000$ GHz ($3$ THz). Radio waves in this frequency range are widely used in modern technologies, especially in telecommunications. The radio spectrum is divided into different chunks or bands, each of which can be used by one or multiple technologies. Radio Frequency Interference (RFI) is the conduction or radiation of radio frequency energy that causes an electronic or electrical device to produce unwanted noise that typically interferes with functions of adjacent devices. In radio communications, RFI can disrupt and disturb the normal functioning of devices, and thus it is always important to avoid or keep the RFI within acceptable levels. For this, the generation and transmission of radio waves is strictly regulated by national laws, coordinated by international organizations, e.g., Federal Communications Commission (FCC), Inter-American Telecommunication Commission (CITEL), International Telecommunication Union (ITU), European Telecommunications Standards Institute (ETSI), etc. 
+The Radio Frequency (RF) spectrum is the part of the electromagnetic spectrum from $3$ Hz to $3000$ GHz ($3$ THz). Radio waves in this frequency range are widely used in modern technologies, especially in telecommunications. The radio spectrum is divided into different chunks or bands, each of which can be used by one or multiple technologies. Radio Frequency Interference (RFI) can disrupt and disturb the normal functioning of devices, and thus it is always important to avoid or keep the RFI within acceptable levels. For this, the generation and transmission of radio waves is strictly regulated by national laws, coordinated by international organizations, e.g., Federal Communications Commission (FCC), Inter-American Telecommunication Commission (CITEL), International Telecommunication Union (ITU), European Telecommunications Standards Institute (ETSI), etc. 
 
 Most countries consider RF spectrum as a national resource. The process of regulating the use of this resource is spectrum management or allocation. Spectrum allocation varies by country and/or regulatory domain. In United States, for example, FCC regulates inter-state communications by radio, television, wire, satellite, and cable in all states and territories. From management perspectives, radio bands are categorized into \textit{licensed} and \textit{unlicensed}. Licensing is a way of ensuring that wireless operators do not interfere with each others by giving each of them an exclusive use of one or multiple bands in given geographical areas over a set period of time. Licensed bands are mainly sold/assigned to operators through spectrum auction precess. They are mostly used by television broadcasting, commercial radio and cellular voice and data. Operating in licensed bands, operators can avoid RFI and thus guarantee quality of services they deliver to their subscribers. However, licensing would be very impractical for certain use cases, like communications between cordless handsets and base units. Instead, such a kind of wireless technology transmits its radio signals in unlicensed frequency bands - usually the Industrial, Scientific and Medical (ISM) band defined by the ITU radio regulations and allocated in most countries for free use by anyone without any license and fee. Unlicensed bands enable numerous technologies and products, e.g., Wi-Fi, Bluetooth, and many other low-power short-range communications technologies. They are open sandboxes where users can operate without the high barriers to entry. The availability of unlicensed bands provides a platform for innovation, a greenfield space for technology start-ups and entrepreneurs, as well as established companies. Internet of Things (IoT) - the development and deployment of networking technologies that provide connectivity for everyday objects for many innovative applications - is essentially enabled by unlicensed spectrum.
 
@@ -31,14 +32,18 @@ The two most widely-used unlicensed bands are $2.4$ GHz and $5$ GHz. These two b
 \textit{Higher performance:} The $5$ GHz band operates on a larger spectrum and does not suffer the over-crowding. Therefore, compared to the $2.4$ GHz band, each channel in the $2.4$ GHz band allows for much better spectrum efficiency and therefore higher data rates.
 \end{itemize}
 
-As just mentioned, any technology operating in unlicensed bands needs to comply with unlicensed band rules and regulations in order to limit the RFI and to ensure that it does not unfairly grab a larger portion of the shared spectrum.  Coexistence is one of the most notable concerns when U-LTE technology in introduced in the $5$ GHz unlicensed band considering the fact that a sheer number of Wi-Fi devices/networks has been deployed in the same band for everyday applications in homes, offices, and buildings. Since the number of wireless devices using the $5$GHz band has grown rapidly over the last few years, ETSI has updated its related regulations. For background knowledge necessary for developments of radio channel access protocols for U-LTE and Wi-Fi technologies in this band, the following sections summarize a number of key requirements/mechanisms presented in ETSI EN 301 893. Specifically, frequency channels, transmission power, and channel access mechanisms are focused.
+As just mentioned, any technology operating in unlicensed bands needs to comply with unlicensed band rules and regulations in order to limit the RFI and to ensure that it does not unfairly grab a larger portion of the shared spectrum.  Coexistence is one of the most notable concerns when U-LTE technology in introduced in the $5$ GHz unlicensed band considering the fact that a sheer number of Wi-Fi devices/networks has been deployed in the same band for everyday applications in homes, offices, and buildings. Since the number of wireless devices using the $5$ GHz band has grown rapidly over the last few years, ETSI has updated its related regulations. For background knowledge necessary for developments of radio channel access protocols for U-LTE and Wi-Fi technologies in this band, the following sections summarize a number of key requirements/mechanisms presented in ETSI EN 301 893. Specifically, frequency channels, transmission power, and channel access mechanisms are focused.
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/2-5GHz-spectrum.pdf}
+\begin{figure}[!ht] 	
+	\subfloat[2.4 GHz band]{\includegraphics[width=\textwidth]{figs/2-4GHz}%
+		\label{figs:2GHz-spectrum}}
+	\\
+	\subfloat[5GHz band]{\includegraphics[width=\textwidth]{figs/5GHz}%
+		\label{5GHz-spectrum}}
 	\caption{$2.4$ GHz and $5$ GHz Unlicensed Spectrums.}
-	\label{figs:2-5GHz-spectrum}
+		\label{figs:2-5GHz-spectrum}
 \end{figure}
+
 
 
 \section{Frequency Channels}
@@ -59,11 +64,11 @@ RLAN band 3, also known as Broadband Radio Access Networks (BRAN): $5725$ – $5
 \end{itemize}
 \end{itemize}
 
-Fig. \ref{figs:2-5GHz-spectrum}(b) summarizes radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations). Technical details and the availability of each channel in four main regions (U.S., Europ, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
+Fig. \ref{5GHz-spectrum} summarizes radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations). Technical details and the availability of each channel in four main regions (U.S., Europ, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.85\columnwidth]{figures2/5GHz-spectrum-table.pdf}
+	\includegraphics[width=0.85\columnwidth]{figs/5GHz-spectrum-table.pdf}
 	\caption{Details of $5$ GHz Unlicensed Channels in Different Regions.}
 	\label{figs:5GHz-spectrum-table}
 \end{figure}
@@ -92,7 +97,7 @@ ETSI has defined the channels $155$ to $171$ (155, 159, 163, 167, 172) for Broad
 
 \section{Transmission Power Control (TPC)}
 
-Dynamic adjustment of the transmission power is intended to reduce RFI. Dynamically adjusting the transmission power facilitates the shared use of the $5250$-$5350$ MHz and $5470$-$5725$ MHz frequency bands with satellite services. TPC should cause an average reduction in the transmission power by at least $3$ dB compared with the maximum permitted transmission power. TPC determines the minimum transmission power necessary to maintain the connection with the partner (such as an access point).
+Dynamic adjustment of the transmission power is intended to reduce RFI. Dynamically adjusting the transmission power facilitates the shared use of the $5250$-$5350$ MHz and $5470$-$5725$ MHz frequency bands with satellite services. TPC determines the minimum transmission power necessary to maintain the connection with the partner (such as an access point).
 
 If TPC is not used within these frequency bands, then the highest permissible average EIRP and the corresponding maximum EIRP density are reduced by $3$ dB. This restriction does not apply to the frequency range of $5150$-$5350$ MHz. Without DFS and TPC, a maximum of only $30$ mW EIRP is permitted. When DFS and TPC are used, a maximum $1000$ mW EIRP is permitted as the transmission power (compared with $100$ mW with 802.11 b/g, $2.4$ GHz, DFS and TPC are not possible here). The higher maximum transmission power not only compensates for the higher attenuation of $5$ GHz radio waves in air, it also makes noticeably longer ranges possible than in the $2.4$ GHz range. 
 
@@ -111,14 +116,14 @@ In order to avoid channel collisions when two or more than two devices transmit 
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures2/FBE-flowchart}
+	\includegraphics[width=0.9\columnwidth]{figs/FBE-flowchart}
 	\caption{Simplified flowchart of FBE.}
 	\label{figs:FBE-flowchart}
 \end{figure}
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures2/FBE-example}
+	\includegraphics[width=0.9\columnwidth]{figs/FBE-example}
 	\caption{An illustrative example of FBE.}
 	\label{figs:FBE-example}
 \end{figure}
@@ -175,14 +180,14 @@ A simplified flowchart and an illustrative of FBE are given in Figs. \ref{figs:F
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures2/LBE-flowchart}
+	\includegraphics[width=0.9\columnwidth]{figs/LBE-flowchart}
 	\caption{Simplified flowchart of LBE.}
 	\label{figs:LBE-flowchart}
 \end{figure}
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures2/LBE-example}
+	\includegraphics[width=0.9\columnwidth]{figs/LBE-example}
 	\caption{An illustrative example of LBE.}
 	\label{figs:LBE-example}
 \end{figure}

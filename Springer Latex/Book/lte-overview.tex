@@ -26,7 +26,7 @@ The enhancements to the Long Term Evolution/System Architecture Evolution (LTE/S
 The requirements to provide high data rates while supporting high-speed mobility requires the ability to set up and tear down user connections and manage inter-cell handoffs with as little latency as possible.  In previous generations of cellular networks, a hierarchical structure consisting of base stations or NodeBs connected to a central controller had been used.  This star or cluster architecture requires additional hops in both data transmissions and hand off negotiation which can introduce significant delay.  Controllers were responsible for managing all data and control traffic as well as handoffs betweens several pairs of base stations.  For many increasingly ubiquitous end-user applications, such as online gaming and voice/video over the internet, the additional latency in connection set up and handover can impair the user-perceived quality of experience.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.58\textwidth]{figures3/lteAnet}
+	\includegraphics[width=0.58\textwidth]{figs/lteAnet}
 	\caption{Basic structure of LTE cellular networks.}
 	\label{figs:LTE-A-Network}
 \end{figure}
@@ -34,7 +34,7 @@ The requirements to provide high data rates while supporting high-speed mobility
 The flat architecture adopted by LTE networks is depicted in Fig. \ref{figs:LTE-A-Network}.  The migration of local functions to eNBs and global functions to the EPC were driven by the requirements of reduced latency and higher data rates. The functions of radio network and medium access control, handoff requests, negotiations, and management, as well as some other truly local functions, are migrated to the eNBs \cite{tr36300}. The eNBs interconnected via the low-latency X2 interface connections between eNBs in a mesh configuration to allow for fast user handover, including forwarding of queued data for seamless user experience.  Additionally, with direct connections between neighboring cells, this architecture facilitates more effective multi-point transmission, coordination, and inter-cell interference and load management, independent of conditions in other areas of the network. The global functions and connections to external networks are handled at the evolved packet core (EPC). The functional split between the various components of the network, as well as the implementation of the necessary layers of the network protocol stack, is shown in further detail in Fig. \ref{figs:funcSplit}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{figures3/LTE-decomp}
+	\includegraphics[width=\textwidth]{figs/LTE-decomp}
 	\caption{Functional split between various entities in LTE under the system architecture evolution.}
 	\label{figs:funcSplit}
 \end{figure}
@@ -72,7 +72,7 @@ Like other cellular access technologies, LTE-A has been designed for use on dedi
 
 The basic structure of the protocol stack used in LTE networks to facilitate channel access is shown in Fig. \ref{figs:stack} \cite{tr36201}.
 \begin{figure}[!ht]	
-	\includegraphics[width=\textwidth]{figures3/LTEradio-interface}
+	\includegraphics[width=\textwidth]{figs/LTEradio-interface}
 	\caption{E-UTRA radio interface protocol architecture.}
 	\label{figs:stack}
 \end{figure}
@@ -82,10 +82,10 @@ UL and DL transmissions are divided amongst several physical channels, according
 \label{lte-phy}
 The LTE PHY layer is designed to be both highly adaptable as well spectrally and power efficient.  In the DL, OFDMA is used to schedule many signals in the same transmission time interval and achieve a high spectral efficiency; however, the very high peak to average power ratio makes this multiple access strategy unattractive in the UL for battery-dependent devices \cite{tr36201}\cite{tr36211}.  SC-FDMA is used in the UL to maintain a satisfactory spectral efficiency while significantly improving power efficiency and battery life. Example carrier allocations for both DL and UL are shown in Fig. \ref{lte:of-sc-fdma}.
 \begin{figure}[!ht] 	
-	\subfloat[OFDMA used in downlink.]{\includegraphics[width=\textwidth]{figures3/ofdma}%
+	\subfloat[OFDMA used in downlink.]{\includegraphics[width=\textwidth]{figs/ofdma}%
 		\label{ofdma}}
 	\\
-	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=\textwidth]{figures3/sc-fdma}%
+	\subfloat[SC-FDMA used in uplink.]{\includegraphics[width=\textwidth]{figs/sc-fdma}%
 		\label{sc-fdma}}
 	\caption{Multiple access strategies used in LTE for uplink and downlink.}
 	\label{lte:of-sc-fdma}
@@ -95,7 +95,7 @@ Each color and shade represents the carriers allocated to a specific user.  The 
 All transmissions are organized into frames comprised of twenty slots, every two of which comprise a subframe \cite{tr36211}. An example of one configuration for the LTE frame structure is shown in Fig. \ref{lte:frame}.
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures3/LTE-frame}
+	\includegraphics[width=0.8\textwidth]{figs/LTE-frame}
 	\caption{LTE frame and resource block structure.}
 	\label{lte:frame}
 \end{figure}
@@ -110,7 +110,7 @@ Beyond the features discussed in detail, the LTE-A PHY layer provides forward er
 Medium access in LTE is tightly controlled and scheduled in both UL and DL, with the eNB controlling the time and frequency resource block assignment for all but random access channels (used for UE connection requests and some other procedures) \cite{tr36321}.  Distinct MAC sublayers for the eNB and the UE are defined, with each optimized to their specific functions and resources.  Additionally, several MAC configurations are defined for UE depending on the specific functions implemented, such as dual connectivity to support coordinated multipoint (CoMP) transmission and sidelink channels for UE device-to-device communication. The basic structure of the MAC sublayer, without CoMP or sidelink configured, is shown in Fig. \ref{figs:lte-mac}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{figures3/LTE-MAC}	
+	\includegraphics[width=\textwidth]{figs/LTE-MAC}	
 	\caption{LTE MAC sublayer structure and channel mapping.}
 	\label{figs:lte-mac}
 \end{figure}

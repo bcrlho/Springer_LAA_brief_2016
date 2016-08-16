@@ -9,26 +9,27 @@
 \chapter{An Overview on IEEE 802.11/Wi-Fi Medium Access Control}
 \label{overview-wifi}
 
-%TODO: Abstract
-\abstract{In order to understand and analyze the interactions between U-LTE and Wi-Fi in the $5$ GHz frequency band, knowledge on the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is highly desired. This chapter focuses on the Wi-Fi technology and starts with an overview of IEEE 802.11/Wi-Fi evolutions. Five existing generations as well as the next generation of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how the CSMA/CA sense and occupy the radio medium when the LTE network is operating in vicinity are highlighted.}
+\abstract*{In order to understand and analyze the interactions between U-LTE and Wi-Fi in the $5$ GHz frequency band, knowledge on the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is highly desired. This chapter focuses on the Wi-Fi technology and starts with an overview of IEEE 802.11/Wi-Fi evolutions. Five existing generations as well as the next generation of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how the CSMA/CA sense and occupy the radio medium when the LTE network is operating in vicinity are highlighted.}
+
+In order to understand and analyze the interactions between U-LTE and Wi-Fi in the $5$ GHz frequency band, knowledge on the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is highly desired. This chapter focuses on the Wi-Fi technology and starts with an overview of IEEE 802.11/Wi-Fi evolutions. Five existing generations as well as the next generation of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how the CSMA/CA sense and occupy the radio medium when the LTE network is operating in vicinity are highlighted.
 
 \section{IEEE 802.11/Wi-Fi Evolution}
 \label{wifi-lbt}
 
-The IEEE 802.11 is a branch of 802 family of standards created and maintained by the Institute of Electrical and Electronics Engineers (IEEE) Local Area Network (LAN)/Metropolitan Area Network (MAN) Standards Committee (IEEE 802). It defines a set of specifications of physical (PHY) and MAC layers of Wireless Local Area Networks (WLANs) operating in a number of unlicensed radio frequency bands including sub-Ghz, $2.4$, $5$, and $60$ GHz. Commercial products using IEEE 802.11 standards are branded as Wi-Fi. Wi-Fi Alliance is an organization made up of leading wireless equipment and software providers with the missions of certifying all 802.11-based products for interoperability and promoting the term Wi-Fi as the global brand name. According to statistics made by Wi-Fi Alliance in January 2016, about $12$ billions of Wi-Fi units have been shipped and deployed in homes, offices, buil\textit{}dings, factories, and so on. As a result, Wi-Fi has become one of the most prolific technologies around the world. 
+The IEEE 802.11 is a branch of 802 family of standards created and maintained by the Institute of Electrical and Electronics Engineers (IEEE) Local Area Network (LAN)/Metropolitan Area Network (MAN) Standards Committee (IEEE 802). It defines a set of specifications of physical (PHY) and MAC layers of Wireless Local Area Networks (WLANs) operating in a number of unlicensed radio frequency bands including sub-Ghz, $2.4$, $5$, and $60$ GHz. Commercial products using IEEE 802.11 standards are branded as Wi-Fi. Wi-Fi Alliance is an organization made up of leading wireless equipment and software providers with the missions of certifying all 802.11-based products for interoperability and promoting the term Wi-Fi as the global brand name. According to statistics made by Wi-Fi Alliance in January 2016, about $12$ billions of Wi-Fi units have been shipped and deployed in homes, offices, buildings, factories, and so on. As a result, Wi-Fi has become one of the most prolific technologies around the world. 
 
 The first IEEE 802.11 standard was introduced in 1997. Since then, this technology has evolved with different generations to meet the increasing demand in system throughput and to support a wider range of features/applications. The most commonly deployed standards are 802.11a, 802.11b, 802.11g, 802.11n and 802.11ac. Today, most businesses are using 802.11n and are looking to adopt 802.11ac as it is the fastest and latest available. Fig. \ref{figs:Wi-Fi-evolution} sketches the evolution of IEEE 802.11/Wi-Fi technology.
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/Wi-Fi-evolution.pdf}
+	\includegraphics[width=1.0\columnwidth]{figs/Wi-Fi-evolution.pdf}
 	\caption{IEEE 802.11/Wi-Fi Standard Evolution.}
 	\label{figs:Wi-Fi-evolution}
 \end{figure}
 
-The original 802.11 standard (introduced in 1997) can support only $1$ or $2$ Mbps which is quite low. It was aimed to provide an alternative to and/or to replace wired Ethernet connectivity. The WLAN rate is then significantly improved with IEEE 802.11b and IEEE 802.11a rectified in 1999. The 802.11b, considered as the \textit{first generation} WLAN technology, features two well-known spread spectrum technologies to distribute packets over a wireless medium: Frequency-Hopping Spread Spectrum (FHSS) and Direct-Sequence Spread Spectrum (DSSS) that are still in use by most wireless networks today. It operates in $2.4$ GHz frequency band and can support a maximum data rate of $11$ Mbps. The IEEE 802.11a - the \textit{second generation} WLAN technology - employs the Orthogonal Frequency Division Multiplexing (OFDM) technology to enable a higher data rate of $54$ Mbps. Using the $5$ GHz band, this standard has a significant advantage when the $2.4$ GHz band is heavily crowded. Next, the \textit{third generation }WLAN technology - the IEEE 802.11g - was released in 2003. It operates in the $2.4$ GHz band (as the IEEE 802.11b) and uses OFDM to match the $54$ Mbps data rate achieved by the 802.11a. The 802.11e was then introduced in 2005 to enhance the 802.11a and b with the support of QoSs. It operates at radio frequencies of up to $5.8$ GHz and is most suitable for networks with multimedia applications. In order to further boost the data rate, in 2007, the 802.11n using Multiple Input Multiple Output (MIMO) technology was introduced. It is considered as the \textit{fourth generation} WLANs, using both $2.4$ and $5$ GHz frequency bands and can support up to $600$ Mbps. The 802.11n is now becoming the dominant deployed standard.
+The original 802.11 standard (introduced in 1997) can support only $1$ or $2$ Mbps which is quite low. It was aimed to provide an alternative to and/or to replace wired Ethernet connectivity. The WLAN rate is then significantly improved with IEEE 802.11b and IEEE 802.11a rectified in 1999. The 802.11b, considered as the first generation WLAN technology, features two well-known spread spectrum technologies to distribute packets over a wireless medium: Frequency-Hopping Spread Spectrum (FHSS) and Direct-Sequence Spread Spectrum (DSSS) that are still in use by most wireless networks today. It operates in $2.4$ GHz frequency band and can support a maximum data rate of $11$ Mbps. The IEEE 802.11a - the second generation WLAN technology - employs the Orthogonal Frequency Division Multiplexing (OFDM) technology to enable a higher data rate of $54$ Mbps. Using the $5$ GHz band, this standard has a significant advantage when the $2.4$ GHz band is heavily crowded. Next, the third generation WLAN technology - the IEEE 802.11g - was released in 2003. It operates in the $2.4$ GHz band (as the IEEE 802.11b) and uses OFDM to match the $54$ Mbps data rate achieved by the 802.11a. The 802.11e was then introduced in 2005 to enhance the 802.11a and b with the support of QoSs. It operates at radio frequencies of up to $5.8$ GHz and is most suitable for networks with multimedia applications. In order to further boost the data rate, in 2007, the 802.11n using Multiple Input Multiple Output (MIMO) technology was introduced. It is considered as the fourth generation WLANs, using both $2.4$ and $5$ GHz frequency bands and can support up to $600$ Mbps. The 802.11n is now becoming the dominant deployed standard.
 
-The demand for higher throughput over the wireless medium escalated in the late 2000s, driven by mass adoption of smart phones, tablets, and video on demand services such as YouTube and Netflix. To address this, the 802.11ac, also known as the \textit{fifth generation} or gigabit Wi-Fi, was approved in 2014. It operates only in $5$ GHz band, incorporating the enhanced air interface of 802.11n with wider bandwidth, more MIMO streams, and high-density modulation to support at least $1$ Gbps. This standard is now incorporated in many mainstream Wi-Fi products. The 802.11ad is another gigabit Wi-Fi which was introduced in 2012, operating in the unlicensed $60$ GHz band and offering much higher transfer rates than previous 802.11 standards (its theoretical maximum transfer rate is up to $7$ Gbps). Technology based on the 802.11ad standard can supplement existing wireless networks for high-definition video streaming, offering the ability to offload heavy demands on $2.4$ and $5$ GHz that other 802.11 standards are operating on. The 802.11ax - the successor to the 802.11ac and also called  High-Efficiency Wireless (HEW) - is currently at its early stage of development that has the goal of providing $10$ Gbps in both $2.4$ and $5$ GHz bands. This new standard implements several technologies to enhance the efficiency of channel utilization and is therefore expected to provide users with consistent and reliable data throughput in crowded wireless environments. One of the biggest enabling technologies of this efficiency is multi-user technology, both in the form of Multi-User MIMO (MU-MIMO) and Multi-User OFDMA (MU-OFDMA).
+The demand for higher throughput over the wireless medium escalated in the late 2000s, driven by mass adoption of smart phones, tablets, and video on demand services such as YouTube and Netflix. To address this, the 802.11ac, also known as the fifth generation or gigabit Wi-Fi, was approved in 2014. It operates only in $5$ GHz band, incorporating the enhanced air interface of 802.11n with wider bandwidth, more MIMO streams, and high-density modulation to support at least $1$ Gbps. This standard is now incorporated in many mainstream Wi-Fi products. The 802.11ad is another gigabit Wi-Fi which was introduced in 2012, operating in the unlicensed $60$ GHz band and offering much higher transfer rates than previous 802.11 standards (its theoretical maximum transfer rate is up to $7$ Gbps). Technology based on the 802.11ad standard can supplement existing wireless networks for high-definition video streaming, offering the ability to offload heavy demands on $2.4$ and $5$ GHz that other 802.11 standards are operating on. The 802.11ax - the successor to the 802.11ac and also called  High-Efficiency Wireless (HEW) - is currently at its early stage of development that has the goal of providing $10$ Gbps in both $2.4$ and $5$ GHz bands. This new standard implements several technologies to enhance the efficiency of channel utilization and is therefore expected to provide users with consistent and reliable data throughput in crowded wireless environments. One of the biggest enabling technologies of this efficiency is multi-user technology, both in the form of Multi-User MIMO (MU-MIMO) and Multi-User OFDMA (MU-OFDMA).
 
 
 \section{IEEE 802.11 CSMA/CA}
@@ -39,16 +40,16 @@ Despite that fact that many generations of IEEE 802.11 has been developed to enh
 \subsection{PCF and DCF}
 \label{pcf-dcf}
 
-DCF is a contention-based LBT mechanism called \textit{Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA)} that \textit{works in an entirely distributed manner without any coordination}. With CSMA/CA, stations (STAs) independently perform carrier sensing and back-off procedures to compete for the channel access. DCF is a mandatory MAC function and implemented in all IEEE 802.11/Wi-Fi devices. CSMA/CA is focused in this chapter and its technical details will be presented in section \ref{collision-avoidance}.
+DCF is a contention-based LBT mechanism called Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA) that works in an entirely distributed manner without any coordination. With CSMA/CA, stations (STAs) independently perform carrier sensing and back-off procedures to compete for the channel access. DCF is a mandatory MAC function and implemented in all IEEE 802.11/Wi-Fi devices. CSMA/CA is focused in this chapter and its technical details will be presented in section \ref{collision-avoidance}.
 
-PCF is built on the top of DCF. It aims to support applications that require near real-time services. Basically, PCF splits the time into periodic interval called beacon intervals, each of which is composed of contention-free period (CFP) and contention period (CP). \textit{CFP requires coordination from the access point (AP)} and allocates resources to STAs using polling mechanism. Specifically, AP maintains a list of registered PCF-enabled STAs and polls each of them using CF-Poll frames. Only after a STA is polled, it can start its data transmission. In case the polled STA does not have any frames to send, then it must transmit null frame. Channel access in CP of PCF is handled by CSMA/CA protocol. PCF is specified as an optional MAC function and has not been widely implemented due to its complexity.
+PCF is built on the top of DCF. It aims to support applications that require near real-time services. Basically, PCF splits the time into periodic interval called beacon intervals, each of which is composed of contention-free period (CFP) and contention period (CP). CFP requires coordination from the access point (AP) and allocates resources to STAs using polling mechanism. Specifically, AP maintains a list of registered PCF-enabled STAs and polls each of them using CF-Poll frames. Only after a STA is polled, it can start its data transmission. In case the polled STA does not have any frames to send, then it must transmit null frame. Channel access in CP of PCF is handled by CSMA/CA protocol. PCF is specified as an optional MAC function and has not been widely implemented due to its complexity.
 
 The timing of PCF and DCF of IEEE 802.11 is sketched in Fig. \ref{figs:802-11-PCF-DCF}. Within a given beacon interval, the start and end of CFP are marked by beacon and CF-End control frames, respectively. CP follows CFP and is terminated by a beacon frame of the next beacon interval. 
 
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/802-11-PCF-DCF}
+	\includegraphics[width=1.0\columnwidth]{figs/802-11-PCF-DCF}
 	\caption{PCF and DCF in IEEE 802.11.}
 	\label{figs:802-11-PCF-DCF}
 \end{figure}
@@ -60,7 +61,7 @@ The LBT mechanism employed by the IEEE 802.11/Wi-Fi CSMA/CA basically follows th
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/CSMA-CA-flowchart}
+	\includegraphics[width=1.0\columnwidth]{figs/CSMA-CA-flowchart}
 	\caption{Simplified flowchart of CSMA/CA.}
 	\label{figs:CSMA-CA-flowchart}
 \end{figure}
@@ -73,7 +74,7 @@ Since it is difficult to detect collisions at a wireless receiver, the IEEE 802.
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures2/CSMA-CA-back-off-no-collision}
+	\includegraphics[width=0.9\columnwidth]{figs/CSMA-CA-back-off-no-collision}
 	\caption{CSMA/CA: An example of back-off procedure when there is no collision.}
 	\label{figs:CSMA-CA-back-off-no-collision}
 \end{figure}
@@ -86,7 +87,7 @@ When a transmission is lost (due to channel collision when two or more STAs decr
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/CSMA-CA-back-off-with-collision}
+	\includegraphics[width=1.0\columnwidth]{figs/CSMA-CA-back-off-with-collision}
 	\caption{CSMA/CA: An example of back-off procedure when there is a collision (the contention window is exponentially increased).}
 	\label{figs:CSMA-CA-back-off-with-collision}
 \end{figure}
@@ -99,7 +100,7 @@ Here are some illustrative values of CSMA/CA operation parameters: ST = $20$ $\m
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.65\columnwidth]{figures2/802-11-RTS-CTS-NAV}
+	\includegraphics[width=0.65\columnwidth]{figs/802-11-RTS-CTS-NAV}
 	\caption{CSMA/CA enhanced with RTS/CTS handshake and NAV.}
 	\label{figs:802-11-RTS-CTS-NAV}
 \end{figure}
@@ -132,7 +133,7 @@ Basic operations of HCCA are illustrated in Fig. \ref{figs:802-11e-HCCA}. HCCA i
 It can be seen IEEE 802.11 CSMA/CA is the most fundamental protocol for medium access in WLANs. In fact, IEEE 802.11e EDCA is primarily designed based on CSMA/CA. As a result, in-depth knowledge on medium access mechanisms employed by this protocol is imperative to unde
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{figures2/802-11e-HCCA}
+	\includegraphics[width=1.0\columnwidth]{figs/802-11e-HCCA}
 	\caption{HCCA in IEEE 802.11e.}
 	\label{figs:802-11e-HCCA}
 \end{figure}
@@ -141,6 +142,6 @@ It can be seen IEEE 802.11 CSMA/CA is the most fundamental protocol for medium a
 \section{Important Observations on CSMA/CA}
 \label{csmaca-obs}
 
-It is important to note that IEEE 802.11 CSMA/CA is specified with a few key additional features that go beyond LBT requirements specified by ETSI \cite{LBT-ETSI-2014}. \textit{First}, a Wi-Fi device defers to signals that are much weaker than the minimum level required by ETSI. ETSI LBT requires a transmitter to defer if the received energy is above $-60$ dBm (for $20$ MHz), while Wi-Fi defers if the received energy is above $-62$ dBm (this level is referred to as the energy detect threshold, or ED for short) or if a valid Wi-Fi preamble is detected. Wi-Fi's ED threshold is nearly the same as ETSI's LBT threshold, but Wi-Fi preamble detection is required to work to at least $-82$ dBm, and in reality works to $-90$ dBm or lower in most products. Hence, Wi-Fi devices defer to other Wi-Fi transmissions much more conservatively (i.e., at a much larger distance) than a device which only meets ETSI requirements. \textit{Second}, Wi-Fi goes beyond the ETSI requirements in specifying how long a device must wait after the on-air energy falls below the threshold before initiating a transmission. \textit{Third}, when a collision is detected, Wi-Fi employs exponential back-off rule that doubles the contention window size and thus significantly increases the random back-off time in order to avoid future collision.
+It is important to note that IEEE 802.11 CSMA/CA is specified with a few key additional features that go beyond LBT requirements specified by ETSI \cite{LBT-ETSI-2014}. First, a Wi-Fi device defers to signals that are much weaker than the minimum level required by ETSI. ETSI LBT requires a transmitter to defer if the received energy is above $-60$ dBm (for $20$ MHz), while Wi-Fi defers if the received energy is above $-62$ dBm (this level is referred to as the energy detect threshold, or ED for short) or if a valid Wi-Fi preamble is detected. Wi-Fi's ED threshold is nearly the same as ETSI's LBT threshold, but Wi-Fi preamble detection is required to work to at least $-82$ dBm, and in reality works to $-90$ dBm or lower in most products. Hence, Wi-Fi devices defer to other Wi-Fi transmissions much more conservatively (i.e., at a much larger distance) than a device which only meets ETSI requirements. Second, Wi-Fi goes beyond the ETSI requirements in specifying how long a device must wait after the on-air energy falls below the threshold before initiating a transmission. Third, when a collision is detected, Wi-Fi employs exponential back-off rule that doubles the contention window size and thus significantly increases the random back-off time in order to avoid future collision.
 
 \input{referenc-wifi}

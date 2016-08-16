@@ -93,7 +93,7 @@ and decreasing its contention window after a successful transmission according t
 These equations, in addition to function for gathering channel usage statistics are implemented in each of the competing LAA-LTE eNBs.  This mechanism requires no explicit coordination between the LAA-LTE base stations nor any changes to Wi-Fi stations. The operation of NALT is depicted in Fig. \ref{NALT-flowchart}. 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{figures3/NALT-flowchart}
+	\includegraphics[width=\textwidth]{figs/NALT-flowchart}
 	\caption{Network-aware Adaptive LBT algorithm.}
 	\label{NALT-flowchart}
 \end{figure}%Works in grayscale
@@ -134,7 +134,7 @@ NALT is a probabilistic coexistence mechanism, so to evaluate the fairness provi
 
 Initially, NALT was tested with a single LAA-LTE network competing with between 1 and 15 Wi-Fi stations.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{basic-results}.
 \begin{figure}[!ht]	
-	\includegraphics[width=\textwidth]{figures3/NALT-1-15}
+	\includegraphics[width=\textwidth]{figs/NALT-1-15}
 	\caption{Airtime allocations for each station with LAA-LTE using NALT.}
 	\label{basic-results}
 \end{figure}
@@ -142,7 +142,7 @@ In each configuration, fair sharing was achieved, with every member of each clas
 
 For comparison, the simulation was run with the same parameters as in Table \ref{params}, but with a fixed contention window size of $16$, corresponding to the midpoint of possible values under ETSI LBE LBT \cite{3gpp}. The resulting airtime allocations, normalized to the number of devices, are shown in Fig. \ref{compresults}.
 \begin{figure}[!ht]
-	\includegraphics[width=\textwidth]{figures3/ETSIforComp}
+	\includegraphics[width=\textwidth]{figs/ETSIforComp}
 	\caption{Airtime allocations for each station with LAA-LTE using ETSI LBE LBT.}
 	\label{compresults}
 \end{figure}
@@ -150,14 +150,14 @@ As expected, LAA-LTE transmission receive a disproportionately high airtime allo
 
 Since it is likely that LAA-LTE networks will be deployed alongside other competing LAA-LTE networks, the simulation was extended to evaluate the effectiveness of NALT under these conditions.  The simulation was run with 5 independent NALT-enabled LAA-LTE networks competing against each other as well as Wi-Fi stations.  The resulting proportion of airtime for each device when using NALT is shown in Fig. \ref{multi-results}.
 \begin{figure}[H]	
-	\includegraphics[width=\textwidth]{figures3/NALT-5-15}
+	\includegraphics[width=\textwidth]{figs/NALT-5-15}
 	\caption{Airtime allocations for each station with five LAA-LTE networks using NALT.}
 	\label{multi-results}
 \end{figure}
 
 It is further conceivable that LAA-LTE networks will be deployed where there are either no competing Wi-Fi stations, or the level of interference between the RATs is negligible.  Fig. \ref{NALT-only-results}, shows the resulting fair allocation of airtime for each device when NALT is used in a LAA-LTE only deployment. 
 \begin{figure}[H]
-	\includegraphics[width=\textwidth]{figures3/LAAonly}
+	\includegraphics[width=\textwidth]{figs/LAAonly}
 	\caption{Airtime allocations from LAA-LTE only channel contention when using NALT.}
 	\label{NALT-only-results}
 \end{figure}
