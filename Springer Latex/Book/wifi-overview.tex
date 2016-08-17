@@ -6,12 +6,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
 %\motto{Use the template \emph{chapter.tex} to style the various elements of your chapter content.}
-\chapter{An Overview on IEEE 802.11/Wi-Fi Medium Access Control}
+\chapter{IEEE 802.11/Wi-Fi Medium Access Control: An Overview}
 \label{overview-wifi}
 
-\abstract*{In order to understand and analyze the interactions between U-LTE and Wi-Fi when sharing the $5$ GHz frequency band, knowledge on the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is highly desired. This chapter focuses on the Wi-Fi technology and begins with an overview of the evolution of IEEE 802.11/Wi-Fi. Five existing generations, as well as the next generation, of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how CSMA/CA senses and occupies the radio medium when the LTE network is operating in vicinity are highlighted.}
+\abstract*{In order to understand and analyze the interactions between U-LTE and Wi-Fi when sharing the $5$ GHz frequency band, knowledge of the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is required. This chapter focuses on the Wi-Fi technology and begins with an overview of the evolution of IEEE 802.11/Wi-Fi. Five existing generations, as well as the next generation, of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides the underlying ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how CSMA/CA senses and occupies the radio medium when the LTE network is operating in vicinity are highlighted.}
 
-In order to understand and analyze the interactions between U-LTE and Wi-Fi when sharing the $5$ GHz frequency band, knowledge on the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is highly desired. This chapter focuses on the Wi-Fi technology and begins with an overview of the evolution of IEEE 802.11/Wi-Fi. Five existing generations, as well as the next generation, of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how CSMA/CA senses and occupies the radio medium when the LTE network is operating in vicinity are highlighted.
+In order to understand and analyze the interactions between U-LTE and Wi-Fi when sharing the $5$ GHz frequency band, knowledge of the architectures and Medium Access Control (MAC) mechanisms currently adopted by these two technologies is required. This chapter focuses on the Wi-Fi technology and begins with an overview of the evolution of IEEE 802.11/Wi-Fi. Five existing generations, as well as the next generation, of IEEE 802.11/Wi-Fi are presented. The majority of this chapter provides the underlying ideas and detailed mechanisms of the CSMA/CA MAC protocol. Important observations on how CSMA/CA senses and occupies the radio medium when the LTE network is operating in vicinity are highlighted.
 
 \section{IEEE 802.11/Wi-Fi Evolution}
 \label{wifi-lbt}
@@ -63,7 +63,7 @@ The LBT mechanism employed by the IEEE 802.11/Wi-Fi CSMA/CA basically follows th
 Since it is difficult to detect collisions at a wireless receiver, the IEEE 802.11 protocol tries to avoid collisions rather than detect and recover from collisions. This means that CA mechanisms are mandated to reduce the collision probability at the points where collisions would most likely occur. Specifically, most collisions happen when the medium has become idle (as indicated by CS function) after a busy state. Several STAs could have been waiting for the medium to be available again, then all transmit at the same moment the medium is detected free. This situation necessitates a ``random'' back-off procedure to resolve medium contention conflicts. Also, the use of Inter-Frame Spaces (IFSs) of various durations helps to resolve the problem. 
 
 A flowchart detailing the CSMA/CA protocol is shown in Fig. \ref{figs:CSMA-CA-flowchart}. 
-\begin{figure}[!t]
+\begin{figure}[!th]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{figs/CSMA-CA-flowchart}
 	\caption{Simplified flowchart of CSMA/CA.}
