@@ -73,21 +73,21 @@ The radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a 
 
 Each of the bands defined by ETSI EN 301 893 V1.7.2 regulations \cite{LBT-ETSI-2014} have different maximum allowable transmission power levels. Note that the RF output power is defined as the mean Equivalent Isotropic Radiated Power (EIRP) of the equipment during a transmission burst. In general, the limits are valid for the device with antenna gain and cable loss and not only the output power of WLAN module.
 
-\subsection{RLAN band 1 ($5150$ to $5350$ MHz)} %TODO: should there be a reference for this section?
+\subsection{RLAN band 1 ($5150$ to $5350$ MHz)} 
 
 \subsubsection{Indoor only Sub-band I ($5150$ - $5250$ MHz)}
 The first RLAN sub-band includes the channels $36$ to $48$ and has an EIRP power limit to $23$ dBm ($200$ mW). These channels are considered for indoor only usage and do not require any Dynamic Frequency Selection (DFS) or Transmit Power Control (TPC) features. 
 
 \subsubsection{Indoor only Sub-band II ($5250$ - $5350$ MHz)}
-In the second sub-band of the RLAN band 1 with channels $52$ to $64$, ETSI has set the EIRP power limit to $23$ dBm ($200$ mW) for devices with TPC and $20$ dBm ($100$ mW) for devices without TPC. For a device with TPC, the mean EIRP at the lowest power level of the TPC range must not exceed $17$ dBm ($50$ mW). This band requires DFS support and %TODO: Finish this sentence
+In the second sub-band of the RLAN band 1 with channels $52$ to $64$, ETSI has set the EIRP power limit to $23$ dBm ($200$ mW) for devices with TPC and $20$ dBm ($100$ mW) for devices without TPC. For a device with TPC, the mean EIRP at the lowest power level of the TPC range must not exceed $17$ dBm ($50$ mW). This band requires DFS support (and requires TPC support in Europe and Japan).
 
 \subsection{RLAN band 2 ($5470$ to $5725$ MHz)}
 
 Channels from $100$ to $140$ are part of the second RLAN band and have an EIRP power limit of $30$ dBm ($1000$ mW) for devices with DFS and TPC support, $27$ dBm ($500$ mW) for non-TPC devices, and $20$ dBm ($100$ mW) for devices with neither TPC or DFS support. The mean EIRP power level for a slave device with TPC must not exceed $24$ dBm at the lowest TPC power level if the device is also capable of radar detection or $17$ dBm otherwise. 
 
-\subsection{BRAN ($5725$ to $5875$ MHz)}%TODO: 155-171 or 155-172?  
+\subsection{BRAN ($5725$ to $5875$ MHz)} 
 
-ETSI has restricted the channels $155$ to $171$ (155, 159, 163, 167, 172) for Broadband Wireless Access (BWA) use only. The idea is to provide internet access to locations without any wired access network available. The maximum EIRP output power has been set to $36$ dBm ($4000$ mW) with the limitation of RF power into antenna of $30$ dBm ($1000$ mW).
+ETSI has restricted the channels $155$ to $171$ for Broadband Wireless Access (BWA) use only. The idea is to provide internet access to locations without any wired access network available. The maximum EIRP output power has been set to $36$ dBm ($4000$ mW) with the limitation of RF power into antenna of $30$ dBm ($1000$ mW).
 
 
 \section{Transmission Power Control (TPC)}
