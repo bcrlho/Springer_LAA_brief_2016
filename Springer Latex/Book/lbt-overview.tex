@@ -60,10 +60,10 @@ The ETSI EN 301 893 V1.7.2 regulations \cite{LBT-ETSI-2014} released in July 201
 	\end{itemize}
 \end{itemize}
 
-The radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations) are summarized in Fig. \ref{5GHz-spectrum}.  Technical details and the availability of each channel in four main regions (U.S., Europ, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
+The radio channels defined in the $5$ GHz band by ETSI 301 893 standard (with a reference to FCC regulations) are summarized in Fig. \ref{5GHz-spectrum}.  Technical details and the availability of each channel in four main regions (U.S., Europe, Japan, and China) are presented in Fig. \ref{figs:5GHz-spectrum-table}.
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.85\columnwidth]{figs/5GHz-spectrum-table.pdf}
+	\includegraphics[width=0.9\columnwidth]{figs/5GHz-spectrum-table}
 	\caption{Details of $5$ GHz Unlicensed Channels in Different Regions.}
 	\label{figs:5GHz-spectrum-table}
 \end{figure}
@@ -112,7 +112,22 @@ In order to avoid channel collisions when two or more than two devices transmit 
 \subsection{FBE-based Mechanism}
 \label{etsi-lbt:fbe}
 
-FBE shall comply with the following requirements:
+A simplified flowchart and an illustrative example of the channel access procedure used for FBE are given in Figs. \ref{figs:FBE-flowchart} and \ref{figs:FBE-example}, respectively.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figs/FBE-flowchart}
+	\caption{Simplified flowchart of FBE.}
+	\label{figs:FBE-flowchart}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figs/FBE-example}
+	\caption{An illustrative example of FBE.}
+	\label{figs:FBE-example}
+\end{figure}
+
+
+\noindent FBE shall comply with the following requirements:
 
 \begin{itemize}
 	
@@ -136,7 +151,7 @@ FBE shall comply with the following requirements:
 	\textit{R6:} Towards the end of the idle period, the equipment shall perform a new CCA procedure as described in R1 above.
 	
 	\item
-	\textit{R7:} The equipment, upon correct reception of a packet which was intended for this equipment, can skip CCA and immediately proceed with the transmission of management and control frames, e.g., acknowledgment (ACK) and block ACK frames.
+	\textit{R7:} The equipment, upon correct reception of a packet which was intended for this equipment, can skip CCA and immediately proceed with the transmission of management and control frames, e.g., acknowledgement (ACK) and block ACK frames.
 	
 	\item
 	\textit{R8:}
@@ -155,24 +170,26 @@ FBE shall comply with the following requirements:
 	
 \end{itemize}
 
-A simplified flowchart and an illustrative example of the channel access procedure used for FBE are given in Figs. \ref{figs:FBE-flowchart} and \ref{figs:FBE-example}, respectively.
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figs/FBE-flowchart}
-	\caption{Simplified flowchart of FBE.}
-	\label{figs:FBE-flowchart}
-\end{figure}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figs/FBE-example}
-	\caption{An illustrative example of FBE.}
-	\label{figs:FBE-example}
-\end{figure}
 
 \subsection{LBE-based Mechanism}
 \label{etsi-lbt:lbe}
 
-LBE shall comply with the following requirements:
+A simplified flowchart and an illustrative example of the channel access procedure used for LBE are given in Figs. \ref{figs:LBE-flowchart} and \ref{figs:LBE-example}, respectively.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figs/LBE-flowchart}
+	\caption{Simplified flowchart of LBE.}
+	\label{figs:LBE-flowchart}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figs/LBE-example}
+	\caption{An illustrative example of LBE.}
+	\label{figs:LBE-example}
+\end{figure}
+
+
+\noindent LBE shall comply with the following requirements:
 
 \begin{itemize}
 	
@@ -216,19 +233,5 @@ LBE shall comply with the following requirements:
 	mCoT should be less than $(13/32)\times q$ ms (mCoT is in the range from $1.625$ to $13$ ms).
 	
 \end{itemize}
-
-A simplified flowchart and an illustrative example of the channel access procedure used for LBE are given in Figs. \ref{figs:LBE-flowchart} and \ref{figs:LBE-example}, respectively.
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figs/LBE-flowchart}
-	\caption{Simplified flowchart of LBE.}
-	\label{figs:LBE-flowchart}
-\end{figure}
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figs/LBE-example}
-	\caption{An illustrative example of LBE.}
-	\label{figs:LBE-example}
-\end{figure}
 
 \input{referenc-lbt}
